@@ -1,9 +1,8 @@
-import "./Footer.css";
-import logo from "../../assets/xxx.png";
+import "./footer.css";
 
 function Footer() {
   return (
-    <h1>sd</h1>
+    <div>Footer</div>
   );
 }
 
