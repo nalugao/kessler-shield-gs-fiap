@@ -28,8 +28,6 @@ export default function Footer() {
           <div className="footer-brand">
             <Link to="/" className="footer-logo">
               <span className="footer-logo-mark">KS</span>
-
-              {/* Quando tiverem a logo oficial, dá para trocar o KS por uma imagem aqui */}
               {/* <img src="/logo-kessler.png" alt="Kessler Shield" className="footer-logo-img" /> */}
 
               <span className="footer-logo-text">Kessler Shield</span>
