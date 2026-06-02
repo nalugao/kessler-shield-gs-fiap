@@ -5,6 +5,7 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Referencias from "./pages/Referencias";
 import ContatoPage from "./pages/Contato";
+import Financeiro from "./pages/Financeiro";
 
 import Starfield from "./components/Starfield";
 import ScrollManager from "./components/ScrollManager";
@@ -19,14 +20,6 @@ function Solucao() {
   );
 }
 
-function Financeiro() {
-  return (
-    <main className="page-placeholder">
-      <h1>Financeiro</h1>
-      <p>Página financeira do projeto em construção.</p>
-    </main>
-  );
-}
 
 function App() {
   return (
