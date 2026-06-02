@@ -1,12 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
-import Layout from "./components/Layout"
+
+import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Referencias from "./pages/Referencias";
+import ContatoPage from "./pages/Contato";
+
 import Starfield from "./components/Starfield";
 import ScrollManager from "./components/ScrollManager";
 import { LanguageProvider } from "./components/context/LanguageContext";
-import Contato from "./components/home/Contato";
 
 function Solucao() {
   return (
@@ -28,19 +30,19 @@ function Financeiro() {
 
 function App() {
   return (
-
     <BrowserRouter>
-    <div className="space-bg" />
-      <Starfield />
-      <ScrollManager />
       <LanguageProvider>
+        <div className="space-bg" />
+        <Starfield />
+        <ScrollManager />
+
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
             <Route path="/solucao" element={<Solucao />} />
             <Route path="/financeiro" element={<Financeiro />} />
             <Route path="/referencias" element={<Referencias />} />
-            <Route path="/contato" element={<Contato />} />
+            <Route path="/contato" element={<ContatoPage />} />
           </Route>
         </Routes>
       </LanguageProvider>

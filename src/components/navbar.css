@@ -151,6 +151,25 @@
   transform: translateY(-8px) rotate(-45deg);
 }
 
+.navbar-link-button {
+  border: none;
+  background: transparent;
+  color: #a8b3c7;
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.2s ease;
+  padding: 0;
+  font-family: inherit;
+}
+
+.navbar-link-button:hover {
+  color: #7ee8d4;
+}
+
 @media (max-width: 900px) {
   .menu-button {
     display: block;
@@ -175,7 +194,8 @@
   }
 
 .navbar-menu a,
-.language-button {
+.navbar-link-button,
+.language-switch {
   width: 100%;
   padding: 16px;
   text-align: left;

@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-
 import { useLanguage } from "../components/context/LanguageContext";
-
 import NewsletterForm from "../components/contact/NewsletterForm";
 import DonationForm from "../components/contact/DonationForm";
-
 import "./contato.css";
 
 export default function Contato() {

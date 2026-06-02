@@ -1,4 +1,4 @@
-import Contato from "../components/home/Contato"
+import Contato from "../components/home/ContatoSection"
 import Equipe from "../components/home/Equipe"
 import Financeiro from "../components/home/Financeiro"
 import Hero from "../components/home/Hero"
