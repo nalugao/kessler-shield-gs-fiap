@@ -15,21 +15,12 @@ export default function Footer() {
 
   return (
     <footer className="site-footer">
-      <div className="footer-space-bg">
-        <span className="footer-star star-one"></span>
-        <span className="footer-star star-two"></span>
-        <span className="footer-star star-three"></span>
-        <span className="footer-planet"></span>
-        <span className="footer-orbit"></span>
-      </div>
 
       <div className="footer-container">
         <section className="footer-top">
           <div className="footer-brand">
             <Link to="/" className="footer-logo">
               <span className="footer-logo-mark">KS</span>
-              {/* <img src="/logo-kessler.png" alt="Kessler Shield" className="footer-logo-img" /> */}
-
               <span className="footer-logo-text">Kessler Shield</span>
             </Link>
 
