@@ -1,0 +1,56 @@
+/* RefCard — card de referência científica (compartilhado entre a
+   seção da Home e a página Referências). Cores de tag por categoria. */
+.ref-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--line-soft);
+  border-radius: 4px;
+  padding: 1.6rem 1.6rem 1.75rem;
+  transition: border-color 0.3s, transform 0.3s;
+  display: flex; flex-direction: column;
+}
+.ref-card:hover { border-color: var(--line)}
+.ref-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.tag {
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.6rem;
+  border-radius: 2px;
+  font-weight: 500;
+  border: 1px solid transparent;
+}
+.tag--nasa   { color: #6fb7ff; border-color: rgba(111,183,255,0.3); background: rgba(111,183,255,0.06); }
+.tag--esa    { color: #7de8c8; border-color: rgba(125,232,200,0.3); background: rgba(125,232,200,0.06); }
+.tag--spacex { color: #d3dae2; border-color: rgba(211,218,226,0.25); background: rgba(211,218,226,0.05); }
+.tag--mercado{ color: #ffcf6b; border-color: rgba(255,207,107,0.3); background: rgba(255,207,107,0.06); }
+.tag--tecnologia { color: #c79bff; border-color: rgba(199,155,255,0.3); background: rgba(199,155,255,0.06); }
+.tag--programa { color: #ff9b8a; border-color: rgba(255,155,138,0.3); background: rgba(255,155,138,0.06); }
+.ref-card h4 {
+  font-family: var(--font-body);
+  font-size: 1.02rem;
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1.35;
+  margin-bottom: 0.7rem;
+}
+.ref-card p { font-size: 0.88rem; color: var(--text); flex: 1; }
+.ref-corrected {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  margin-top: 1rem;
+  font-size: 0.66rem; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--mint);
+  border: 1px solid var(--line);
+  border-radius: 2px; padding: 0.25rem 0.55rem;
+  align-self: flex-start;
+}
+.ref-corrected::before { content: "✓"; }
+.ref-source {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line-soft);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  display: flex; align-items: center; justify-content: space-between;
+  transition: color 0.2s;
+}
+.ref-source:hover { color: var(--mint); }
