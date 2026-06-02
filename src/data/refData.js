@@ -1,280 +1,165 @@
+<<<<<<< Updated upstream
 const SECTIONS_PT = [
+=======
+export const REFS = [
+>>>>>>> Stashed changes
   {
-    id: "detritos",
-    label: "01 — Detritos Espaciais",
-    title: "População de Detritos em Órbita",
-    intro:
-      "Os números sobre detritos espaciais mudam a cada relatório anual. Os dados abaixo são os mais recentes disponíveis, com fontes primárias de agências espaciais e organismos internacionais.",
-    articles: [
-      {
-        id: "esa-env-2025",
-        tag: "ESA · 2025",
-        title: "ESA Space Environment Report 2025",
-        summary:
-          "Relatório anual mais completo sobre a população de detritos em órbita. Confirma ~40.000 objetos rastreados por redes de vigilância espacial, dos quais ~11.000 são payloads ativos. Utiliza o modelo MASTER-8 (referência agosto/2024) para estimar mais de 1,2 milhão de objetos entre 1 cm e 10 cm, e ~140 milhões de objetos entre 1 mm e 1 cm.",
-        stats: [
-          { value: "~40.000", label: "objetos rastreados em órbita" },
-          { value: "~11.000", label: "payloads ativos" },
-          { value: ">1,2 mi", label: "objetos entre 1 cm e 10 cm (MASTER-8)" },
-        ],
-        source: "ESA Space Safety — esa.int",
-        url: "https://www.esa.int/Space_Safety/Space_Debris/ESA_Space_Environment_Report_2025",
-        correction: null,
-      },
-      {
-        id: "esa-about",
-        tag: "ESA · Contínuo",
-        title: "About Space Debris — ESA Space Safety",
-        summary:
-          "Página de referência da ESA sobre detritos espaciais. Explica as faixas de tamanho, riscos e metodologia de rastreamento. Os fragmentos menores que 10 cm não são individualmente rastreados — sua população é estimada por modelos estatísticos e experimentos de impacto.",
-        stats: [],
-        source: "ESA — esa.int/Space_Safety/Space_Debris/About_space_debris",
-        url: "https://www.esa.int/Space_Safety/Space_Debris/About_space_debris",
-        correction: {
-          errado: '"500K objetos maiores que 1 cm"',
-          correto: '">1,2 milhão de objetos entre 1 cm e 10 cm" (ESA/MASTER-8, 2025)',
-        },
-      },
-      {
-        id: "nasa-odpo",
-        tag: "NASA · Contínuo",
-        title: "NASA Orbital Debris Program Office — FAQ",
-        summary:
-          "Fonte primária para a velocidade média de colisão em LEO. A NASA Orbital Debris Program Office afirma que a velocidade média de impacto entre objetos em órbita é de aproximadamente 10 km/s. Os objetos individualmente orbitam a 7–8 km/s, o equivalente a ~28.000 km/h — dado que frequentemente gera confusão de unidades nos pitches.",
-        stats: [
-          { value: "~10 km/s", label: "velocidade média de colisão em LEO" },
-          { value: "7–8 km/s", label: "velocidade orbital dos objetos" },
-          { value: "~28.000 km/h", label: "equivalente em km/h (≠ km/s)" },
-        ],
-        source: "NASA ODPO — orbitaldebris.jsc.nasa.gov",
-        url: "https://orbitaldebris.jsc.nasa.gov/faq/",
-        correction: {
-          errado: '"28 km/s de velocidade média de impacto"',
-          correto:
-            '"~10 km/s de velocidade de colisão; objetos orbitam a ~28.000 km/h (não km/s)"',
-        },
-      },
-      {
-        id: "iadc-2025",
-        tag: "UNOOSA/IADC · 2025",
-        title: "IADC Report on the Status of the Space Debris Environment",
-        summary:
-          "Relatório do Inter-Agency Space Debris Coordination Committee (IADC), organismo que reúne NASA, ESA, JAXA, Roscosmos e outras agências. Publicado via UNOOSA, é a referência intergovernamental padrão para estatísticas de detritos.",
-        stats: [],
-        source: "UNOOSA — unoosa.org",
-        url: "https://www.unoosa.org/res/oosadoc/data/documents/2025/aac_105c_12025crp/aac_105c_12025crp_10_0_html/AC105_C1_2025_CRP10E.pdf",
-        correction: null,
-      },
-      {
-        id: "kessler-1978",
-        tag: "NASA · 1978",
-        title:
-          "Kessler & Cour-Palais — Collision Frequency of Artificial Satellites: The Creation of a Debris Belt",
-        summary:
-          "Artigo fundacional publicado no Journal of Geophysical Research em junho de 1978. Donald J. Kessler e Burton G. Cour-Palais demonstraram matematicamente que colisões entre objetos em LEO poderiam gerar fragmentos mais rápido do que o decaimento atmosférico os remove, tornando o processo autossustentável (cascata colisional). O termo 'síndrome de Kessler' foi cunhado por John Gabbard (NORAD) — não pelo próprio Kessler.",
-        stats: [
-          { value: "1978", label: "ano da publicação original" },
-          { value: "J. Geophys. Res.", label: "periódico de publicação" },
-        ],
-        source: "Journal of Geophysical Research, Vol. 83, No. A6",
-        url: "https://doi.org/10.1029/JA083iA06p02637",
-        correction: null,
-      },
-    ],
+    id: 1,
+    tags: ["ESA", "Detritos"],
+    title: "ESA Space Environment Report 2025",
+    desc: "~40.000 objetos rastreados em órbita, dos quais ~11.000 são payloads ativos. Modelo MASTER-8, dados de agosto/2024.",
+    source: "esa.int",
+    url: "https://www.esa.int/Space_Safety/Space_Debris/ESA_Space_Environment_Report_2025",
+    corrected: false,
   },
   {
-    id: "mercado",
-    label: "02 — Mercado & Financeiro",
-    title: "Seguro Espacial e Custos Operacionais",
-    intro:
-      "Os dados financeiros do mercado espacial são frequentemente distorcidos por relatórios de baixa qualidade. Abaixo estão apenas fontes primárias de corretores especializados e operadoras do setor.",
-    articles: [
-      {
-        id: "seradata-2025",
-        tag: "Seradata / Slingshot Aerospace · 2025",
-        title: "Global Space Insurance Market — Annual Review",
-        summary:
-          "A Seradata (adquirida pela Slingshot Aerospace) é a principal base de dados do mercado de seguro espacial, usada por corretores como Marsh, Gallagher e Willis. Em 2024, o mercado gerou ~US$ 580 milhões em prêmios brutos contra US$ 210,8 milhões em sinistros. Em 2023, ano recorde negativo, os prêmios foram ~US$ 557 milhões contra US$ 995 milhões em sinistros — perda líquida de US$ 438 milhões.",
-        stats: [
-          { value: "~$580M", label: "prêmios brutos anuais (2024)" },
-          { value: "$210,8M", label: "sinistros pagos (2024)" },
-          { value: "~300", label: "satélites segurados (de ~10.000 em órbita)" },
-        ],
-        source: "Seradata/Slingshot via SatNews — satnews.com (ago. 2025)",
-        url: "https://satnews.com/2025/08/17/space-insurance-promising-start-to-the-year-marred-only-by-methanesat-claim/",
-        correction: {
-          errado: '"mercado de seguro espacial de bilhões de dólares"',
-          correto: '"~US$ 550–600 milhões em prêmios brutos anuais" (Seradata, fonte primária)',
-        },
-      },
-      {
-        id: "gallagher-q4",
-        tag: "Gallagher Specialty · Q4 2025",
-        title: "Space Market Update Q4 2025 — Plane Talking",
-        summary:
-          "Relatório trimestral do corretor especialista Gallagher Specialty. Confirma a ordem de grandeza do mercado de prêmios e projeta rentabilidade positiva para seguradoras em 2025 graças a sinistros historicamente baixos. Corrobora os dados da Seradata sobre concentração de apólices em satélites GEO de alto valor.",
-        stats: [],
-        source: "Gallagher Specialty — specialty.ajg.com",
-        url: "https://specialty.ajg.com/plane-talking/space-market-update-q4-2025",
-        correction: null,
-      },
-      {
-        id: "spacex-rideshare",
-        tag: "SpaceX · 2026",
-        title: "SpaceX Transporter — Rideshare Pricing (2026)",
-        summary:
-          "O programa SpaceX Transporter serve órbita heliossíncrona (SSO) via Falcon 9. O preço foi revisado múltiplas vezes: US$ 5.000/kg (2019) → US$ 5.500/kg (out. 2022) → US$ 6.000/kg (2024) → US$ 7.000/kg (2026, a partir do Transporter-16). Para LEO com outras inclinações, a SpaceX opera o programa Bandwagon com preços negociados.",
-        stats: [
-          { value: "$7.000/kg", label: "preço atual SSO (Transporter-16+, 2026)" },
-          { value: "$5.500/kg", label: "preço histórico (out. 2022) — dado do projeto" },
-          { value: "~$1,4M", label: "custo estimado de lançamento para nave-mãe de 200 kg" },
-        ],
-        source: "SpaceX Rideshare + New Space Economy (fev. 2026)",
-        url: "https://newspaceeconomy.ca/2026/02/27/satellite-ridesharing-market-analysis-2026/",
-        correction: {
-          errado: '"US$ 5.500/kg para LEO"',
-          correto: '"US$ 7.000/kg para SSO (2026); programa Bandwagon para LEO inclinada"',
-        },
-      },
-      {
-        id: "cubesat-cost",
-        tag: "NanoAvionics · Contínuo",
-        title: "How Much Do CubeSats and SmallSats Cost?",
-        summary:
-          "Guia de referência da fabricante NanoAvionics. A faixa de US$ 200K–500K para um CubeSat 12U comercial (excluindo lançamento) é validada pela indústria. O custo varia fortemente conforme payload, redundância e missão. CubeSats estudantis custam de US$ 10K a US$ 50K; plataformas comerciais com missões críticas podem ultrapassar US$ 1 milhão.",
-        stats: [
-          { value: "$200K–$500K", label: "faixa para 12U comercial (construção)" },
-          { value: "+ $84K–$540K", label: "custo de lançamento rideshare (separado)" },
-        ],
-        source: "NanoAvionics — nanoavionics.com",
-        url: "https://nanoavionics.com/blog/how-much-do-cubesats-and-smallsats-cost/",
-        correction: null,
-      },
-    ],
+    id: 2,
+    tags: ["ESA", "Detritos"],
+    title: "About Space Debris — ESA Space Safety",
+    desc: "Fragmentos >1cm: mais de 1,2 milhão de objetos. Fonte primária da ESA.",
+    source: "esa.int",
+    url: "https://www.esa.int/Space_Safety/Space_Debris/About_space_debris",
+    corrected: true,
   },
   {
-    id: "programas",
-    label: "03 — Agências & Programas",
-    title: "NASA, ESA e Financiamento Governamental",
-    intro:
-      "Os programas governamentais de remoção ativa de detritos (ADR) são reais e financiados. Abaixo estão os programas confirmados com links para fontes primárias.",
-    articles: [
-      {
-        id: "nasa-sbir",
-        tag: "NASA · 2025",
-        title: "NASA SBIR/STTR — Active Debris Removal Technologies",
-        summary:
-          "O programa SBIR (Small Business Innovation Research) da NASA investe ~US$ 180 milhões/ano em pequenas empresas dos EUA (< 500 funcionários). Existe um subtópico explícito para 'Active Debris Removal Technologies'. Phase I: até US$ 150.000 (6 meses). Phase II: até US$ 850.000 (24 meses). Phase III: financiamento externo sem limite definido.",
-        stats: [
-          { value: "~$180M/ano", label: "investimento anual total NASA SBIR" },
-          { value: "$150K", label: "Phase I (teto por projeto)" },
-          { value: "$850K", label: "Phase II (teto por projeto)" },
-        ],
-        source: "NASA SBIR/STTR — sbir.gsfc.nasa.gov",
-        url: "https://sbir.gsfc.nasa.gov/content/active-debris-removal-technologies",
-        correction: null,
-      },
-      {
-        id: "nasa-sspicy",
-        tag: "NASA · 2024",
-        title: "NASA SSPICY — Orbital Debris Inspection Mission (Starfish Space)",
-        summary:
-          "Exemplo real de financiamento NASA para remoção de detritos via SBIR Phase III. A Starfish Space recebeu contrato de US$ 15 milhões para a missão SSPICY — demonstração de aproximação e inspeção de satélite defunto. Prova que a NASA financia missões privadas de ADR por meio do SBIR.",
-        stats: [{ value: "$15M", label: "contrato Phase III (Starfish Space)" }],
-        source: "NASA Ames — nasa.gov",
-        url: "https://www.nasa.gov/centers-and-facilities/ames/getting-sspicy-nasa-funds-orbital-debris-inspection-mission/",
-        correction: null,
-      },
-      {
-        id: "esa-adrios",
-        tag: "ESA · 2025",
-        title: "ESA Space Safety Programme — Boost in Funding (CM25)",
-        summary:
-          "No Conselho Ministerial de novembro de 2025 (CM25), os Estados-membros da ESA aprovaram €955 milhões para o Space Safety Programme nos próximos três anos — 30% acima do solicitado. O programa inclui o ADRIOS (Active Debris Removal/In-Orbit Servicing) como 'Cornerstone', com novas missões CAT (interface de docking padronizada) e RISE (mission extender GEO) aprovadas.",
-        stats: [
-          { value: "€955M", label: "orçamento aprovado para 3 anos (CM25, 2025)" },
-          { value: "+30%", label: "acima do orçamento solicitado" },
-        ],
-        source: "ESA Space Safety — esa.int",
-        url: "https://www.esa.int/Space_Safety/Boost_in_funding_expands_Space_Safety_programme",
-        correction: null,
-      },
-    ],
+    id: 3,
+    tags: ["NASA", "Detritos"],
+    title: "NASA Orbital Debris Program Office — FAQ",
+    desc: "Velocidade média de colisão: ~10 km/s. Objetos orbitam a 7–8 km/s (≈28.000 km/h).",
+    source: "orbitaldebris.jsc.nasa.gov",
+    url: "https://orbitaldebris.jsc.nasa.gov/faq/",
+    corrected: true,
   },
   {
-    id: "tecnologia",
-    label: "04 — Tecnologia",
-    title: "Espuma Expansível e Projetos de ADR",
-    intro:
-      "A tecnologia de polímero expansível para remoção de detritos tem embasamento científico real, embora em baixo nível de maturidade tecnológica (TRL). Abaixo estão os projetos de ADR em operação e pesquisa.",
-    articles: [
-      {
-        id: "esa-foam-study",
-        tag: "ESA ACT · 2011",
-        title:
-          "Active Removal of Space Debris — Expanding Foam Application (Universidade de Pisa / ESA ACT)",
-        summary:
-          "Estudo patrocinado pela Equipe de Conceitos Avançados da ESA (ACT). Pesquisadores da Universidade de Pisa (J. Olympio e L. Summerer) desenvolveram um modelo de expansão de espuma polimérica baseado na equação de Rayleigh-Plesset. A proposta consiste em criar uma 'bola de espuma' ao redor do detrito, aumentando a razão área/massa e o arrasto atmosférico para induzir a reentrada — sem necessidade de docking físico, tolerando alvos em rotação ou tombamento.",
-        stats: [
-          { value: "TRL 2–3", label: "nível de maturidade tecnológica estimado" },
-          { value: "≤1 tonelada", label: "massa de alvo viável pelo modelo" },
-        ],
-        source: "ESA ACT — esa.int/gsp/ACT",
-        url: "https://www.esa.int/gsp/ACT/doc/ARI/ARI%20Study%20Report/ACT-RPT-MAD-ARI-10-6411-Pisa-Active_Removal_of_Space_Debris-Foam.pdf",
-        correction: null,
-      },
-      {
-        id: "bologna-redemption",
-        tag: "Univ. Bologna / ESA REXUS · 2013",
-        title: "REDEMPTION — Polyurethane Foam Experiment (ESA REXUS Programme)",
-        summary:
-          "Experimento do Space Robotics Group da Universidade de Bologna no programa de foguetes de sondagem ESA REXUS. Testou espuma de poliuretano de dois componentes em ambiente de microgravidade. O experimento I-FOAM testou polímeros com memória de forma na missão STS-134 do ônibus espacial (2011). Confirma a viabilidade física do conceito, mas a tecnologia permanece em fase de pesquisa.",
-        stats: [],
-        source: "ADS/Harvard — ui.adsabs.harvard.edu",
-        url: "https://ui.adsabs.harvard.edu/abs/2013ESASP.723E.169R/abstract",
-        correction: null,
-      },
-      {
-        id: "clearspace1",
-        tag: "ESA / ClearSpace SA · 2020–2028",
-        title: "ClearSpace-1 — Primeira Missão Dedicada a Remoção de Detritos",
-        summary:
-          "Contrato de €86 milhões entre a ESA e a startup suíça ClearSpace SA (spin-off da EPFL), assinado em novembro de 2020. Alvo original: adaptador VESPA (112 kg) de 2013. Em abril de 2024, o alvo foi alterado para o satélite PROBA-1 (95 kg). Usa braços robóticos para captura. Lançamento previsto para ~2028 (datas anteriores de 2025 não foram cumpridas). É a principal referência de mercado para missões ADR comerciais.",
-        stats: [
-          { value: "€86M", label: "contrato ESA–ClearSpace SA" },
-          { value: "~2028", label: "lançamento previsto (atualizado)" },
-          { value: "95 kg", label: "massa do alvo atual (PROBA-1)" },
-        ],
-        source: "ESA — esa.int/Space_Safety/ClearSpace-1",
-        url: "https://www.esa.int/Space_Safety/ClearSpace-1",
-        correction: null,
-      },
-      {
-        id: "removedebris",
-        tag: "Univ. Surrey · 2018–2019",
-        title: "RemoveDEBRIS — Primeira Demonstração de Captura em Órbita",
-        summary:
-          "Missão financiada pela União Europeia (programa FP7), liderada pela Universidade de Surrey. Primeira missão a demonstrar captura de detrito em órbita com rede (2018) e arpão (fevereiro de 2019, disparado a 20 m/s a 20 metros do alvo). Estabeleceu o precedente tecnológico para missões de captura ativa. Publicado em Acta Astronautica / ScienceDirect.",
-        stats: [
-          { value: "2018", label: "primeira captura por rede em órbita" },
-          { value: "20 m/s", label: "velocidade de disparo do arpão" },
-        ],
-        source: "ScienceDirect — doi.org/10.1016/j.actaastro.2019.09.020",
-        url: "https://www.sciencedirect.com/science/article/abs/pii/S0094576519312512",
-        correction: null,
-      },
-      {
-        id: "astroscale",
-        tag: "Astroscale · 2021–2024",
-        title: "Astroscale ELSA-d e ADRAS-J — Captura Magnética e Inspeção",
-        summary:
-          "ELSA-d (2021): demonstração de captura magnética entre um 'servicer' e um satélite-cliente equipado com placa de docking. ADRAS-J (2024): primeira aproximação e inspeção de um estágio de foguete real não cooperativo (H-IIA F15, em órbita desde 2009) — marco histórico em ADR. O serviço comercial ELSA-M está planejado para remover satélites OneWeb em fim de vida.",
-        stats: [{ value: "2024", label: "primeira inspeção de detrito não cooperativo (ADRAS-J)" }],
-        source: "Astroscale — astroscale.com/en/missions",
-        url: "https://www.astroscale.com/en/missions/elsa-d",
-        correction: null,
-      },
-    ],
+    id: 4,
+    tags: ["NASA", "Detritos"],
+    title: "IADC Report — Status of the Space Debris Environment",
+    desc: "Relatório interagências (NASA, ESA, JAXA, Roscosmos). Referência governamental padrão para estatísticas de detritos em órbita.",
+    source: "unoosa.org · 2025",
+    url: "https://www.unoosa.org/res/oosadoc/data/documents/2025/aac_105c_12025crp/aac_105c_12025crp_10_0_html/AC105_C1_2025_CRP10E.pdf",
+    corrected: false,
+  },
+  {
+    id: 5,
+    tags: ["NASA", "Detritos"],
+    title:
+      "Kessler & Cour-Palais — Collision Frequency of Artificial Satellites (1978)",
+    desc: "Artigo fundacional que previu a cascata colisional em LEO. Journal of Geophysical Research, junho de 1978.",
+    source: "Journal of Geophysical Research",
+    url: "https://doi.org/10.1029/JA083iA06p02637",
+    corrected: false,
+  },
+  {
+    id: 6,
+    tags: ["Mercado"],
+    title: "Seradata / Slingshot Aerospace — Global Space Insurance Review",
+    desc: "~US$580M em prêmios brutos (2024). Apenas ~300 dos ~10.000 satélites em órbita são segurados. Mercado concentrado em GEO.",
+    source: "satnews.com · ago. 2025",
+    url: "https://satnews.com/2025/08/17/space-insurance-promising-start-to-the-year-marred-only-by-methanesat-claim/",
+    corrected: true,
+  },
+  {
+    id: 7,
+    tags: ["Mercado"],
+    title: "Gallagher Specialty — Space Market Update Q4 2025",
+    desc: "Relatório trimestral de corretor especialista. Confirma prêmios na faixa de US$550–600M/ano com projeção positiva para 2025.",
+    source: "specialty.ajg.com",
+    url: "https://specialty.ajg.com/plane-talking/space-market-update-q4-2025",
+    corrected: false,
+  },
+  {
+    id: 8,
+    tags: ["SpaceX", "Mercado"],
+    title: "SpaceX Transporter — Rideshare Pricing 2026",
+    desc: "Preço atual: US$7.000/kg para SSO (Transporter-16+).",
+    source: "spacex.com · newspaceeconomy.ca",
+    url: "https://newspaceeconomy.ca/2026/02/27/satellite-ridesharing-market-analysis-2026/",
+    corrected: true,
+  },
+  {
+    id: 9,
+    tags: ["Mercado"],
+    title: "NanoAvionics — How Much Do CubeSats Cost?",
+    desc: "Faixa US$200K–500K para CubeSat 12U comercial (construção apenas). Lançamento via rideshare custa US$84K–540K separadamente.",
+    source: "nanoavionics.com",
+    url: "https://nanoavionics.com/blog/how-much-do-cubesats-and-smallsats-cost/",
+    corrected: false,
+  },
+  {
+    id: 10,
+    tags: ["NASA", "Programa"],
+    title: "NASA SBIR — Active Debris Removal Technologies",
+    desc: "Subtópico explícito para remoção de detritos. Phase I: até US$150K. Phase II: até US$850K. ~US$180M/ano investidos no total.",
+    source: "sbir.gsfc.nasa.gov",
+    url: "https://sbir.gsfc.nasa.gov/content/active-debris-removal-technologies",
+    corrected: false,
+  },
+  {
+    id: 11,
+    tags: ["NASA", "Programa"],
+    title: "NASA SSPICY — Orbital Debris Inspection (Starfish Space)",
+    desc: "Contrato de US$15M via SBIR Phase III para missão de inspeção de satélite defunto. Exemplo real de financiamento ADR pela NASA.",
+    source: "nasa.gov",
+    url: "https://www.nasa.gov/centers-and-facilities/ames/getting-sspicy-nasa-funds-orbital-debris-inspection-mission/",
+    corrected: false,
+  },
+  {
+    id: 12,
+    tags: ["ESA", "Programa"],
+    title: "ESA Space Safety Programme — CM25 Funding Boost (2025)",
+    desc: "€955M aprovados para 3 anos no Conselho Ministerial de nov/2025 — 30% acima do solicitado. Inclui ADRIOS, missões CAT e RISE.",
+    source: "esa.int",
+    url: "https://www.esa.int/Space_Safety/Boost_in_funding_expands_Space_Safety_programme",
+    corrected: false,
+  },
+  {
+    id: 13,
+    tags: ["ESA", "Tecnologia"],
+    title:
+      "ESA ACT — Expanding Foam for Active Debris Removal (Univ. Pisa, 2011)",
+    desc: "Estudo pioneiro de espuma polimérica para desorbitação de detritos. Modelo Rayleigh-Plesset. TRL estimado: 2–3.",
+    source: "esa.int/gsp/ACT",
+    url: "https://www.esa.int/gsp/ACT/doc/ARI/ARI%20Study%20Report/ACT-RPT-MAD-ARI-10-6411-Pisa-Active_Removal_of_Space_Debris-Foam.pdf",
+    corrected: false,
+  },
+  {
+    id: 14,
+    tags: ["Tecnologia"],
+    title:
+      "REDEMPTION — Polyurethane Foam Experiment (Univ. Bologna / ESA REXUS)",
+    desc: "Teste de espuma de poliuretano em microgravidade via programa REXUS. Experimento I-FOAM voou na missão STS-134 (2011).",
+    source: "ui.adsabs.harvard.edu",
+    url: "https://ui.adsabs.harvard.edu/abs/2013ESASP.723E.169R/abstract",
+    corrected: false,
+  },
+  {
+    id: 15,
+    tags: ["ESA", "Tecnologia", "Programa"],
+    title: "ClearSpace-1 — Primeira Missão Dedicada a Remoção de Detritos",
+    desc: "Contrato €86M (ESA + ClearSpace SA). Alvo atual: PROBA-1 (95kg). Lançamento previsto ~2028. Usa braços robóticos.",
+    source: "esa.int/Space_Safety/ClearSpace-1",
+    url: "https://www.esa.int/Space_Safety/ClearSpace-1",
+    corrected: false,
+  },
+  {
+    id: 16,
+    tags: ["Tecnologia"],
+    title:
+      "RemoveDEBRIS — Primeira Captura por Rede em Órbita (Univ. Surrey, 2018)",
+    desc: "Captura com rede (2018) e arpão a 20 m/s (fev/2019). Primeira missão ADR demonstrada em órbita. Financiada pela UE (FP7).",
+    source: "ScienceDirect",
+    url: "https://www.sciencedirect.com/science/article/abs/pii/S0094576519312512",
+    corrected: false,
+  },
+  {
+    id: 17,
+    tags: ["Tecnologia", "Programa"],
+    title:
+      "Astroscale ELSA-d e ADRAS-J — Captura Magnética e Inspeção (2021–2024)",
+    desc: "ADRAS-J (2024): primeira aproximação de detrito não cooperativo real. ELSA-M planeja remover satélites OneWeb em fim de vida.",
+    source: "astroscale.com",
+    url: "https://www.astroscale.com/en/missions/elsa-d",
+    corrected: false,
   },
 ];
 

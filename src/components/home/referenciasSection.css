@@ -1,28 +1,5 @@
-.refGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin: 2rem 0;
-}
+/* ReferenciasSection — seção 04 da Home (prévia de 4 referências).
+   Distinta da página Referências; compartilha apenas o componente RefCard. */
+.ref-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
 
-.refCard {
-  border: 0.5px solid rgba(255, 255, 255, 0.08);
-  border-radius: 4px;
-  padding: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.refSource {
-  font-size: 9px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.3);
-}
-
-.refTitle {
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.75);
-  line-height: 1.5;
-}
+@media (max-width: 768px) { .ref-grid { grid-template-columns: 1fr; } }
