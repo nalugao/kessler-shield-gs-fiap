@@ -1,13 +1,10 @@
-<<<<<<< Updated upstream
 import { useMemo, useState } from 'react';
 import { PageHero } from '../components/ui.jsx';
 import RefCard from '../components/RefCard.jsx';
 import { REFERENCES, REF_FILTERS } from '../data/references.js';
 import './referencias.css';
-import RefHero from "../components/referencias/RefHero";
-import RefSection from "../components/referencias/RefSection";
-import { useLanguage } from "../components/context/LanguageContext";
-import { getSections } from "../data/refData";
+// import { useLanguage } from "../components/context/LanguageContext";
+// import { getSections } from "../data/refData";
 import "./referencias.css";
 
 const Referencias = () => {
@@ -24,8 +21,8 @@ const Referencias = () => {
     });
   }, [query, filter]);
 
-  const { language } = useLanguage();
-  const sections = getSections(language);
+  // const { language } = useLanguage();
+  // const sections = getSections(language);
 
   return (
 <main className="page">

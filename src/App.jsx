@@ -6,6 +6,7 @@ import Referencias from "./pages/Referencias";
 import Starfield from "./components/Starfield";
 import ScrollManager from "./components/ScrollManager";
 import { LanguageProvider } from "./components/context/LanguageContext";
+import Contato from "./components/home/Contato";
 
 function Solucao() {
   return (
