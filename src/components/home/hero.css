@@ -1,56 +1,127 @@
-.hero-page {
-    min-height: 520px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 5rem 2rem 4rem;
-    border-bottom: 0.5px solid #ffffff0f;
+.hero {
+  position: relative;
+  padding: 5rem 0 6rem;
+  overflow: hidden;
 }
-
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 3.5rem;
+  align-items: center;
+}
 .hero-title {
-    font-family: 'Orbitron', monospace;
-    font-size: 52px;
-    font-weight: 900;
-    letter-spacing: 6px;
-    text-transform: uppercase;
-    line-height: 1;
-    color: #ffffff;
-    margin-bottom: 1rem;
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  color: var(--white);
+  font-size: clamp(3.4rem, 10vw, 6.6rem);
+  margin: 1.5rem 0 0;
 }
-
-.hero-title-span{
-    color: #7de8c8;
+.hero-title .mint { color: var(--mint); display: block; }
+.hero-sub {
+  font-family: var(--font-display);
+  font-size: clamp(0.8rem, 1.6vw, 0.95rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-top: 1.5rem;
+  font-weight: 500;
 }
-
-.hero-subtitle {
-    font-size: 13px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: #ffffff59;
-    margin-bottom: 2rem;
-}
-
 .hero-tagline {
-    font-size: 17px;
-    font-weight: 300;
-    color: #ffffffb3;
-    max-width: 720px;
-    line-height: 1.7;
-    margin-bottom: 3rem;
-    font-style: normal;
+  margin-top: 1.5rem;
+  font-size: 1.08rem;
+  max-width: 460px;
+  color: var(--text);
+  line-height: 1.65;
+}
+.hero-tagline strong { color: var(--white); font-weight: 500; }
+.hero-cta { display: flex; gap: 1rem; margin-top: 2.25rem; flex-wrap: wrap; }
+
+.hero-stats {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line-soft);
+}
+.hero-stats .s-num {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--white);
+}
+.hero-stats .s-lab {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-top: 0.3rem;
 }
 
-.hero-em {
-    font-style: normal;
-    color: #7de8c8;
-    font-weight: 500;
+.orbital {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  max-width: 480px;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+.orbital svg { width: 100%; height: 100%; overflow: visible; }
+.orbital .core {
+  fill: var(--bg-elev);
+  stroke: var(--mint);
+  stroke-width: 1;
+}
+.orbital .orbit-path {
+  fill: none;
+  stroke: rgba(255,255,255,0.10);
+  stroke-width: 1;
+}
+.orbital .orbit-path.active { stroke: var(--mint-dim); }
+.orbit-rot { transform-origin: 250px 250px; }
+.spin-1 { animation: spin 26s linear infinite; }
+.spin-2 { animation: spin 38s linear infinite reverse; }
+.spin-3 { animation: spin 52s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.debris { fill: var(--danger); }
+.debris-glow { filter: drop-shadow(0 0 4px rgba(255,107,107,0.8)); }
+.sat { fill: var(--mint); }
+.orbital-cap {
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  font-family: var(--font-body);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.orbital-cap .live { color: var(--danger); }
 
-.hero-buttom {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
+/* 3D globe placeholder */
+.globe-slot {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  max-width: 480px;
+  margin-left: auto;
+  border: 1px dashed rgba(125,232,200,0.25);
+  border-radius: 6px;
+  background:
+    repeating-linear-gradient(135deg, rgba(125,232,200,0.03) 0 10px, transparent 10px 20px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.globe-slot .mono {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
 }
