@@ -1,10 +1,7 @@
 .site-footer {
   position: relative;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 10% 20%, rgba(126, 232, 212, 0.12), transparent 26%),
-    radial-gradient(circle at 88% 50%, rgba(91, 112, 255, 0.14), transparent 32%),
-    linear-gradient(180deg, #02060d 0%, #050917 58%, #010309 100%);
+  background-color:#050d1acc; 
   color: #f5f7fb;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -13,86 +10,6 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-}
-
-.footer-space-bg::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(circle, rgba(255, 255, 255, 0.8) 1px, transparent 1.5px),
-    radial-gradient(circle, rgba(126, 232, 212, 0.45) 1px, transparent 1.5px);
-  background-size: 90px 90px, 150px 150px;
-  background-position: 0 0, 34px 52px;
-  opacity: 0.16;
-}
-
-.footer-space-bg::after {
-  content: "";
-  position: absolute;
-  left: -10%;
-  right: -10%;
-  bottom: -170px;
-  height: 245px;
-  border-radius: 50%;
-  background: #01040a;
-  border-top: 1px solid rgba(126, 232, 212, 0.14);
-  box-shadow: 0 -24px 80px rgba(126, 232, 212, 0.07);
-}
-
-.footer-star {
-  position: absolute;
-  border-radius: 50%;
-  background: #ffffff;
-  box-shadow:
-    0 0 16px rgba(255, 255, 255, 0.9),
-    0 0 30px rgba(126, 232, 212, 0.4);
-}
-
-.star-one {
-  top: 20%;
-  left: 32%;
-  width: 3px;
-  height: 3px;
-}
-
-.star-two {
-  top: 45%;
-  right: 18%;
-  width: 3px;
-  height: 3px;
-}
-
-.star-three {
-  bottom: 30%;
-  left: 24%;
-  width: 2px;
-  height: 2px;
-}
-
-.footer-planet {
-  position: absolute;
-  right: 7%;
-  top: 22%;
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 34% 30%, rgba(255, 255, 255, 0.28), transparent 18%),
-    linear-gradient(135deg, #7ee8d4, #3454ff 58%, #111827);
-  opacity: 0.22;
-  box-shadow: 0 0 70px rgba(126, 232, 212, 0.14);
-}
-
-.footer-orbit {
-  position: absolute;
-  right: 4%;
-  top: 18%;
-  width: 140px;
-  height: 58px;
-  border: 1px solid rgba(126, 232, 212, 0.22);
-  border-radius: 50%;
-  transform: rotate(-22deg);
 }
 
 .footer-container {

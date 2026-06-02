@@ -1,16 +1,85 @@
-# React + Vite
+# Kessler Shield
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Active Debris Removal System — Poly-Catch System**
+FIAP Global Solution 2025
 
-Currently, two official plugins are available:
+Site institucional do Kessler Shield, um sistema de remoção de detritos espaciais
+usando polímero expansível (espuma). Construído em **React + Vite**, com **React Router DOM v7**
+e **CSS puro** (sem bibliotecas de UI, sem TypeScript).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Como rodar
 
-## React Compiler
+```bash
+npm install
+npm run dev
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Abra o endereço que o Vite imprimir no terminal (geralmente `http://localhost:5173`).
 
-## Expanding the ESLint configuration
+Para gerar a versão de produção:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm run build
+npm run preview
+```
+
+## 🧭 Páginas
+
+| Rota            | Página       |
+| --------------- | ------------ |
+| `/`             | Home (seções 01–06) |
+| `/problema`     | O Problema   |
+| `/financeiro`   | Financeiro   |
+| `/referencias`  | Referências (busca + filtros, 17 fontes) |
+| `/contato`      | Contato      |
+
+## 🗂️ Estrutura
+
+```
+src/
+├── main.jsx                  # entrada (BrowserRouter) — importa index.css + styles/shared.css
+├── App.jsx                   # layout + rotas
+├── index.css                 # tokens, reset, utilitários, botões, badge, reveal
+├── styles/
+│   └── shared.css            # blocos usados por +1 página (stat-grid, rev-grid, two-col, contact)
+├── data/
+│   └── references.js         # 17 referências científicas
+├── components/
+│   ├── Starfield.jsx         # céu estrelado (canvas)
+│   ├── Navbar.jsx + .css      # navbar sticky com blur ao scroll
+│   ├── Footer.jsx + .css
+│   ├── OrbitalVis.jsx + .css  # visualização orbital em SVG + slot do globo 3D
+│   ├── Reveal.jsx            # animação de entrada ao rolar
+│   ├── SignupForm.jsx + .css  # formulário controlado (newsletter / investir)
+│   ├── TeamGrid.jsx + .css    # grade da equipe (avatares)
+│   ├── RefCard.jsx + .css     # card de referência (compartilhado seção/página)
+│   ├── PageHero.css          # cabeçalho das sub-páginas (usado por ui.jsx)
+│   ├── ScrollManager.jsx     # scroll para topo / âncora ao trocar de rota
+│   ├── ui.jsx                # Badge, SectionLabel, PageHero
+│   └── sections/
+│       └── ReferenciasSection.jsx + .css   # seção 04 da Home (≠ página Referências)
+└── pages/
+    ├── Home.jsx      + Home.css         # hero + passos da solução
+    ├── Problema.jsx  + Problema.css     # timeline + prose
+    ├── Financeiro.jsx + Financeiro.css  # tabela + gráfico de barras
+    ├── Referencias.jsx + Referencias.css # busca, filtros, grade 3 col
+    └── Contato.jsx   + Contato.css      # (reusa componentes/shared)
+```
+
+> **CSS:** um arquivo por página em `pages/` + CSS co-locado por componente.
+> `index.css` guarda os tokens/utilitários globais e `styles/shared.css` os poucos
+> blocos reutilizados por mais de uma página. Nada de bibliotecas — **CSS puro**.
+
+## Identidade
+
+- **Cores:** fundo `#020810`, verde-menta `#7de8c8`, branco para títulos, cinza-claro no corpo
+- **Tipografia:** Orbitron (display) + Space Grotesk (corpo)
+- **Background:** céu estrelado fixo (canvas) em todas as páginas
+
+## Equipe
+
+Natalia (Frontend) · Gabriel (Problema) · Jeff (Financeiro) · Sophia (Nav/Contato) · André (Pitch)
+
+---
+
+> _"Um pequeno passo para o homem, um passo enorme para a sobrevivência orbital."_

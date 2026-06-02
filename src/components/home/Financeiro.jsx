@@ -1,56 +1,57 @@
 import { Link } from "react-router-dom"
 import './financeiro.css'
 
-const REVENUE_MODELS = [
-  {
-    tag: "B2B",
-    title: "Seguradoras",
-    desc: "AXA XL, Munich Re — pagam para evitar apólices de $300M+",
-  },
-  {
-    tag: "B2G",
-    title: "ADR-aaS",
-    desc: "NASA, ESA, Força Espacial — assinaturas anuais de órbitas limpas",
-  },
-  {
-    tag: "ESG",
-    title: "Créditos Orbitais",
-    desc: "Créditos de limpeza orbital para operadoras como Starlink",
-  },
-];
-
 const Financeiro = () => {
     return (
-        <section className="ks-section">
-            <p className="section-label">03 — Financeiro</p>
-            <h2 className="section-title">
-                Modelo de<br />Negócio
-            </h2>
-            <div className="linha" />
+        < section className="section" id="financeiro" >
+            <div className="wrap">
 
-            <div className="partnerBadge">✦ Looking for design partners</div>
-
-            <p className="section-body">
-                Não vendemos &quot;limpeza do espaço&quot;. Vendemos{" "}
-                <span className="highlight">redução de risco financeiro</span>{" "}
-                para seguradoras, agências governamentais e operadoras de constelações.
-            </p>
-
-            <div className="finGrid">
-                {REVENUE_MODELS.map((item) => (
-                    <div key={item.tag} className="finItem">
-                        <div className="tag">{item.tag}</div>
-                        <div className="itemTitle">{item.title}</div>
-                        <div className="itemDesc">{item.desc}</div>
+                <div className="section-head">
+                    <p>03 — Financeiro</p>
+                    <div className="badge-wrapper">
                     </div>
-                ))}
+                    <h2 className="section-title">Três frentes de receita</h2>
+                    <p className="section-intro">Um modelo que monetiza a remoção de detritos por três ângulos complementares — risco, serviço e sustentabilidade.</p>
+                </div>
+
+                <div className="rev-grid">
+                    <div className="rev-card">
+                        <span className="rev-tag">B2B</span>
+                        <h4>Seguradoras</h4>
+                        <p>Redução de prêmios e sinistros para operadores de constelações. Cada detrito removido baixa a probabilidade de perda total de ativos em órbita.</p>
+                        <div className="metric">
+                            US$580M
+                            <span>mercado endereçável / ano</span>
+                        </div>
+                    </div>
+                    <div className="rev-card">
+                        <span className="rev-tag">B2G</span>
+                        <h4>ADR-as-a-Service</h4>
+                        <p>Contratos de remoção sob demanda para agências espaciais e governos. Remoção priorizada de objetos de alto risco em órbitas críticas.</p>
+                        <div className="metric">
+                            € por missão
+                            <span>contratos plurianuais</span>
+                        </div>
+                    </div>
+                    <div className="rev-card">
+                        <span className="rev-tag">ESG</span>
+                        <h4>Créditos Orbitais</h4>
+                        <p>Tokenização de remoções verificadas como créditos de sustentabilidade orbital — um novo mercado análogo ao de carbono.</p>
+                        <div className="metric">
+                            Novo mercado
+                            <span>créditos verificáveis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="section-link">
+                    <Link to="/financeiro" className="btn btn--ghost">
+                        Ver projeção financeira <span className="arrow">→</span>
+                    </Link>
+                </div>
+
             </div>
-
-            <Link to="/financeiro">
-                <button className="btn-outline">Ver projeção financeira completa →</button>
-            </Link>
-
-        </section>
+        </section >
     )
 }
 
