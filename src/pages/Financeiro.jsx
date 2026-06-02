@@ -1,10 +1,14 @@
 import { useMemo, useState } from 'react';
 import { PageHero } from '../components/ui.jsx';
+import EconomiaOrbital from '../components/EconomiaOrbital/EconomiaOrbital.jsx';
+import CentroReceitas from '../components/centroReceitas/CentroReceitas.jsx';
 
 const Financeiro = () => {
     return(
-
-        <h1>Oi</h1>
+        <>
+            <EconomiaOrbital />
+        </>
+         
 
     )
 }
