@@ -1,12 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App.css";
-
-import { LanguageProvider } from "./components/context/LanguageContext";
-
-import Layout from "./components/Layout";
+import "./index.css";
+import Layout from "./components/Layout"
 import Home from "./pages/Home";
 import Referencias from "./pages/Referencias";
-import Contato from "./pages/Contato";
+import Starfield from "./components/Starfield";
+import ScrollManager from "./components/ScrollManager";
+import { LanguageProvider } from "./components/context/LanguageContext";
 
 function Solucao() {
   return (
@@ -28,7 +27,11 @@ function Financeiro() {
 
 function App() {
   return (
+
     <BrowserRouter>
+    <div className="space-bg" />
+      <Starfield />
+      <ScrollManager />
       <LanguageProvider>
         <Routes>
           <Route element={<Layout />}>
