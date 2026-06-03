@@ -1,111 +1,196 @@
 import "./centroReceitas.css";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
-const receitas = {
+const mercados = {
   b2b: {
     tipo: "B2B",
-    titulo: "Seguradoras",
-    valor: "US$ 580M",
+    titulo: "SEGURADORAS",
+    subtitulo: "Risco convertido em receita recorrente",
+    valor: 580,
+    prefixo: "US$ ",
+    sufixo: "M",
+    destaque: "mercado endereçável / ano",
     descricao:
-      "Redução de sinistros e riscos para operadores de satélites e constelações."
+      "Redução de prêmios e sinistros para operadores de constelações. Cada detrito removido reduz a probabilidade de perda total de ativos em órbita."
   },
 
   b2g: {
     tipo: "B2G",
-    titulo: "ADR-as-a-Service",
-    valor: "€ por missão",
+    titulo: "ADR-AS-A-SERVICE",
+    subtitulo: "Remoção orbital como serviço",
+    valorTexto: "€ por missão",
+    destaque: "contratos plurianuais",
     descricao:
-      "Contratos com governos e agências espaciais para remoção de detritos."
+      "Contratos de remoção sob demanda para agências espaciais e governos. Objetos de alto risco são priorizados em órbitas críticas."
   },
 
   esg: {
     tipo: "ESG",
-    titulo: "Créditos Orbitais",
-    valor: "Novo Mercado",
+    titulo: "CRÉDITOS ORBITAIS",
+    subtitulo: "Sustentabilidade orbital verificável",
+    valorTexto: "Novo mercado",
+    destaque: "créditos verificáveis",
     descricao:
-      "Remoções verificadas transformadas em créditos de sustentabilidade orbital."
+      "Tokenização de remoções verificadas como créditos de sustentabilidade orbital, criando um mercado análogo ao de carbono para o ecossistema espacial."
   }
 };
 
-export default function CentroReceitas() {
-  const [ativo, setAtivo] = useState("b2b");
+function NumeroAnimado({ valor, prefixo = "", sufixo = "" }) {
+  const [numero, setNumero] = useState(0);
+
+  useEffect(() => {
+    if (!valor) return;
+
+    let atual = 0;
+    const incremento = Math.ceil(valor / 60);
+
+    const intervalo = setInterval(() => {
+      atual += incremento;
+
+      if (atual >= valor) {
+        atual = valor;
+        clearInterval(intervalo);
+      }
+
+      setNumero(atual);
+    }, 18);
+
+    return () => clearInterval(intervalo);
+  }, [valor]);
 
   return (
-    <div className="centro-receitas">
+    <>
+      {prefixo}
+      {numero}
+      {sufixo}
+    </>
+  );
+}
 
-      <div className="orbit-explorer">
-        <div className="orbit orbit-1" />
-        <div className="orbit orbit-2" />
-        <div className="orbit orbit-3" />
+export default function CentroReceitas() {
+  const [ativo, setAtivo] = useState("b2b");
+  const [modoAnalise, setModoAnalise] = useState(false);
 
-        {/* B2B */}
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          onClick={() => setAtivo("b2b")}
-          className={`orbit-node orbit-node--b2b ${
-            ativo === "b2b" ? "active" : ""
-          }`}
-        >
-          B2B
-        </motion.button>
+  const mercadoAtivo = mercados[ativo];
 
-        {/* B2G */}
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          onClick={() => setAtivo("b2g")}
-          className={`orbit-node orbit-node--b2g ${
-            ativo === "b2g" ? "active" : ""
-          }`}
-        >
-          B2G
-        </motion.button>
+  function selecionarMercado(id) {
+    setAtivo(id);
+    setModoAnalise(true);
+  }
 
-        {/* ESG */}
-        <motion.button
-          whileHover={{ scale: 1.15 }}
-          onClick={() => setAtivo("esg")}
-          className={`orbit-node orbit-node--esg ${
-            ativo === "esg" ? "active" : ""
-          }`}
-        >
-          ESG
-        </motion.button>
-
-        <div className="orbit-center">
-          KS
+  return (
+    <div
+      id="modelos-receita"
+      className={`centro-receitas ${modoAnalise ? "is-exploring" : ""}`}
+    >
+      <motion.div
+        className="orbit-explorer"
+        animate={{
+          scale: modoAnalise ? 0.94 : 1
+        }}
+        transition={{ duration: 0.55, ease: "easeInOut" }}
+      >
+        <div className="orbit orbit-1">
+          <span className="orbit-marker" />
         </div>
-      </div>
 
-      <div className="receita-panel">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={ativo}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.35 }}
+        <div className="orbit orbit-2">
+          <span className="orbit-marker orbit-marker--small" />
+        </div>
+
+        <div className="orbit orbit-3">
+          <span className="orbit-marker orbit-marker--tiny" />
+        </div>
+
+        {Object.entries(mercados).map(([id, mercado]) => (
+          <motion.button
+            key={id}
+            layoutId={`market-${id}`}
+            whileHover={{ scale: 1.15 }}
+            whileTap={{ scale: 0.96 }}
+            onClick={() => selecionarMercado(id)}
+            className={`orbit-node orbit-node--${id} ${
+              ativo === id ? "active" : ""
+            }`}
           >
-            <span className="receita-tipo">
-              {receitas[ativo].tipo}
-            </span>
+            {mercado.tipo}
+          </motion.button>
+        ))}
 
-            {/* 💡 Bloco corrigido aqui: dinâmico e sem dependências externas */}
+        <div className="orbit-center">KS</div>
+      </motion.div>
+
+      <AnimatePresence mode="wait">
+        {!modoAnalise && (
+          <motion.div
+            key="resumo"
+            className="receita-panel"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -24 }}
+            transition={{ duration: 0.4 }}
+          >
+            <span className="receita-tipo">{mercadoAtivo.tipo}</span>
+
             <span className="receita-valor">
-              {receitas[ativo].valor}
+              {mercadoAtivo.valor ? (
+                <NumeroAnimado
+                  valor={mercadoAtivo.valor}
+                  prefixo={mercadoAtivo.prefixo}
+                  sufixo={mercadoAtivo.sufixo}
+                />
+              ) : (
+                mercadoAtivo.valorTexto
+              )}
             </span>
 
-            <h3>
-              {receitas[ativo].titulo}
-            </h3>
+            <h3>{mercadoAtivo.titulo}</h3>
 
-            <p>
-              {receitas[ativo].descricao}
-            </p>
+            <p>{mercadoAtivo.descricao}</p>
           </motion.div>
-        </AnimatePresence>
-      </div>
+        )}
 
+        {modoAnalise && (
+          <motion.div
+            key={`analise-${ativo}`}
+            className="analise-mercado"
+            initial={{ opacity: 0, scale: 0.94, y: 28 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.94, y: -28 }}
+            transition={{ duration: 0.45, ease: "easeOut" }}
+          >
+      
+            <span className="receita-tipo">{mercadoAtivo.tipo}</span>
+
+            <h2>{mercadoAtivo.titulo}</h2>
+
+            <p className="analise-subtitulo">{mercadoAtivo.subtitulo}</p>
+
+            <strong className="analise-numero">
+              {mercadoAtivo.valor ? (
+                <NumeroAnimado
+                  valor={mercadoAtivo.valor}
+                  prefixo={mercadoAtivo.prefixo}
+                  sufixo={mercadoAtivo.sufixo}
+                />
+              ) : (
+                mercadoAtivo.valorTexto
+              )}
+            </strong>
+
+            <span className="analise-destaque">
+              {mercadoAtivo.destaque}
+            </span>
+
+            <p>{mercadoAtivo.descricao}</p>
+
+            <div className="analise-hint">
+              Clique em outro modelo orbital para trocar a análise.
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
