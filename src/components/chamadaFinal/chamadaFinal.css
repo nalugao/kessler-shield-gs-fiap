@@ -1,0 +1,155 @@
+.final-cta {
+  position: relative;
+
+  min-height: 90vh;
+  padding: 8rem 2rem;
+
+  display: grid;
+  place-items: center;
+
+  overflow: hidden;
+}
+
+.cta-content {
+  position: relative;
+  z-index: 2;
+
+  max-width: 980px;
+
+  text-align: center;
+}
+
+.cta-content h2 {
+  margin-top: 1rem;
+  color: #fff;
+  font-size: clamp(3rem, 7vw, 7rem);
+  line-height: 0.95;
+}
+
+.cta-content p {
+  margin: 2rem auto 0;
+  max-width: 680px;
+
+  color: rgba(255, 255, 255, 0.68);
+  line-height: 1.8;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+
+  margin-top: 2.5rem;
+  padding: 1rem 1.6rem;
+
+  color: #fff;
+  text-decoration: none;
+
+  border: 1px solid rgba(120, 224, 207, 0.28);
+  background: rgba(255, 255, 255, 0.03);
+
+  transition: 0.3s ease;
+}
+
+.cta-button:hover {
+  border-color: #78e0cf;
+  box-shadow: 0 0 30px rgba(120, 224, 207, 0.22);
+  transform: translateY(-3px);
+}
+
+.cta-orbit {
+  position: absolute;
+
+  width: min(780px, 95vw);
+  aspect-ratio: 1;
+
+  border-radius: 50%;
+  border: 1px solid rgba(120, 224, 207, 0.08);
+
+  animation: ctaRotate 60s linear infinite;
+}
+
+.cta-orbit::before,
+.cta-orbit::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(120, 224, 207, 0.08);
+}
+
+.cta-orbit::before {
+  inset: 16%;
+}
+
+.cta-orbit::after {
+  inset: 32%;
+}
+
+.cta-orbit span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+  background: #78e0cf;
+
+  transform:
+    rotate(var(--angle))
+    translateX(390px)
+    rotate(calc(var(--angle) * -1));
+
+  opacity: 0;
+
+  animation: cleanDebris 4s ease-in-out infinite;
+  animation-delay: var(--delay);
+
+  box-shadow: 0 0 16px rgba(120, 224, 207, 0.8);
+}
+
+@keyframes ctaRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cleanDebris {
+  0% {
+    opacity: 0;
+    filter: hue-rotate(120deg);
+  }
+
+  25% {
+    opacity: 1;
+    background: #ff5f5f;
+  }
+
+  70% {
+    opacity: 1;
+    background: #78e0cf;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .final-cta {
+    min-height: 75vh;
+    padding: 6rem 1.5rem;
+  }
+
+  .cta-orbit span {
+    transform:
+      rotate(var(--angle))
+      translateX(47vw)
+      rotate(calc(var(--angle) * -1));
+  }
+}
