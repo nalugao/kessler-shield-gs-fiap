@@ -1,13 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
-
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Referencias from "./pages/Referencias";
 import ContatoPage from "./pages/Contato";
-
 import Starfield from "./components/Starfield";
 import ScrollManager from "./components/ScrollManager";
+import ScrollRocket from "./components/ScrollRocket";
 import { LanguageProvider } from "./components/context/LanguageContext";
 
 function Solucao() {
@@ -35,6 +34,7 @@ function App() {
         <div className="space-bg" />
         <Starfield />
         <ScrollManager />
+        <ScrollRocket />
 
         <Routes>
           <Route element={<Layout />}>
