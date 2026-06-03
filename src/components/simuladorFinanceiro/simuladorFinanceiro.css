@@ -1,0 +1,207 @@
+.finance-simulator {
+  min-height: 100vh;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 6rem 5rem;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 5rem;
+}
+
+.section-kicker {
+  color: #78e0cf;
+  letter-spacing: 4px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.simulator-content h2 {
+  margin-top: 1rem;
+  color: #fff;
+  font-size: clamp(3rem, 6vw, 6rem);
+  line-height: 0.95;
+}
+
+.simulator-content p {
+  margin-top: 2rem;
+  max-width: 560px;
+  color: rgba(255, 255, 255, 0.68);
+  line-height: 1.8;
+}
+
+.slider-area {
+  margin-top: 3rem;
+}
+
+.slider-header {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.slider-header strong {
+  color: #78e0cf;
+}
+
+.slider-area input {
+  width: 100%;
+  accent-color: #78e0cf;
+}
+
+.simulator-metrics {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.simulator-metrics article {
+  padding: 1.25rem;
+  border: 1px solid rgba(120, 224, 207, 0.15);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+}
+
+.simulator-metrics span {
+  display: block;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+}
+
+.simulator-metrics strong {
+  display: block;
+  margin-top: 0.8rem;
+  color: #78e0cf;
+  font-size: 1.8rem;
+}
+
+.simulator-orbit {
+  position: relative;
+  width: min(520px, 90vw);
+  aspect-ratio: 1;
+  margin: auto;
+
+  border-radius: 50%;
+  border: 1px solid rgba(120, 224, 207, 0.12);
+
+  animation: orbitFloat 10s ease-in-out infinite;
+}
+
+.simulator-orbit::before,
+.simulator-orbit::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(120, 224, 207, 0.1);
+}
+
+.simulator-orbit::before {
+  inset: 14%;
+}
+
+.simulator-orbit::after {
+  inset: 28%;
+}
+
+.simulator-earth {
+  position: absolute;
+  inset: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  color: #78e0cf;
+  font-weight: 800;
+
+  border: 1px solid #78e0cf;
+  background: rgba(120, 224, 207, 0.06);
+
+  box-shadow:
+    0 0 30px rgba(120, 224, 207, 0.25),
+    inset 0 0 20px rgba(120, 224, 207, 0.15);
+}
+
+.debris-dot,
+.protected-satellite {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform:
+    rotate(var(--angle))
+    translateX(var(--radius))
+    rotate(calc(var(--angle) * -1));
+}
+
+.debris-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff5f5f;
+  box-shadow: 0 0 16px rgba(255, 95, 95, 0.8);
+  animation: debrisPulse 2s ease-in-out infinite;
+}
+
+.protected-satellite {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: #78e0cf;
+  box-shadow: 0 0 16px rgba(120, 224, 207, 0.8);
+}
+
+@keyframes orbitFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes debrisPulse {
+  0%, 100% {
+    opacity: 0.45;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1024px) {
+  .finance-simulator {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 6rem 2rem;
+  }
+
+  .simulator-content p {
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .simulator-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .simulator-earth {
+    width: 72px;
+    height: 72px;
+  }
+
+  .debris-dot {
+    width: 6px;
+    height: 6px;
+  }
+}
