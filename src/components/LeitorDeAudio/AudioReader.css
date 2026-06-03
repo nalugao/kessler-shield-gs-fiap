@@ -1,0 +1,408 @@
+/* =========================
+   Widget flutuante acessível
+========================= */
+
+.audio-reader-widget {
+  --ar-bg: rgba(6, 11, 20, 0.86);
+  --ar-bg-strong: rgba(11, 19, 32, 0.96);
+  --ar-border: rgba(126, 232, 212, 0.22);
+  --ar-border-soft: rgba(255, 255, 255, 0.09);
+  --ar-text: #f5f7fb;
+  --ar-muted: #9aa7bd;
+  --ar-accent: #7ee8d4;
+  --ar-accent-strong: #39c6ae;
+  --ar-blue: #5c7cff;
+  --ar-warning: #ffcf66;
+  --ar-danger: #ff6b6b;
+
+  position: fixed;
+  bottom: 96px;
+  right: 110px;
+  z-index: 9998;
+
+  width: 230px;
+  color: var(--ar-text);
+  font-family: "Segoe UI", system-ui, sans-serif;
+
+  background:
+    radial-gradient(circle at top left, rgba(126, 232, 212, 0.14), transparent 34%),
+    linear-gradient(180deg, var(--ar-bg-strong), var(--ar-bg));
+
+  border: 1px solid var(--ar-border);
+  border-radius: 18px;
+
+  box-shadow:
+    0 18px 60px rgba(0, 0, 0, 0.45),
+    0 0 28px rgba(126, 232, 212, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  backdrop-filter: blur(16px);
+  overflow: hidden;
+  user-select: none;
+
+  transition:
+    width 0.25s ease,
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.audio-reader-widget:hover {
+  box-shadow:
+    0 20px 70px rgba(0, 0, 0, 0.52),
+    0 0 34px rgba(126, 232, 212, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.audio-reader-widget.minimized {
+  width: 178px;
+}
+
+/* =========================
+   Header
+========================= */
+
+.ar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+
+  padding: 11px 13px;
+
+  background:
+    linear-gradient(135deg, rgba(126, 232, 212, 0.12), rgba(52, 84, 255, 0.1)),
+    rgba(2, 6, 13, 0.44);
+
+  border-bottom: 1px solid var(--ar-border-soft);
+  cursor: default;
+}
+
+.ar-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  color: var(--ar-accent);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.ar-icon {
+  display: flex;
+  align-items: center;
+  color: var(--ar-accent);
+  filter: drop-shadow(0 0 8px rgba(126, 232, 212, 0.35));
+}
+
+/* =========================
+   Onda sonora
+========================= */
+
+.ar-wave {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 16px;
+}
+
+.ar-wave span {
+  display: block;
+  width: 3px;
+  background: linear-gradient(180deg, var(--ar-accent), var(--ar-blue));
+  border-radius: 99px;
+  box-shadow: 0 0 8px rgba(126, 232, 212, 0.45);
+  animation: arWave 0.8s ease-in-out infinite;
+}
+
+.ar-wave span:nth-child(1) {
+  height: 5px;
+  animation-delay: 0s;
+}
+
+.ar-wave span:nth-child(2) {
+  height: 11px;
+  animation-delay: 0.15s;
+}
+
+.ar-wave span:nth-child(3) {
+  height: 7px;
+  animation-delay: 0.3s;
+}
+
+.ar-wave span:nth-child(4) {
+  height: 13px;
+  animation-delay: 0.45s;
+}
+
+@keyframes arWave {
+  0%,
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scaleY(0.38);
+    opacity: 0.72;
+  }
+}
+
+/* =========================
+   Botão minimizar
+========================= */
+
+.ar-minimize-btn {
+  width: 26px;
+  height: 26px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.045);
+  color: var(--ar-muted);
+
+  cursor: pointer;
+  font-size: 0.72rem;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.ar-minimize-btn:hover {
+  background: rgba(126, 232, 212, 0.1);
+  border-color: rgba(126, 232, 212, 0.32);
+  color: var(--ar-accent);
+  transform: translateY(-1px);
+}
+
+/* =========================
+   Corpo do widget
+========================= */
+
+.ar-body {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+/* =========================
+   Barra de progresso
+========================= */
+
+.ar-progress-bar {
+  width: 100%;
+  height: 5px;
+
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 99px;
+  overflow: hidden;
+
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.25);
+}
+
+.ar-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--ar-accent), var(--ar-blue), #a78bfa);
+  border-radius: 99px;
+
+  box-shadow: 0 0 12px rgba(126, 232, 212, 0.45);
+  transition: width 0.35s ease;
+}
+
+.ar-progress-label {
+  display: block;
+  margin-top: -4px;
+
+  color: #6f7c91;
+  font-size: 0.66rem;
+  text-align: right;
+  letter-spacing: 0.04em;
+}
+
+/* =========================
+   Botões principais
+========================= */
+
+.ar-controls {
+  display: flex;
+  gap: 7px;
+}
+
+.ar-btn {
+  flex: 1;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  min-height: 38px;
+  padding: 8px 11px;
+
+  border-radius: 11px;
+  border: 1px solid transparent;
+
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.16s ease,
+    box-shadow 0.16s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.ar-btn:active {
+  transform: scale(0.96);
+}
+
+.ar-btn-play {
+  width: 100%;
+  color: #02060d;
+
+  background: linear-gradient(135deg, var(--ar-accent), var(--ar-accent-strong));
+  border-color: rgba(126, 232, 212, 0.75);
+
+  box-shadow:
+    0 8px 22px rgba(126, 232, 212, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.26);
+}
+
+.ar-btn-play:hover {
+  background: linear-gradient(135deg, #9af3e4, var(--ar-accent));
+  box-shadow:
+    0 10px 28px rgba(126, 232, 212, 0.3),
+    0 0 22px rgba(126, 232, 212, 0.16);
+  transform: translateY(-1px);
+}
+
+.ar-btn-pause {
+  color: var(--ar-warning);
+  background: rgba(255, 207, 102, 0.1);
+  border-color: rgba(255, 207, 102, 0.26);
+}
+
+.ar-btn-pause:hover {
+  background: rgba(255, 207, 102, 0.18);
+  box-shadow: 0 0 18px rgba(255, 207, 102, 0.12);
+  transform: translateY(-1px);
+}
+
+.ar-btn-stop {
+  color: var(--ar-danger);
+  background: rgba(255, 107, 107, 0.1);
+  border-color: rgba(255, 107, 107, 0.26);
+}
+
+.ar-btn-stop:hover {
+  background: rgba(255, 107, 107, 0.18);
+  box-shadow: 0 0 18px rgba(255, 107, 107, 0.12);
+  transform: translateY(-1px);
+}
+
+/* =========================
+   Destaque da palavra lida
+========================= */
+
+.audio-word-highlight {
+  background:
+    linear-gradient(
+      120deg,
+      rgba(126, 232, 212, 0.18),
+      rgba(92, 124, 255, 0.2)
+    ) !important;
+
+  outline: 2px solid rgba(126, 232, 212, 0.52) !important;
+  border-radius: 5px !important;
+
+  box-shadow:
+    0 0 0 4px rgba(126, 232, 212, 0.08),
+    0 0 18px rgba(126, 232, 212, 0.12) !important;
+
+  transition:
+    background 0.25s ease,
+    outline 0.25s ease,
+    box-shadow 0.25s ease !important;
+}
+
+/* =========================
+   Foco real de acessibilidade
+========================= */
+
+.ar-btn:focus-visible,
+.ar-minimize-btn:focus-visible {
+  outline: 2px solid var(--ar-accent);
+  outline-offset: 3px;
+}
+
+/* =========================
+   Responsivo
+========================= */
+
+@media (max-width: 768px) {
+  .audio-reader-widget {
+    right: 16px;
+    bottom: 86px;
+    width: 220px;
+  }
+
+  .audio-reader-widget.minimized {
+    width: 170px;
+  }
+}
+
+@media (max-width: 480px) {
+  .audio-reader-widget {
+    width: calc(100vw - 32px);
+    right: 16px;
+    bottom: 18px;
+    border-radius: 16px;
+  }
+
+  .audio-reader-widget.minimized {
+    width: 178px;
+  }
+
+  .ar-controls {
+    flex-direction: column;
+  }
+
+  .ar-btn {
+    width: 100%;
+  }
+}
+
+/* =========================
+   Usuários com redução de movimento
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .audio-reader-widget,
+  .ar-btn,
+  .ar-minimize-btn,
+  .ar-progress-fill,
+  .audio-word-highlight {
+    transition: none !important;
+  }
+
+  .ar-wave span,
+  .flame-outer,
+  .flame-inner {
+    animation: none !important;
+  }
+}
