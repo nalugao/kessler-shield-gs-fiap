@@ -5,19 +5,11 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Referencias from "./pages/Referencias";
 import ContatoPage from "./pages/Contato";
+import SolucaoPage from "./pages/Solucao";
 
 import Starfield from "./components/Starfield";
 import ScrollManager from "./components/ScrollManager";
 import { LanguageProvider } from "./components/context/LanguageContext";
-
-function Solucao() {
-  return (
-    <main className="page-placeholder">
-      <h1>Solução</h1>
-      <p>Página da solução do problema em construção.</p>
-    </main>
-  );
-}
 
 function Financeiro() {
   return (
@@ -39,7 +31,7 @@ function App() {
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
-            <Route path="/solucao" element={<Solucao />} />
+            <Route path="/solucao" element={<SolucaoPage />} />
             <Route path="/financeiro" element={<Financeiro />} />
             <Route path="/referencias" element={<Referencias />} />
             <Route path="/contato" element={<ContatoPage />} />
