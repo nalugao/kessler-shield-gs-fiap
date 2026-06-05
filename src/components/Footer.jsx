@@ -8,7 +8,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = {
-    github: "https://github.com/",
+    github: "https://github.com/nalugao/kessler-shield-gs-fiap",
     linkedin: "https://www.linkedin.com/",
     instagram: "https://www.instagram.com/",
   };
@@ -55,11 +55,7 @@ export default function Footer() {
             >
               <Link to="/#newsletter">{t("footerNewsletter")}</Link>
               <Link to="/#doacao">{t("footerInvest")}</Link>
-
-              <Link to="/simulador" className="footer-action-highlight">
-                {t("footerSimulator")}
-              </Link>
-
+              <Link to="/simulador">{t("footerSimulator")}</Link>
               <Link to="/referencias">{t("footerScientificBase")}</Link>
             </nav>
           </div>
@@ -73,7 +69,6 @@ export default function Footer() {
               </a>
 
               <span>{t("footerAcademicProject")}</span>
-              <span>{t("footerBrazil")}</span>
             </div>
 
             <div className="footer-socials">

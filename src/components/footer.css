@@ -136,15 +136,6 @@
   outline-offset: 4px;
 }
 
-.footer-action-highlight {
-  color: #7ee8d4 !important;
-  font-weight: 800;
-}
-
-.footer-action-highlight::after {
-  content: " →";
-}
-
 .footer-socials {
   display: flex;
   gap: 12px;
@@ -161,7 +152,8 @@
   color: #f5f7fb;
   text-decoration: none;
   font-size: 1.12rem;
-  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
   background: rgba(255, 255, 255, 0.025);
 }
 

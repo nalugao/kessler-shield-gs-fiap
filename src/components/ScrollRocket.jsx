@@ -1,90 +1,122 @@
 import { useEffect, useRef, useState } from "react";
-import "./scrollRocket.css";
+import "./ScrollRocket.css";
 
 export default function ScrollRocket() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [direction, setDirection] = useState("down");
-  const [progress, setProgress] = useState(0);
+  const lastScrollY = useRef(window.scrollY);
+  const ticking = useRef(false);
+  const hideTimer = useRef(null);
 
-  const lastScrollY = useRef(0);
-  const hideTimeout = useRef(null);
+  const [rocketState, setRocketState] = useState({
+    top: 120,
+    direction: "down",
+    visible: false,
+  });
 
   useEffect(() => {
-    function handleScroll() {
-      const currentScrollY = window.scrollY;
-
+    function updateRocket(showRocket = true) {
+      const scrollTop = window.scrollY;
       const documentHeight =
         document.documentElement.scrollHeight - window.innerHeight;
 
-      const scrollProgress =
-        documentHeight > 0 ? currentScrollY / documentHeight : 0;
+      const progress = documentHeight > 0 ? scrollTop / documentHeight : 0;
 
-      if (currentScrollY > lastScrollY.current) {
-        setDirection("down");
-      } else if (currentScrollY < lastScrollY.current) {
-        setDirection("up");
+      const minTop = 105;
+      const maxTop = window.innerHeight - 130;
+      const top = minTop + (maxTop - minTop) * progress;
+
+      let direction = rocketState.direction;
+
+      if (scrollTop > lastScrollY.current) {
+        direction = "down";
       }
 
-      setProgress(scrollProgress);
-      setIsVisible(true);
-      lastScrollY.current = currentScrollY;
-
-      if (hideTimeout.current) {
-        clearTimeout(hideTimeout.current);
+      if (scrollTop < lastScrollY.current) {
+        direction = "up";
       }
 
-      hideTimeout.current = setTimeout(() => {
-        setIsVisible(false);
-      }, 800);
+      lastScrollY.current = scrollTop;
+
+      setRocketState({
+        top,
+        direction,
+        visible: showRocket,
+      });
+
+      ticking.current = false;
     }
 
+    function handleScroll() {
+      if (!ticking.current) {
+        window.requestAnimationFrame(() => updateRocket(true));
+        ticking.current = true;
+      }
+
+      if (hideTimer.current) {
+        clearTimeout(hideTimer.current);
+      }
+
+      hideTimer.current = setTimeout(() => {
+        setRocketState((prev) => ({
+          ...prev,
+          visible: false,
+        }));
+      }, 700);
+    }
+
+    function handleResize() {
+      updateRocket(false);
+    }
+
+    updateRocket(false);
+
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
 
-      if (hideTimeout.current) {
-        clearTimeout(hideTimeout.current);
+      if (hideTimer.current) {
+        clearTimeout(hideTimer.current);
       }
     };
-  }, []);
-
-  const rocketPosition = 18 + progress * 62;
+  }, [rocketState.direction]);
 
   return (
     <div
-      className={`scroll-rocket ${isVisible ? "show" : ""} ${direction}`}
-      style={{ top: `${rocketPosition}%` }}
+      className={
+        rocketState.visible
+          ? `scroll-rocket scroll-rocket--${rocketState.direction} is-visible`
+          : `scroll-rocket scroll-rocket--${rocketState.direction}`
+      }
+      style={{ top: `${rocketState.top}px` }}
       aria-hidden="true"
     >
-      <div className="rocket-trail"></div>
-
-      <div className="rocket">
-        <div className="rocket-aura"></div>
-
+      <div className="rocket-shuttle">
         <div className="rocket-nose">
+          <span className="rocket-cockpit"></span>
+        </div>
+
+        <div className="rocket-main-body">
+          <span className="rocket-detail rocket-detail-top"></span>
+          <span className="rocket-detail rocket-detail-bottom"></span>
+        </div>
+
+        <span className="rocket-side rocket-side-left"></span>
+        <span className="rocket-side rocket-side-right"></span>
+
+        <span className="rocket-wing rocket-wing-left"></span>
+        <span className="rocket-wing rocket-wing-right"></span>
+
+        <div className="rocket-engines">
+          <span></span>
           <span></span>
         </div>
 
-        <div className="rocket-body">
-          <div className="rocket-window"></div>
-          <div className="rocket-stripe"></div>
-          <div className="rocket-brand">KS</div>
-        </div>
-
-        <div className="rocket-boosters">
-          <span></span>
-          <span></span>
-        </div>
-
-        <div className="rocket-fins">
-          <span></span>
-          <span></span>
-        </div>
-
-        <div className="rocket-flame">
-          <span className="flame-outer"></span>
-          <span className="flame-inner"></span>
+        <div className="rocket-flames">
+          <span className="flame flame-left"></span>
+          <span className="flame flame-center"></span>
+          <span className="flame flame-right"></span>
         </div>
       </div>
     </div>
