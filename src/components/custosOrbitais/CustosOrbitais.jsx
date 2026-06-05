@@ -3,21 +3,27 @@ import "./custosOrbitais.css";
 const custos = [
   {
     nome: "Hardware",
-    nivel: 5,
-    valor: "US$ 20M",
-    detalhes: ["Satellite Hunter", "Foam Deployment", "Sensors"]
+    valor: "US$ 10–30",
+    unidade: "milhões",
+    detalhes: ["Satélite-caçador", "Sistema de captura", "Sensores orbitais"],
+    explicacao:
+      "Faixa estimada para spacecraft buses pequenos e subsistemas embarcados, baseada em referências públicas de SmallSats."
   },
   {
-    nome: "Launch",
-    nivel: 3,
-    valor: "US$ 1.4M",
-    detalhes: ["Rideshare", "Orbital insertion", "Mission logistics"]
+    nome: "Lançamento",
+    valor: "US$ 350 mil–1,4",
+    unidade: "milhão",
+    detalhes: ["Carona espacial", "Inserção orbital", "Até ~200 kg"],
+    explicacao:
+      "Estimativa baseada em programas de carona espacial, nos quais múltiplas cargas compartilham o mesmo lançamento."
   },
   {
     nome: "Software",
-    nivel: 1,
-    valor: "US$ 3M",
-    detalhes: ["Tracking", "Telemetry", "Risk engine"]
+    valor: "US$ 500 mil–3",
+    unidade: "milhões",
+    detalhes: ["Rastreamento", "Telemetria", "Motor de risco"],
+    explicacao:
+      "Estimativa acadêmica para sistemas de rastreamento, telemetria, análise de risco e interface de missão."
   }
 ];
 
@@ -28,35 +34,48 @@ export default function CustosOrbitais() {
         <span className="section-kicker">ESTRUTURA DE CUSTOS</span>
 
         <h2>
-          Cada órbita representa
+          Três camadas para
           <br />
-          uma camada de investimento.
+          colocar a missão em órbita.
         </h2>
+
+        <p>
+          Hardware, lançamento e software formam a base operacional do Kessler
+          Shield — cada camada com impacto financeiro e técnico diferente.
+        </p>
       </div>
 
       <div className="costs-grid">
         {custos.map((custo) => (
           <article className="cost-item" key={custo.nome}>
-            <span className="cost-name">{custo.nome}</span>
+            <div className="cost-top">
+              <span className="cost-name">{custo.nome}</span>
+            </div>
 
-            <div className="cost-orbits">
-              {Array.from({ length: custo.nivel }).map((_, index) => (
-                <span key={index} />
-              ))}
+            <div className="cost-main-value">
+              <strong>{custo.valor}</strong>
+              <span className="cost-unit">{custo.unidade}</span>
             </div>
 
             <div className="cost-details">
-              <strong>{custo.valor}</strong>
-
               <ul>
                 {custo.detalhes.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
+
+              <p>{custo.explicacao}</p>
             </div>
           </article>
         ))}
       </div>
+
+      <p className="costs-note">
+        * Valores estimados para fins de prototipação acadêmica, baseados em
+        referências públicas de mercado, programas rideshare e estudos sobre
+        SmallSats. Os valores não representam orçamento oficial do Kessler
+        Shield.
+      </p>
     </section>
   );
 }

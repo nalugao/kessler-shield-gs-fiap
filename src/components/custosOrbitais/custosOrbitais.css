@@ -5,14 +5,28 @@
 }
 
 .costs-header {
+  max-width: 980px;
+  margin: 0 auto;
   text-align: center;
 }
 
 .costs-header h2 {
   margin-top: 1rem;
+
   color: #fff;
+
   font-size: clamp(2.5rem, 5vw, 5.5rem);
   line-height: 1;
+}
+
+.costs-header p {
+  max-width: 720px;
+
+  margin: 1.5rem auto 0;
+
+  color: rgba(255, 255, 255, 0.62);
+
+  line-height: 1.8;
 }
 
 .costs-grid {
@@ -26,98 +40,154 @@
 .cost-item {
   position: relative;
 
-  min-height: 320px;
+  min-height: 380px;
+
   padding: 2rem;
 
-  border-radius: 28px;
+  border-radius: 30px;
+
   border: 1px solid rgba(120, 224, 207, 0.14);
-  background: rgba(255, 255, 255, 0.03);
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(120, 224, 207, 0.1),
+      transparent 36%
+    ),
+    rgba(255, 255, 255, 0.03);
 
   overflow: hidden;
-  cursor: pointer;
 
-  transition: transform 0.35s ease, border-color 0.35s ease;
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.cost-item::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 24px;
+  right: 24px;
+
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(120, 224, 207, 0.8),
+    transparent
+  );
+
+  opacity: 0.6;
 }
 
 .cost-item:hover {
   transform: translateY(-10px);
-  border-color: rgba(120, 224, 207, 0.45);
+
+  border-color: rgba(120, 224, 207, 0.42);
+
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.35),
+    0 0 36px rgba(120, 224, 207, 0.12);
+}
+
+.cost-top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .cost-name {
   color: #fff;
-  font-size: 1.3rem;
-  font-weight: 700;
+
+  font-size: 1.35rem;
+  font-weight: 800;
 }
 
-.cost-orbits {
-  margin-top: 3rem;
 
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
+.cost-main-value {
+  margin-top: 1rem;
 }
 
-.cost-orbits span {
-  width: 34px;
-  height: 34px;
+.cost-main-value strong {
+  display: block;
 
-  border-radius: 50%;
+  color: #78e0cf;
 
-  border: 1px solid rgba(120, 224, 207, 0.5);
+  font-size: clamp(2rem, 5vw, 2.2rem);
+  line-height: 0.9;
 
-  box-shadow:
-    0 0 18px rgba(120, 224, 207, 0.15);
+  font-weight: 900;
+}
 
-  animation: costPulse 2.5s ease-in-out infinite;
+.cost-unit {
+  display: block;
+
+  margin-top: 0.45rem;
+
+  color: rgba(120, 224, 207, 0.86);
+
+  font-size: 0.95rem;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 .cost-details {
-  position: absolute;
-  inset: auto 1rem 1rem 1rem;
+  position: static;
+
 
   padding: 1.2rem;
 
-  border-radius: 20px;
+  border-radius: 22px;
 
-  background: rgba(2, 8, 20, 0.82);
-  border: 1px solid rgba(120, 224, 207, 0.18);
+  border: 1px solid rgba(120, 224, 207, 0.16);
 
-  transform: translateY(115%);
-  opacity: 0;
+  background: rgba(2, 8, 20, 0.86);
 
-  transition: 0.35s ease;
-}
+  backdrop-filter: blur(14px);
 
-.cost-item:hover .cost-details {
-  transform: translateY(0);
+  
   opacity: 1;
+
+ 
 }
 
-.cost-details strong {
-  display: block;
-  color: #78e0cf;
-  font-size: 1.5rem;
-  margin-bottom: 0.8rem;
-}
 
 .cost-details ul {
   margin: 0;
   padding-left: 1rem;
-  color: rgba(255, 255, 255, 0.72);
+
+  color: rgba(255, 255, 255, 0.82);
+
   line-height: 1.7;
 }
 
-@keyframes costPulse {
-  0%, 100% {
-    opacity: 0.45;
-    transform: scale(1);
-  }
+.cost-details p {
+  margin-top: 1rem;
 
-  50% {
-    opacity: 1;
-    transform: scale(1.08);
-  }
+  color: rgba(255, 255, 255, 0.55);
+
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.costs-note {
+  max-width: 850px;
+
+  margin: 3rem auto 0;
+
+  text-align: center;
+
+  color: rgba(255, 255, 255, 0.45);
+
+  font-size: 0.82rem;
+  line-height: 1.7;
 }
 
 @media (max-width: 1024px) {
@@ -130,13 +200,29 @@
   }
 
   .cost-item {
-    min-height: 280px;
+    min-height: auto;
   }
 
   .cost-details {
     position: static;
+
     margin-top: 2rem;
+
     transform: none;
     opacity: 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .orbital-costs {
+    padding-inline: 1.25rem;
+  }
+
+  .cost-item {
+    padding: 1.5rem;
+  }
+
+  .cost-main-value {
+    margin-top: 2.5rem;
   }
 }
