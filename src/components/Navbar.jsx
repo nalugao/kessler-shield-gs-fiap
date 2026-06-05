@@ -111,11 +111,11 @@ export default function Navbar() {
           </div>
 
           <NavLink
-            to="/contato#doacao"
+            to="/simulador"
             className="navbar-cta"
             onClick={closeMenu}
           >
-            {t("navInvestir")} →
+            {t("navSimulador")} →
           </NavLink>
         </div>
       </nav>

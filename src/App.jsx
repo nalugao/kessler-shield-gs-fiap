@@ -1,9 +1,8 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./index.css";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Referencias from "./pages/Referencias";
-import ContatoPage from "./pages/Contato";
 import Starfield from "./components/Starfield";
 import ScrollManager from "./components/ScrollManager";
 import ScrollRocket from "./components/ScrollRocket";
@@ -42,7 +41,9 @@ function App() {
             <Route path="/solucao" element={<Solucao />} />
             <Route path="/financeiro" element={<Financeiro />} />
             <Route path="/referencias" element={<Referencias />} />
-            <Route path="/contato" element={<ContatoPage />} />
+
+            {/* Redirecionamento antigo, caso algum link ainda mande para /contato */}
+            <Route path="/contato" element={<Navigate to="/#contato" replace />} />
           </Route>
         </Routes>
       </LanguageProvider>

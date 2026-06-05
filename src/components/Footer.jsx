@@ -15,7 +15,6 @@ export default function Footer() {
 
   return (
     <footer className="site-footer">
-
       <div className="footer-container">
         <section className="footer-top">
           <div className="footer-brand">
@@ -28,32 +27,39 @@ export default function Footer() {
 
             <p className="footer-description">{t("footerDescription")}</p>
           </div>
-
-          <div className="footer-status">
-            <span className="status-dot"></span>
-            <span>{t("footerStatus")}</span>
-          </div>
         </section>
 
         <section className="footer-main">
           <div className="footer-column">
             <h3>{t("footerNavigationTitle")}</h3>
 
-            <nav className="footer-links">
+            <nav
+              className="footer-links"
+              aria-label="Links de navegação do rodapé"
+            >
               <NavLink to="/">{t("navInicio")}</NavLink>
               <NavLink to="/solucao">{t("navSolucao")}</NavLink>
               <NavLink to="/financeiro">{t("navFinanceiro")}</NavLink>
               <NavLink to="/referencias">{t("navReferencias")}</NavLink>
-              <NavLink to="/contato">{t("navContato")}</NavLink>
+              <NavLink to="/simulador">{t("navSimulador")}</NavLink>
+              <Link to="/#contato">{t("navContato")}</Link>
             </nav>
           </div>
 
           <div className="footer-column">
             <h3>{t("footerActionTitle")}</h3>
 
-            <nav className="footer-links">
-              <Link to="/contato#newsletter">{t("footerNewsletter")}</Link>
-              <Link to="/contato#doacao">{t("footerInvest")}</Link>
+            <nav
+              className="footer-links"
+              aria-label="Links de ação do rodapé"
+            >
+              <Link to="/#newsletter">{t("footerNewsletter")}</Link>
+              <Link to="/#doacao">{t("footerInvest")}</Link>
+
+              <Link to="/simulador" className="footer-action-highlight">
+                {t("footerSimulator")}
+              </Link>
+
               <Link to="/referencias">{t("footerScientificBase")}</Link>
             </nav>
           </div>
