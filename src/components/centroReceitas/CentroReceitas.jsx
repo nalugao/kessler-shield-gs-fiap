@@ -189,7 +189,7 @@ export default function CentroReceitas() {
             onClick={fecharPopup}
           >
             <div
-              className="modal-dialog modal-dialog-centered modal-lg"
+              className="modal-dialog modal-dialog-centered market-modal-dialog"
               onClick={(event) => event.stopPropagation()}
             >
               <motion.div
@@ -209,7 +209,7 @@ export default function CentroReceitas() {
                   ×
                 </button>
 
-                <div className="modal-body p-4 p-md-5">
+                <div className="modal-body market-popup__body">
                   <span className="receita-tipo">
                     {mercadoAtivo.tipo}
                   </span>

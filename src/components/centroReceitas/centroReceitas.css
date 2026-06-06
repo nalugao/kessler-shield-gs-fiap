@@ -1,3 +1,21 @@
+.centro-receitas {
+  font-family: var(--font-body);
+}
+
+.planet-name,
+.receita-tipo,
+.market-popup__title,
+.market-popup__value,
+.market-popup__highlight {
+  font-family: var(--font-display);
+}
+
+.market-popup__subtitle,
+.market-popup__description {
+  font-family: var(--font-body);
+}
+
+
 /* =========================
    CONTAINER GERAL
 ========================= */
@@ -165,7 +183,7 @@
 }
 
 .planet-node--b2b .planet-name {
-  margin-top: -2.4rem;
+  margin-top: -2.2rem;
 }
 
 .planet-node--b2g .planet-name {
@@ -224,6 +242,7 @@
   color: #78e0cf;
 }
 
+
 /* =========================
    MODAL BOOTSTRAP CUSTOMIZADO
 ========================= */
@@ -233,25 +252,43 @@
     radial-gradient(
       circle at center,
       rgba(120, 224, 207, 0.08),
-      rgba(2, 8, 20, 0.84) 55%,
-      rgba(2, 8, 20, 0.97)
+      rgba(2, 8, 20, 0.86) 55%,
+      rgba(2, 8, 20, 0.98)
     );
 
   backdrop-filter: blur(12px);
 }
 
+.market-modal-dialog {
+  width: min(680px, 92vw);
+  max-width: 680px;
+
+  margin-inline: auto;
+}
+
 .market-popup {
   position: relative;
 
-  border-radius: 28px;
+  margin-top: -18px;
+
+  width: 100%;
+
+  text-align: center;
+
+  border-radius: 26px;
 
   border: 1px solid rgba(120, 224, 207, 0.24);
 
   background:
+    radial-gradient(
+      circle at top right,
+      rgba(120, 224, 207, 0.08),
+      transparent 36%
+    ),
     linear-gradient(
       135deg,
       rgba(7, 17, 31, 0.98),
-      rgba(2, 8, 20, 0.92)
+      rgba(2, 8, 20, 0.94)
     );
 
   color: white;
@@ -260,13 +297,23 @@
     0 30px 90px rgba(0, 0, 0, 0.62),
     0 0 60px rgba(120, 224, 207, 0.16),
     inset 0 0 34px rgba(120, 224, 207, 0.05);
+
+  overflow: hidden;
 }
+
+.market-popup__body {
+  padding: 2rem 1.2rem 2.2rem 2rem !important;
+}
+
+/* =========================
+   BOTÃO X
+========================= */
 
 .market-popup__close {
   position: absolute;
 
-  top: 0.55rem;
-  right: 0.55rem;
+  top: 0.65rem;
+  right: 0.65rem;
 
   width: 34px;
   height: 34px;
@@ -279,7 +326,7 @@
 
   color: rgba(255, 255, 255, 0.8);
 
-  font-size: 1.35rem;
+  font-size: 1.3rem;
   line-height: 1;
 
   display: flex;
@@ -302,14 +349,22 @@
 
   box-shadow:
     0 0 22px rgba(120, 224, 207, 0.25);
+
+  transform: rotate(90deg);
 }
 
+/* =========================
+   CONTEÚDO
+========================= */
+
 .receita-tipo {
+  font-family: var(--font-display);
+
   display: inline-block;
 
-  padding: 0.3rem 0.75rem;
+  padding: 0.28rem 0.72rem;
 
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.85rem;
 
   border-radius: 999px;
 
@@ -319,66 +374,249 @@
 
   color: #78e0cf;
 
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 700;
 
   letter-spacing: 1px;
+
   text-transform: uppercase;
 }
 
 .market-popup__title {
-  margin-top: 0.25rem;
+  font-family: var(--font-display);
+
+  max-width: 100%;
+
+  margin-top: 0;
   margin-bottom: 0;
+
+  padding-right: 0rem;
 
   color: #fff;
 
-  font-size: clamp(1.8rem, 4.5vw, 3.5rem);
+  font-size: clamp(2rem, 5vw, 3.1rem);
   line-height: 0.95;
+
+  letter-spacing: -1px;
+
+  text-align: center;
+
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .market-popup__subtitle {
-  margin-top: 0.8rem;
+  font-family: var(--font-body);
 
-  color: rgba(255, 255, 255, 0.56);
+  max-width: 560px;
+
+  margin-top: 1rem;
+  margin-bottom: 0;
+
+  color: rgba(255, 255, 255, 0.58);
+
+  text-align: center;
 
   line-height: 1.5;
   font-size: 0.95rem;
 }
 
 .market-popup__value {
+  font-family: var(--font-display);
+
   display: block;
 
-  margin-top: 1.3rem;
+  margin-top: 1.35rem;
 
   color: #78e0cf;
 
-  font-size: clamp(2.2rem, 7vw, 4rem);
+  font-size: clamp(2.5rem, 7vw, 4rem);
   line-height: 0.9;
 
+  text-align: center;
+
   font-weight: 900;
+
+  letter-spacing: -1px;
 }
 
 .market-popup__highlight {
+  font-family: var(--font-display);
+
   display: block;
 
   margin-top: 0.7rem;
 
   color: rgba(120, 224, 207, 0.9);
 
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 800;
 
-  letter-spacing: 1.7px;
+  text-align: center;
+
+  letter-spacing: 1.5px;
+
   text-transform: uppercase;
 }
 
 .market-popup__description {
-  margin-top: 1.25rem;
+  font-family: var(--font-body);
+
+  max-width: 580px;
+
+  margin-top: 1.35rem;
+  margin-bottom: 0;
 
   color: rgba(255, 255, 255, 0.76);
 
-  line-height: 1.6;
+  line-height: 1.55;
   font-size: 0.95rem;
+
+  text-align: center;
+}
+
+/* =========================
+   CORES POR TIPO
+========================= */
+
+.market-popup--b2g {
+  border-color: rgba(110, 214, 255, 0.32);
+
+  box-shadow:
+    0 30px 90px rgba(0, 0, 0, 0.62),
+    0 0 60px rgba(110, 214, 255, 0.18),
+    inset 0 0 34px rgba(110, 214, 255, 0.05);
+}
+
+.market-popup--esg {
+  border-color: rgba(109, 255, 155, 0.32);
+
+  box-shadow:
+    0 30px 90px rgba(0, 0, 0, 0.62),
+    0 0 60px rgba(109, 255, 155, 0.18),
+    inset 0 0 34px rgba(109, 255, 155, 0.05);
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 768px) {
+  .market-modal-dialog {
+    width: min(540px, 92vw);
+    max-width: 540px;
+  }
+
+  .market-popup__body {
+    padding: 1.7rem 1.5rem 1.6rem !important;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .market-popup__title {
+    font-size: clamp(1.7rem, 8vw, 2.6rem);
+    padding-right: 0;
+
+    text-align: center;
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .market-popup__title,
+  .market-popup__subtitle,
+  .market-popup__description {
+    margin-left: auto;
+    margin-right: auto;
+
+    text-align: center;
+  }
+
+  .market-popup__value,
+  .market-popup__highlight,
+  .receita-tipo {
+    text-align: center;
+  }
+
+  .market-popup__value {
+    font-size: clamp(2.2rem, 11vw, 3.4rem);
+  }
+
+  .market-popup__subtitle,
+  .market-popup__description {
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+}
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 320px) {
+  .market-modal-dialog {
+    width: 94vw;
+    max-width: 94vw;
+  }
+
+  .market-popup {
+    border-radius: 22px;
+  }
+
+  .market-popup__body {
+    padding: 1.45rem 1.15rem 1.35rem !important;
+  }
+
+  .market-popup__close {
+    top: 0.5rem;
+    right: 0.5rem;
+
+    width: 30px;
+    height: 30px;
+
+    font-size: 1.15rem;
+  }
+
+  .receita-tipo {
+    font-size: 0.62rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .market-popup__title {
+    font-size: clamp(1.45rem, 8.4vw, 2.15rem);
+    line-height: 1;
+
+    padding-right: 2rem;
+    letter-spacing: -0.5px;
+  }
+
+  .market-popup__subtitle {
+    margin-top: 0.75rem;
+  }
+
+  .market-popup__value {
+    margin-top: 1rem;
+
+    font-size: clamp(1.9rem, 11vw, 2.8rem);
+  }
+
+  .market-popup__highlight {
+    margin-top: 0.5rem;
+
+    font-size: 0.6rem;
+    letter-spacing: 1.1px;
+  }
+
+  .market-popup__description {
+    margin-top: 0.9rem;
+
+    font-size: 0.82rem;
+    line-height: 1.4;
+  }
 }
 
 /* =========================
