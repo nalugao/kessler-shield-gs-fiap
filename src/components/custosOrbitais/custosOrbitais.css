@@ -1,4 +1,23 @@
 .orbital-costs {
+  font-family: var(--font-body);
+}
+
+.orbital-costs .section-kicker,
+.costs-header h2,
+.cost-name,
+.cost-main-value strong,
+.cost-unit {
+  font-family: var(--font-display);
+}
+
+.costs-header p,
+.cost-details ul,
+.cost-details p,
+.costs-note {
+  font-family: var(--font-body);
+}
+
+.orbital-costs {
   max-width: 1440px;
   margin: 0 auto;
   padding: 7rem 5rem;
