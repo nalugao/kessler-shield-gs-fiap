@@ -1,4 +1,18 @@
 .final-cta {
+  font-family: var(--font-body);
+}
+
+.final-cta .section-kicker,
+.cta-content h2,
+.cta-button {
+  font-family: var(--font-display);
+}
+
+.cta-content p {
+  font-family: var(--font-body);
+}
+
+.final-cta {
   position: relative;
 
   min-height: 90vh;

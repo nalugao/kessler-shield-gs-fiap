@@ -16,7 +16,7 @@ export default function ChamadaFinal() {
       </div>
 
       <div className="cta-content">
-        <span className="section-kicker">ORBITAL SUSTAINABILITY</span>
+        <span className="section-kicker">SUSTENTABILIDADE ORBITAL</span>
 
         <h2>
           O futuro da economia espacial
