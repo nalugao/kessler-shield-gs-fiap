@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import "./ScrollRocket.css";
+import "./scrollRocket.css";
 
 export default function ScrollRocket() {
   const lastScrollY = useRef(window.scrollY);
