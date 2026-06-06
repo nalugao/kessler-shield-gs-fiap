@@ -89,13 +89,13 @@ export default function CentroReceitas() {
   return (
     <div
       id="modelos-receita"
-      className={`centro-receitas ${ativo ? "is-exploring" : ""}`}
+      className={`centro-receitas d-flex justify-content-center align-items-center ${
+        ativo ? "is-exploring" : ""
+      }`}
     >
       <motion.div
         className="orbit-explorer"
-        animate={{
-          scale: ativo ? 1.02 : 1
-        }}
+        animate={{ scale: ativo ? 1.02 : 1 }}
         transition={{ duration: 0.55, ease: "easeInOut" }}
       >
         <div className="planet-core">
@@ -107,9 +107,7 @@ export default function CentroReceitas() {
             />
           </div>
 
-          <span className="planet-name planet-name--earth">
-            Terra
-          </span>
+          <span className="planet-name planet-name--earth">Terra</span>
         </div>
 
         <div className="orbit-lane orbit-lane--b2b">
@@ -182,66 +180,70 @@ export default function CentroReceitas() {
       <AnimatePresence mode="wait">
         {ativo && mercadoAtivo && (
           <motion.div
-            className="market-popup-backdrop"
+            className="modal fade show d-block market-modal"
+            tabIndex="-1"
+            role="dialog"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={fecharPopup}
           >
-            <motion.div
-              key={`popup-${ativo}`}
-              className={`market-popup market-popup--${ativo}`}
-              initial={{ opacity: 0, scale: 0.88, y: 40 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.88, y: 40 }}
-              transition={{ duration: 0.45, ease: "easeOut" }}
+            <div
+              className="modal-dialog modal-dialog-centered modal-lg"
               onClick={(event) => event.stopPropagation()}
             >
-              <button
-                type="button"
-                className="market-popup__close"
-                onClick={fecharPopup}
-                aria-label="Fechar janela"
+              <motion.div
+                key={`popup-${ativo}`}
+                className={`modal-content market-popup market-popup--${ativo}`}
+                initial={{ opacity: 0, scale: 0.9, y: 32 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: 32 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
               >
-                ×
-              </button>
+                <button
+                  type="button"
+                  className="market-popup__close"
+                  onClick={fecharPopup}
+                  aria-label="Fechar janela"
+                >
+                  ×
+                </button>
 
-              <span className="receita-tipo">
-                {mercadoAtivo.tipo}
-              </span>
+                <div className="modal-body p-4 p-md-5">
+                  <span className="receita-tipo">
+                    {mercadoAtivo.tipo}
+                  </span>
 
-              <h3>
-                {mercadoAtivo.titulo}
-              </h3>
+                  <h3 className="market-popup__title">
+                    {mercadoAtivo.titulo}
+                  </h3>
 
-              <p className="market-popup__subtitle">
-                {mercadoAtivo.subtitulo}
-              </p>
+                  <p className="market-popup__subtitle">
+                    {mercadoAtivo.subtitulo}
+                  </p>
 
-              <strong className="market-popup__value">
-                {mercadoAtivo.valor ? (
-                  <NumeroAnimado
-                    valor={mercadoAtivo.valor}
-                    prefixo={mercadoAtivo.prefixo}
-                    sufixo={mercadoAtivo.sufixo}
-                  />
-                ) : (
-                  mercadoAtivo.valorTexto
-                )}
-              </strong>
+                  <strong className="market-popup__value">
+                    {mercadoAtivo.valor ? (
+                      <NumeroAnimado
+                        valor={mercadoAtivo.valor}
+                        prefixo={mercadoAtivo.prefixo}
+                        sufixo={mercadoAtivo.sufixo}
+                      />
+                    ) : (
+                      mercadoAtivo.valorTexto
+                    )}
+                  </strong>
 
-              <span className="market-popup__highlight">
-                {mercadoAtivo.destaque}
-              </span>
+                  <span className="market-popup__highlight">
+                    {mercadoAtivo.destaque}
+                  </span>
 
-              <p className="market-popup__description">
-                {mercadoAtivo.descricao}
-              </p>
-
-              <div className="market-popup__hint">
-                Clique em outro satélite para trocar a análise.
-              </div>
-            </motion.div>
+                  <p className="market-popup__description">
+                    {mercadoAtivo.descricao}
+                  </p>
+                </div>
+              </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
