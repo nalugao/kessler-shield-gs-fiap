@@ -2,6 +2,11 @@ import "./centroReceitas.css";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
+import terraImg from "../../assets/terra.gif";
+import sateliteB2B from "../../assets/satelite-b2b.png";
+import sateliteB2G from "../../assets/satelite-b2g.png";
+import sateliteESG from "../../assets/satelite-esg.png";
+
 const mercados = {
   b2b: {
     tipo: "B2B",
@@ -69,125 +74,174 @@ function NumeroAnimado({ valor, prefixo = "", sufixo = "" }) {
 }
 
 export default function CentroReceitas() {
-  const [ativo, setAtivo] = useState("b2b");
-  const [modoAnalise, setModoAnalise] = useState(false);
+  const [ativo, setAtivo] = useState(null);
 
-  const mercadoAtivo = mercados[ativo];
+  const mercadoAtivo = ativo ? mercados[ativo] : null;
 
   function selecionarMercado(id) {
     setAtivo(id);
-    setModoAnalise(true);
+  }
+
+  function fecharPopup() {
+    setAtivo(null);
   }
 
   return (
     <div
       id="modelos-receita"
-      className={`centro-receitas ${modoAnalise ? "is-exploring" : ""}`}
+      className={`centro-receitas ${ativo ? "is-exploring" : ""}`}
     >
       <motion.div
         className="orbit-explorer"
         animate={{
-          scale: modoAnalise ? 0.94 : 1
+          scale: ativo ? 1.02 : 1
         }}
         transition={{ duration: 0.55, ease: "easeInOut" }}
       >
-        <div className="orbit orbit-1">
-          <span className="orbit-marker" />
+        <div className="planet-core">
+          <div className="planet-sphere planet-sphere--earth">
+            <img
+              src={terraImg}
+              alt="Planeta Terra"
+              className="planet-earth-image"
+            />
+          </div>
+
+          <span className="planet-name planet-name--earth">
+            Terra
+          </span>
         </div>
 
-        <div className="orbit orbit-2">
-          <span className="orbit-marker orbit-marker--small" />
-        </div>
-
-        <div className="orbit orbit-3">
-          <span className="orbit-marker orbit-marker--tiny" />
-        </div>
-
-        {Object.entries(mercados).map(([id, mercado]) => (
+        <div className="orbit-lane orbit-lane--b2b">
           <motion.button
-            key={id}
-            layoutId={`market-${id}`}
-            whileHover={{ scale: 1.15 }}
+            type="button"
+            whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.96 }}
-            onClick={() => selecionarMercado(id)}
-            className={`orbit-node orbit-node--${id} ${
-              ativo === id ? "active" : ""
+            onClick={() => selecionarMercado("b2b")}
+            className={`planet-node planet-node--b2b ${
+              ativo === "b2b" ? "active" : ""
             }`}
           >
-            {mercado.tipo}
-          </motion.button>
-        ))}
+            <span className="satellite-visual satellite-visual--b2b">
+              <img
+                src={sateliteB2B}
+                alt="Satélite do modelo B2B"
+                className="satellite-image"
+              />
+            </span>
 
-        <div className="orbit-center">KS</div>
+            <span className="planet-name">B2B</span>
+          </motion.button>
+        </div>
+
+        <div className="orbit-lane orbit-lane--b2g">
+          <motion.button
+            type="button"
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.96 }}
+            onClick={() => selecionarMercado("b2g")}
+            className={`planet-node planet-node--b2g ${
+              ativo === "b2g" ? "active" : ""
+            }`}
+          >
+            <span className="satellite-visual satellite-visual--b2g">
+              <img
+                src={sateliteB2G}
+                alt="Satélite do modelo B2G"
+                className="satellite-image"
+              />
+            </span>
+
+            <span className="planet-name">B2G</span>
+          </motion.button>
+        </div>
+
+        <div className="orbit-lane orbit-lane--esg">
+          <motion.button
+            type="button"
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.96 }}
+            onClick={() => selecionarMercado("esg")}
+            className={`planet-node planet-node--esg ${
+              ativo === "esg" ? "active" : ""
+            }`}
+          >
+            <span className="satellite-visual satellite-visual--esg">
+              <img
+                src={sateliteESG}
+                alt="Satélite do modelo ESG"
+                className="satellite-image"
+              />
+            </span>
+
+            <span className="planet-name">ESG</span>
+          </motion.button>
+        </div>
       </motion.div>
 
       <AnimatePresence mode="wait">
-        {!modoAnalise && (
+        {ativo && mercadoAtivo && (
           <motion.div
-            key="resumo"
-            className="receita-panel"
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -24 }}
-            transition={{ duration: 0.4 }}
+            className="market-popup-backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={fecharPopup}
           >
-            <span className="receita-tipo">{mercadoAtivo.tipo}</span>
+            <motion.div
+              key={`popup-${ativo}`}
+              className={`market-popup market-popup--${ativo}`}
+              initial={{ opacity: 0, scale: 0.88, y: 40 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.88, y: 40 }}
+              transition={{ duration: 0.45, ease: "easeOut" }}
+              onClick={(event) => event.stopPropagation()}
+            >
+              <button
+                type="button"
+                className="market-popup__close"
+                onClick={fecharPopup}
+                aria-label="Fechar janela"
+              >
+                ×
+              </button>
 
-            <span className="receita-valor">
-              {mercadoAtivo.valor ? (
-                <NumeroAnimado
-                  valor={mercadoAtivo.valor}
-                  prefixo={mercadoAtivo.prefixo}
-                  sufixo={mercadoAtivo.sufixo}
-                />
-              ) : (
-                mercadoAtivo.valorTexto
-              )}
-            </span>
+              <span className="receita-tipo">
+                {mercadoAtivo.tipo}
+              </span>
 
-            <h3>{mercadoAtivo.titulo}</h3>
+              <h3>
+                {mercadoAtivo.titulo}
+              </h3>
 
-            <p>{mercadoAtivo.descricao}</p>
-          </motion.div>
-        )}
+              <p className="market-popup__subtitle">
+                {mercadoAtivo.subtitulo}
+              </p>
 
-        {modoAnalise && (
-          <motion.div
-            key={`analise-${ativo}`}
-            className="analise-mercado"
-            initial={{ opacity: 0, scale: 0.94, y: 28 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.94, y: -28 }}
-            transition={{ duration: 0.45, ease: "easeOut" }}
-          >
-      
-            <span className="receita-tipo">{mercadoAtivo.tipo}</span>
+              <strong className="market-popup__value">
+                {mercadoAtivo.valor ? (
+                  <NumeroAnimado
+                    valor={mercadoAtivo.valor}
+                    prefixo={mercadoAtivo.prefixo}
+                    sufixo={mercadoAtivo.sufixo}
+                  />
+                ) : (
+                  mercadoAtivo.valorTexto
+                )}
+              </strong>
 
-            <h2>{mercadoAtivo.titulo}</h2>
+              <span className="market-popup__highlight">
+                {mercadoAtivo.destaque}
+              </span>
 
-            <p className="analise-subtitulo">{mercadoAtivo.subtitulo}</p>
+              <p className="market-popup__description">
+                {mercadoAtivo.descricao}
+              </p>
 
-            <strong className="analise-numero">
-              {mercadoAtivo.valor ? (
-                <NumeroAnimado
-                  valor={mercadoAtivo.valor}
-                  prefixo={mercadoAtivo.prefixo}
-                  sufixo={mercadoAtivo.sufixo}
-                />
-              ) : (
-                mercadoAtivo.valorTexto
-              )}
-            </strong>
-
-            <span className="analise-destaque">
-              {mercadoAtivo.destaque}
-            </span>
-
-            <p>{mercadoAtivo.descricao}</p>
-
-            <div className="analise-hint">
-              Clique em outro modelo orbital para trocar a análise.
-            </div>
+              <div className="market-popup__hint">
+                Clique em outro satélite para trocar a análise.
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
