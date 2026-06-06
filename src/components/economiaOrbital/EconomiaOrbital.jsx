@@ -2,12 +2,6 @@ import "./economiaOrbital.css";
 import CentroReceitas from "../centroReceitas/CentroReceitas";
 
 export default function EconomiaOrbital() {
-  function scrollParaModelos() {
-    document
-      .getElementById("modelos-receita")
-      ?.scrollIntoView({ behavior: "smooth", block: "center" });
-  }
-
   return (
     <section className="finance-hero">
       <div className="finance-hero__content">
@@ -26,16 +20,7 @@ export default function EconomiaOrbital() {
           órbita terrestre segura para as próximas gerações.
         </p>
 
-        <button
-        className="finance-hero__button"
-        onClick={() => {
-          document
-            .getElementById("modelos-receita")
-            ?.scrollIntoView({ behavior: "smooth", block: "center" });
-        }}
-      >
-        Explorar Modelos de Receita
-      </button>
+       
       </div>
 
       <CentroReceitas />

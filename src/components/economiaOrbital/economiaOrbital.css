@@ -1,8 +1,21 @@
 .finance-hero {
+  font-family: var(--font-body);
+}
+
+.finance-hero__tag,
+.finance-hero h1 {
+  font-family: var(--font-display);
+}
+
+.finance-hero p {
+  font-family: var(--font-body);
+}
+
+.finance-hero {
   min-height: 100vh;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 7rem 5rem 5rem;
+  padding: 2rem 5rem 5rem;
 
   display: grid;
   grid-template-columns: minmax(320px, 0.85fr) minmax(420px, 1.15fr);
@@ -29,7 +42,7 @@
   margin-top: 1rem;
   font-size: clamp(3.5rem, 7vw, 7.4rem);
   line-height: 0.9;
-  font-weight: 800;
+  font-weight: 600;
   color: #fff;
 }
 
@@ -40,24 +53,7 @@
   line-height: 1.8;
 }
 
-.finance-hero__button {
-  margin-top: 2rem;
-  padding: 1rem 2rem;
 
-  background: transparent;
-  border: 1px solid rgba(120, 224, 207, 0.3);
-  color: #fff;
-
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.finance-hero__button:hover {
-  border-color: #78e0cf;
-  color: #78e0cf;
-  transform: translateY(-2px);
-  box-shadow: 0 0 24px rgba(120, 224, 207, 0.16);
-}
 
 @media (max-width: 1180px) {
   .finance-hero {
@@ -79,10 +75,5 @@
 
   .finance-hero h1 {
     font-size: clamp(3rem, 15vw, 4.6rem);
-  }
-
-  .finance-hero__button {
-    width: 100%;
-    justify-content: center;
-  }
+  } 
 }
