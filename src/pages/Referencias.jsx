@@ -1,71 +1,101 @@
-import { useMemo, useState } from 'react';
-import { PageHero } from '../components/ui.jsx';
-import RefCard from '../components/RefCard.jsx';
-import { REFERENCES, REF_FILTERS } from '../data/references.js';
-import './referencias.css';
-// import { useLanguage } from "../components/context/LanguageContext";
-// import { getSections } from "../data/refData";
+import { useMemo, useState } from "react";
+import { PageHero } from "../components/ui.jsx";
+import RefCard from "../components/RefCard.jsx";
+import {
+  getReferences,
+  getRefFilters,
+  getRefPageText,
+} from "../data/references.js";
+import { useLanguage } from "../components/context/LanguageContext";
 import "./referencias.css";
 
 const Referencias = () => {
-  const [query, setQuery] = useState('');
-  const [filter, setFilter] = useState('todos');
+  const { language } = useLanguage();
+
+  const [query, setQuery] = useState("");
+  const [filter, setFilter] = useState("todos");
+
+  const references = useMemo(() => getReferences(language), [language]);
+  const refFilters = useMemo(() => getRefFilters(language), [language]);
+  const pageText = useMemo(() => getRefPageText(language), [language]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return REFERENCES.filter((r) => {
-      const matchFilter = filter === 'todos' || r.tags.includes(filter);
-      const blob = `${r.title} ${r.desc} ${r.source} ${r.labels.join(' ')}`.toLowerCase();
-      const matchSearch = !q || blob.includes(q);
+
+    return references.filter((reference) => {
+      const matchFilter =
+        filter === "todos" || reference.tags.includes(filter);
+
+      const searchableContent = `
+        ${reference.title}
+        ${reference.desc}
+        ${reference.source}
+        ${reference.labels.join(" ")}
+      `.toLowerCase();
+
+      const matchSearch = !q || searchableContent.includes(q);
+
       return matchFilter && matchSearch;
     });
-  }, [query, filter]);
-
-  // const { language } = useLanguage();
-  // const sections = getSections(language);
+  }, [query, filter, references]);
 
   return (
-<main className="page">
-      <PageHero
-        title="Base científica"
-        lead="Todos os dados do Kessler Shield foram verificados contra fontes primárias: agências espaciais, corretores especializados e literatura acadêmica revisada por pares. "
-      >
+    <main className="page">
+      <PageHero title={pageText.title} lead={pageText.lead}>
         <div className="ref-controls">
           <div className="search-bar">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7de8c8" strokeWidth="2">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#7de8c8"
+              strokeWidth="2"
+              aria-hidden="true"
+            >
               <circle cx="11" cy="11" r="7" />
               <line x1="21" y1="21" x2="16.5" y2="16.5" />
             </svg>
+
             <input
               type="text"
               value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Buscar por título, fonte ou tema..."
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder={pageText.searchPlaceholder}
             />
           </div>
+
           <div className="filters">
-            {REF_FILTERS.map((f) => (
+            {refFilters.map((filterItem) => (
               <button
-                key={f.key}
-                className={`filter ${filter === f.key ? 'active' : ''}`}
-                onClick={() => setFilter(f.key)}
+                key={filterItem.key}
+                type="button"
+                className={`filter ${
+                  filter === filterItem.key ? "active" : ""
+                }`}
+                onClick={() => setFilter(filterItem.key)}
               >
-                {f.label}
+                {filterItem.label}
               </button>
             ))}
           </div>
-          <div className="ref-count"><b>{filtered.length}</b> de {REFERENCES.length} referências</div>
+
+          <div className="ref-count">
+            <b>{filtered.length}</b> {pageText.countMiddle}{" "}
+            {references.length} {pageText.countLabel}
+          </div>
         </div>
       </PageHero>
 
       <section className="section">
         <div className="wrap">
           <div className="ref-grid-3">
-            {filtered.map((r) => (
-              <RefCard key={r.id} data={r} variant="full" />
+            {filtered.map((reference) => (
+              <RefCard key={reference.id} data={reference} variant="full" />
             ))}
+
             {filtered.length === 0 && (
-              <div className="no-results">Nenhuma referência encontrada. Tente outro termo ou filtro.</div>
+              <div className="no-results">{pageText.noResults}</div>
             )}
           </div>
         </div>

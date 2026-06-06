@@ -1,0 +1,263 @@
+.scroll-rocket {
+  position: fixed;
+  right: 28px;
+  z-index: 50;
+  width: 82px;
+  height: 150px;
+  pointer-events: none;
+  transform: translateY(-50%);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    top 0.18s linear,
+    opacity 0.25s ease,
+    visibility 0.25s ease;
+}
+
+.scroll-rocket.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.rocket-shuttle {
+  position: relative;
+  width: 78px;
+  height: 140px;
+  transform-origin: center center;
+  filter:
+    drop-shadow(0 0 10px rgba(255, 255, 255, 0.18))
+    drop-shadow(0 0 24px rgba(126, 232, 212, 0.12));
+  animation: rocketFloat 2.6s ease-in-out infinite;
+  transition: transform 0.28s ease;
+}
+
+/* Subindo: ponta para cima */
+.scroll-rocket--up .rocket-shuttle {
+  transform: rotate(0deg);
+}
+
+/* Descendo: ponta para baixo */
+.scroll-rocket--down .rocket-shuttle {
+  transform: rotate(180deg);
+}
+
+/* Ponta do foguete */
+.rocket-nose {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 38px;
+  height: 48px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    #cfd7df 0%,
+    #ffffff 34%,
+    #f7fbff 62%,
+    #c0cbd4 100%
+  );
+  border-radius: 50% 50% 18px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.76);
+  box-shadow: inset -7px 0 12px rgba(10, 20, 35, 0.14);
+  z-index: 4;
+}
+
+.rocket-cockpit {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  width: 13px;
+  height: 6px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: linear-gradient(180deg, #9aa8b4, #5f6b76);
+  opacity: 0.75;
+}
+
+/* Corpo central */
+.rocket-main-body {
+  position: absolute;
+  top: 36px;
+  left: 50%;
+  width: 34px;
+  height: 66px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    #bfc9d3 0%,
+    #ffffff 28%,
+    #f5f8fb 58%,
+    #aeb9c4 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.74);
+  border-radius: 12px 12px 8px 8px;
+  box-shadow: inset -8px 0 14px rgba(10, 20, 35, 0.13);
+  z-index: 3;
+}
+
+.rocket-detail {
+  position: absolute;
+  left: 50%;
+  width: 17px;
+  height: 1px;
+  transform: translateX(-50%);
+  background: rgba(5, 13, 26, 0.22);
+}
+
+.rocket-detail-top {
+  top: 30px;
+}
+
+.rocket-detail-bottom {
+  top: 46px;
+}
+
+/* Estruturas laterais */
+.rocket-side {
+  position: absolute;
+  top: 54px;
+  width: 12px;
+  height: 56px;
+  background: linear-gradient(180deg, #f8fbff 0%, #b8c3ce 100%);
+  border: 1px solid rgba(255, 255, 255, 0.58);
+  border-radius: 10px 10px 6px 6px;
+  z-index: 2;
+}
+
+.rocket-side-left {
+  left: 18px;
+}
+
+.rocket-side-right {
+  right: 18px;
+}
+
+/* Asas */
+.rocket-wing {
+  position: absolute;
+  top: 72px;
+  width: 28px;
+  height: 38px;
+  background: linear-gradient(180deg, #f9fcff 0%, #b7c2cc 100%);
+  border: 1px solid rgba(255, 255, 255, 0.64);
+  z-index: 1;
+}
+
+.rocket-wing-left {
+  left: 4px;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  border-radius: 4px 0 0 8px;
+}
+
+.rocket-wing-right {
+  right: 4px;
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+  border-radius: 0 4px 8px 0;
+}
+
+/* Motores */
+.rocket-engines {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  display: flex;
+  gap: 6px;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+.rocket-engines span {
+  width: 11px;
+  height: 14px;
+  border-radius: 0 0 6px 6px;
+  background: linear-gradient(180deg, #778491, #e8eef4);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+}
+
+/* Fogo */
+.rocket-flames {
+  position: absolute;
+  top: 112px;
+  left: 50%;
+  width: 48px;
+  height: 38px;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.flame {
+  position: absolute;
+  top: 0;
+  display: block;
+  border-radius: 50% 50% 55% 55%;
+  filter: blur(0.2px);
+  animation: flamePulse 0.18s infinite alternate;
+}
+
+.flame-center {
+  left: 50%;
+  width: 18px;
+  height: 38px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #9fffea 34%,
+    #55c7ff 70%,
+    #427cff 100%
+  );
+  clip-path: polygon(50% 100%, 4% 35%, 32% 0, 50% 18%, 68% 0, 96% 35%);
+}
+
+.flame-left,
+.flame-right {
+  top: 5px;
+  width: 13px;
+  height: 30px;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #a8ffe9 42%,
+    #58cfff 100%
+  );
+  opacity: 0.76;
+}
+
+.flame-left {
+  left: 9px;
+  transform: rotate(-10deg);
+}
+
+.flame-right {
+  right: 9px;
+  transform: rotate(10deg);
+}
+
+@keyframes rocketFloat {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -5px;
+  }
+}
+
+@keyframes flamePulse {
+  from {
+    opacity: 0.7;
+    scale: 0.92;
+  }
+
+  to {
+    opacity: 1;
+    scale: 1.05;
+  }
+}
+
+@media (max-width: 768px) {
+  .scroll-rocket {
+    display: none;
+  }
+}
