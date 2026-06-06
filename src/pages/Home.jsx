@@ -6,7 +6,6 @@ import Problema from "../components/home/Problema"
 import Referencias from "../components/home/ReferenciasSection"
 import Simulador from "../components/home/Simulador"
 import Solucao from "../components/home/Solucao"
-import ContactCTASection from '../components/contact/ContactCTASection'
 
 const Home = () => {
   return (
