@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import "./simuladorFinanceiro.css";
+import terraImg from "../../assets/terra.gif";
 
 export default function SimuladorFinanceiro() {
   const [removedDebris, setRemovedDebris] = useState(120);
@@ -70,7 +71,13 @@ export default function SimuladorFinanceiro() {
       </div>
 
       <div className="simulator-orbit" aria-label="Simulação orbital">
-        <div className="simulator-earth">KS</div>
+        <div className="simulator-earth">
+        <img
+          src={terraImg}
+          alt="Planeta Terra"
+          className="simulator-earth-img"
+        />
+      </div>
 
         {Array.from({ length: dados.debrisLeft }).map((_, index) => (
           <span
