@@ -1,83 +1,136 @@
-.final-cta {
-  font-family: var(--font-body);
-}
-
-.final-cta .section-kicker,
-.cta-content h2,
-.cta-button {
-  font-family: var(--font-display);
-}
-
-.cta-content p {
-  font-family: var(--font-body);
-}
+/* =========================
+   BASE MOBILE
+   320px até 575px
+========================= */
 
 .final-cta {
   position: relative;
 
-  min-height: 90vh;
-  padding: 8rem 2rem;
+  min-height: clamp(36rem, 75svh, 48rem);
+  padding: clamp(4rem, 12vw, 6rem) 1.25rem;
 
   display: grid;
   place-items: center;
 
   overflow: hidden;
+
+  font-family: var(--font-body);
+
+  --orbit-size: clamp(18rem, 86vw, 48.75rem);
+  --orbit-radius: calc((var(--orbit-size) / 2) + 2.3rem);
+  --debris-size: clamp(0.28rem, 1.4vw, 0.4rem);
 }
 
 .cta-content {
   position: relative;
   z-index: 2;
 
-  max-width: 980px;
+  width: min(100%, 61.25rem);
 
   text-align: center;
 }
 
+.final-cta .section-kicker {
+  font-family: var(--font-display);
+
+  color: #78e0cf;
+
+  font-size: clamp(0.68rem, 2.4vw, 0.8rem);
+  font-weight: 700;
+
+  letter-spacing: clamp(0.12rem, 0.7vw, 0.25rem);
+  text-transform: uppercase;
+}
+
 .cta-content h2 {
   margin-top: 1rem;
+
+  font-family: var(--font-display);
+
   color: #fff;
-  font-size: clamp(3rem, 7vw, 7rem);
-  line-height: 0.95;
+
+  font-size: clamp(2.15rem, 11vw, 7rem);
+  line-height: 0.98;
+
+  letter-spacing: -0.06rem;
 }
 
 .cta-content p {
-  margin: 2rem auto 0;
-  max-width: 680px;
+  max-width: 42.5rem;
+
+  margin: clamp(1.25rem, 4vw, 2rem) auto 0;
+
+  font-family: var(--font-body);
 
   color: rgba(255, 255, 255, 0.68);
-  line-height: 1.8;
+
+  font-size: clamp(0.92rem, 2.3vw, 1.05rem);
+  line-height: 1.75;
 }
 
 .cta-button {
   display: inline-flex;
   align-items: center;
-  gap: 0.7rem;
+  justify-content: center;
+  gap: 0.65rem;
 
-  margin-top: 2.5rem;
-  padding: 1rem 1.6rem;
+  margin-top: clamp(1.8rem, 5vw, 2.5rem);
+  padding: clamp(0.85rem, 2vw, 1rem) clamp(1.2rem, 3vw, 1.6rem);
+
+  font-family: var(--font-display);
 
   color: #fff;
+
+  font-size: clamp(0.78rem, 2vw, 0.9rem);
+  font-weight: 700;
+
+  letter-spacing: 0.03rem;
   text-decoration: none;
 
+  border-radius: 999px;
+
   border: 1px solid rgba(120, 224, 207, 0.28);
+
   background: rgba(255, 255, 255, 0.03);
 
-  transition: 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
 }
 
 .cta-button:hover {
   border-color: #78e0cf;
-  box-shadow: 0 0 30px rgba(120, 224, 207, 0.22);
-  transform: translateY(-3px);
+
+  background: rgba(120, 224, 207, 0.08);
+
+  box-shadow:
+    0 0 1.875rem rgba(120, 224, 207, 0.22);
+
+  transform: translateY(-0.1875rem);
 }
+
+.cta-button span {
+  transition: transform 0.3s ease;
+}
+
+.cta-button:hover span {
+  transform: translateX(0.25rem);
+}
+
+/* =========================
+   ÓRBITA
+========================= */
 
 .cta-orbit {
   position: absolute;
 
-  width: min(780px, 95vw);
+  width: var(--orbit-size);
   aspect-ratio: 1;
 
   border-radius: 50%;
+
   border: 1px solid rgba(120, 224, 207, 0.08);
 
   animation: ctaRotate 60s linear infinite;
@@ -86,8 +139,11 @@
 .cta-orbit::before,
 .cta-orbit::after {
   content: "";
+
   position: absolute;
+
   border-radius: 50%;
+
   border: 1px solid rgba(120, 224, 207, 0.08);
 }
 
@@ -101,18 +157,20 @@
 
 .cta-orbit span {
   position: absolute;
+
   top: 50%;
   left: 50%;
 
-  width: 6px;
-  height: 6px;
+  width: var(--debris-size);
+  height: var(--debris-size);
 
   border-radius: 50%;
+
   background: #78e0cf;
 
   transform:
     rotate(var(--angle))
-    translateX(390px)
+    translateX(var(--orbit-radius))
     rotate(calc(var(--angle) * -1));
 
   opacity: 0;
@@ -120,8 +178,64 @@
   animation: cleanDebris 4s ease-in-out infinite;
   animation-delay: var(--delay);
 
-  box-shadow: 0 0 16px rgba(120, 224, 207, 0.8);
+  box-shadow:
+    0 0 1rem rgba(120, 224, 207, 0.8);
 }
+
+/* =========================
+   576px+
+========================= */
+
+@media (min-width: 576px) {
+  .final-cta {
+    min-height: clamp(40rem, 76svh, 52rem);
+    padding-inline: 1.5rem;
+
+    --orbit-size: clamp(25rem, 82vw, 48.75rem);
+  }
+}
+
+/* =========================
+   768px+
+========================= */
+
+@media (min-width: 768px) {
+  .final-cta {
+    min-height: clamp(44rem, 82svh, 56rem);
+    padding-inline: 2rem;
+
+    --orbit-size: clamp(34rem, 76vw, 48.75rem);
+  }
+}
+
+/* =========================
+   992px+
+========================= */
+
+@media (min-width: 992px) {
+  .final-cta {
+    min-height: 88vh;
+    padding-block: clamp(7rem, 9vw, 8rem);
+
+    --orbit-size: clamp(43rem, 62vw, 48.75rem);
+  }
+}
+
+/* =========================
+   1200px+
+========================= */
+
+@media (min-width: 1200px) {
+  .final-cta {
+    min-height: 90vh;
+
+    --orbit-size: 48.75rem;
+  }
+}
+
+/* =========================
+   ANIMAÇÕES
+========================= */
 
 @keyframes ctaRotate {
   from {
@@ -151,19 +265,5 @@
 
   100% {
     opacity: 0;
-  }
-}
-
-@media (max-width: 768px) {
-  .final-cta {
-    min-height: 75vh;
-    padding: 6rem 1.5rem;
-  }
-
-  .cta-orbit span {
-    transform:
-      rotate(var(--angle))
-      translateX(47vw)
-      rotate(calc(var(--angle) * -1));
   }
 }
