@@ -15,7 +15,7 @@ const Hero = () => {
               </p>
               <div className="hero-cta">
                 <Link to="/#solucao" className="btn btn--primary">Conheça o sistema <span className="arrow">→</span></Link>
-                <Link to="/problema" className="btn btn--outline">Entenda o problema</Link>
+                <Link to="/#problema" className="btn btn--outline">Entenda o problema</Link>
               </div>
               <div className="hero-stats">
                 <div><div className="s-num">40K</div><div className="s-lab">objetos rastreados</div></div>

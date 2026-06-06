@@ -34,7 +34,7 @@
   font-weight: 600;
   margin-bottom: 0.6rem;
 }
-.step p { font-size: 0.86rem; color: var(--text); }
+.step p { font-size: 0.86rem; color: var(--white); }
 .step-line {
   position: absolute;
   top: 36px; right: -0.75rem;

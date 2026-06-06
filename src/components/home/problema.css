@@ -23,7 +23,7 @@
 .stat-cell .desc {
   margin-top: 0.85rem;
   font-size: 0.9rem;
-  color: var(--text);
+  color: var(--white);
 }
 .stat-cell .src {
   margin-top: 0.6rem;
