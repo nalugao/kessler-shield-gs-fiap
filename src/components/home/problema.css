@@ -33,7 +33,7 @@
 .chain-label {
   display: block;
   margin-top: 2.5rem;
-  font-size: 10px;
+  font-size: 14px;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--mint);

@@ -48,6 +48,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center -1400%; /* sobe para mostrar o rosto */
+  transform: scale(1.40);      /* zoom inicial sem cortar */
+  transition: transform 0.4s var(--ease)
 }
 
 .membro-info {
