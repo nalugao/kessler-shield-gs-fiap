@@ -1,0 +1,121 @@
+/* solucao.css — alinhado ao design system do index.css */
+
+.sol-step {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 5rem;
+  margin-bottom: 6rem;
+}
+
+.sol-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--mint);
+  opacity: 0.9;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.sol-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.sol-tag {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--line-soft);
+  background: transparent;
+  color: var(--text);
+}
+
+.sol-tag--purple {
+  color: #c5a3ff;
+  border-color: rgba(197, 163, 255, 0.25);
+}
+
+.sol-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  font-weight: 800;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.sol-desc {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text);
+  font-weight: 300;
+}
+
+.sol-img-box {
+  background: var(--bg-panel);
+  border: 1px solid var(--line-soft);
+  border-radius: 4px;
+  height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  overflow: hidden;
+}
+
+.sol-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.sol-img-box:hover {
+  border-color: var(--line);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 1024px) {
+  .sol-step {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .sol-img { order: 1 !important; }
+  .sol-body { order: 2 !important; }
+
+  .sol-img-box {
+    height: 260px;
+  }
+}
+
+/* Cabeçalho estilo "BASE CIENTÍFICA" */
+.sol-header {
+  margin-bottom: 5rem;
+}
+
+.sol-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: var(--white);
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  margin-top: 1.25rem;
+}
