@@ -3,9 +3,7 @@ import "./index.css";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Referencias from "./pages/Referencias";
-import ContatoPage from "./pages/Contato";
 import SolucaoPage from "./pages/Solucao";
-
 import Starfield from "./components/Starfield";
 import ScrollManager from "./components/ScrollManager";
 import ScrollRocket from "./components/ScrollRocket";
