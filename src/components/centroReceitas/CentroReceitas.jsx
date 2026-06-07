@@ -7,41 +7,9 @@ import sateliteB2B from "../../assets/satelite-b2b.png";
 import sateliteB2G from "../../assets/satelite-b2g.png";
 import sateliteESG from "../../assets/satelite-esg.png";
 
-const mercados = {
-  b2b: {
-    tipo: "B2B",
-    titulo: "SEGURADORAS",
-    subtitulo: "Risco convertido em receita recorrente",
-    valor: 580,
-    prefixo: "US$ ",
-    sufixo: "M",
-    destaque: "mercado endereçável / ano",
-    descricao:
-      "Redução de prêmios e sinistros para operadores de constelações. Cada detrito removido reduz a probabilidade de perda total de ativos em órbita."
-  },
+import mercados from "../../data/mercados";
 
-  b2g: {
-    tipo: "B2G",
-    titulo: "ADR-AS-A-SERVICE",
-    subtitulo: "Remoção orbital como serviço",
-    valorTexto: "US$ por missão",
-    destaque: "contratos plurianuais",
-    descricao:
-      "Contratos de remoção sob demanda para agências espaciais e governos. Objetos de alto risco são priorizados em órbitas críticas."
-  },
-
-  esg: {
-    tipo: "ESG",
-    titulo: "CRÉDITOS ORBITAIS",
-    subtitulo: "Sustentabilidade orbital verificável",
-    valorTexto: "Novo mercado",
-    destaque: "créditos verificáveis",
-    descricao:
-      "Tokenização de remoções verificadas como créditos de sustentabilidade orbital, criando um mercado análogo ao de carbono para o ecossistema espacial."
-  }
-};
-
-function NumeroAnimado({ valor, prefixo = "", sufixo = "" }) {
+function NumeroAnimado({ valor, moeda = "" }) {
   const [numero, setNumero] = useState(0);
 
   useEffect(() => {
@@ -66,9 +34,7 @@ function NumeroAnimado({ valor, prefixo = "", sufixo = "" }) {
 
   return (
     <>
-      {prefixo}
-      {numero}
-      {sufixo}
+      {moeda} {numero}
     </>
   );
 }
@@ -210,9 +176,7 @@ export default function CentroReceitas() {
                 </button>
 
                 <div className="modal-body market-popup__body">
-                  <span className="receita-tipo">
-                    {mercadoAtivo.tipo}
-                  </span>
+                  <span className="receita-tipo">{mercadoAtivo.tipo}</span>
 
                   <h3 className="market-popup__title">
                     {mercadoAtivo.titulo}
@@ -226,8 +190,7 @@ export default function CentroReceitas() {
                     {mercadoAtivo.valor ? (
                       <NumeroAnimado
                         valor={mercadoAtivo.valor}
-                        prefixo={mercadoAtivo.prefixo}
-                        sufixo={mercadoAtivo.sufixo}
+                        moeda={mercadoAtivo.moeda}
                       />
                     ) : (
                       mercadoAtivo.valorTexto
