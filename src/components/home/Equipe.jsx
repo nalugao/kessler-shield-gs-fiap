@@ -5,8 +5,8 @@ const membros = [
     id: 1,
     foto: "/images/sophi.png",
     nome: "Sophia Coelho",
-    cargo: "Cargo / Função",
-    descricao: "Responsável pelo desenvolvimento do front-end e identidade visual do projeto, garantindo a experiência do usuário."
+    cargo: "Front-end & Acessibilidade",
+    descricao: "Responsável pela criação da área de contato. Também contribuiu com a acessibilidade, responsividade e tradução das telas. Colaborou também na correção de bugs críticos da aplicação."
   },
   {
     id: 2,
@@ -19,15 +19,15 @@ const membros = [
     id: 3,
     foto: "/images/gab.png",
     nome: "Gabriel Soares",
-    cargo: "Cargo / Função",
-    descricao: "Responsável pelo desenvolvimento do front-end e identidade visual do projeto, garantindo a experiência do usuário."
+    cargo: "Front-end & Design System",
+    descricao: "Desenvolveu a página de Solução e a seção Quem Somos, construindo layouts em React com CSS Grid, responsividade mobile-first. Colaborou também na correção de bugs críticos da aplicação. "
   },
   {
     id: 4,
     foto: "/images/jeff.png",
     nome: "Jefferson Gomes",
-    cargo: "Cargo / Função",
-    descricao: "Responsável pelo desenvolvimento do front-end e identidade visual do projeto, garantindo a experiência do usuário."
+    cargo: "Front-end & UI/UX",
+    descricao: "Responsável pela criação da página financeira, aplicando responsividade mobile-first, organização de componentes em React, animações com Framer Motion, integração de assets visuais e padronização tipográfica."
   },
   {
     id: 5,

@@ -67,10 +67,10 @@
 .membro-cargo {
   display: inline-block;
   font-family: var(--font-body);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.02em;
   color: var(--mint);
   margin-bottom: 1rem;
 }
