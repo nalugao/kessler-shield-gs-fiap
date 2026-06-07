@@ -54,17 +54,17 @@ export default function SimuladorFinanceiro() {
 
         <div className="simulator-metrics">
           <article>
-            <span>Risk Reduction</span>
+            <span>Redução de risco</span>
             <strong>{dados.riskReduction}%</strong>
           </article>
 
           <article>
-            <span>Revenue</span>
-            <strong>US$ {dados.revenue}M</strong>
+            <span>Faturamento</span>
+            <strong>US$ {dados.revenue}Milhões</strong>
           </article>
 
           <article>
-            <span>Orbital Credits</span>
+            <span>Créditos orbitais</span>
             <strong>{dados.credits}</strong>
           </article>
         </div>
@@ -80,26 +80,26 @@ export default function SimuladorFinanceiro() {
       </div>
 
         {Array.from({ length: dados.debrisLeft }).map((_, index) => (
-          <span
-            key={`debris-${index}`}
-            className="debris-dot"
-            style={{
-              "--angle": `${index * (360 / dados.debrisLeft)}deg`,
-              "--radius": `${130 + (index % 3) * 28}px`
-            }}
-          />
-        ))}
+  <span
+    key={`debris-${index}`}
+    className="debris-dot"
+    style={{
+      "--angle": `${index * (360 / dados.debrisLeft)}deg`,
+      "--radius": `calc(var(--debris-radius-base) + ${(index % 3) * 1.35}rem)`
+    }}
+  />
+))}
 
-        {Array.from({ length: 7 }).map((_, index) => (
-          <span
-            key={`satellite-${index}`}
-            className="protected-satellite"
-            style={{
-              "--angle": `${index * 52}deg`,
-              "--radius": `${95 + (index % 2) * 55}px`
-            }}
-          />
-        ))}
+{Array.from({ length: 7 }).map((_, index) => (
+  <span
+    key={`satellite-${index}`}
+    className="protected-satellite"
+    style={{
+      "--angle": `${index * 52}deg`,
+      "--radius": `calc(var(--satellite-radius-base) + ${(index % 2) * 2.8}rem)`
+    }}
+  />
+))}
       </div>
     </section>
   );

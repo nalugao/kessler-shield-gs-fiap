@@ -1,6 +1,42 @@
+/* =========================
+   BASE MOBILE
+   320px até 575px
+========================= */
+
 .finance-simulator {
+  width: 100%;
+  max-width: 90rem;
+
+  min-height: auto;
+
+  margin: 0 auto;
+
+  padding:
+    clamp(4rem, 12vw, 5.5rem)
+    clamp(1.25rem, 5vw, 1.75rem);
+
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: clamp(3rem, 8vw, 4.5rem);
+
+  text-align: center;
+
   font-family: var(--font-body);
+
+  --sim-orbit-size: clamp(18rem, 86vw, 24rem);
+  --earth-size: clamp(4.5rem, 18vw, 5.5rem);
+
+  --debris-size: clamp(0.35rem, 1.7vw, 0.5rem);
+  --satellite-size: clamp(0.45rem, 1.9vw, 0.62rem);
+
+  --debris-radius-base: calc((var(--sim-orbit-size) / 2) - 4.8rem);
+  --satellite-radius-base: calc((var(--sim-orbit-size) / 2) - 6.2rem);
 }
+
+/* =========================
+   FONTES
+========================= */
 
 .section-kicker,
 .simulator-content h2,
@@ -15,93 +51,153 @@
   font-family: var(--font-body);
 }
 
-.finance-simulator {
-  min-height: 100vh;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 6rem 5rem;
-
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 5rem;
-}
+/* =========================
+   CONTEÚDO
+========================= */
 
 .section-kicker {
   color: #78e0cf;
-  letter-spacing: 4px;
-  font-size: 0.8rem;
+
+  font-size: clamp(0.68rem, 2.4vw, 0.8rem);
   font-weight: 700;
+
+  letter-spacing: clamp(0.12rem, 0.8vw, 0.25rem);
+
+  text-transform: uppercase;
+}
+
+.simulator-content {
+  width: 100%;
+  max-width: 42rem;
+
+  margin-inline: auto;
 }
 
 .simulator-content h2 {
-  margin-top: 1rem;
+  margin-top: clamp(0.9rem, 3vw, 1.2rem);
+  margin-bottom: 0;
+
   color: #fff;
-  font-size: clamp(3rem, 6vw, 6rem);
+
+  font-size: clamp(2.35rem, 11vw, 4.4rem);
   line-height: 0.95;
+
+  font-weight: 700;
+
+  letter-spacing: -0.06rem;
 }
 
 .simulator-content p {
-  margin-top: 2rem;
-  max-width: 560px;
+  max-width: 34rem;
+
+  margin: clamp(1.4rem, 5vw, 2rem) auto 0;
+
   color: rgba(255, 255, 255, 0.68);
-  line-height: 1.8;
+
+  font-size: clamp(0.95rem, 2.6vw, 1.05rem);
+  line-height: 1.75;
 }
 
+/* =========================
+   SLIDER
+========================= */
+
 .slider-area {
-  margin-top: 3rem;
+  width: 100%;
+  max-width: 34rem;
+
+  margin: clamp(2rem, 6vw, 3rem) auto 0;
 }
 
 .slider-header {
   display: flex;
   justify-content: space-between;
-  color: #fff;
+  align-items: center;
+  gap: 1rem;
+
   margin-bottom: 1rem;
+
+  color: #fff;
+}
+
+.slider-header span {
+  color: rgba(255, 255, 255, 0.76);
+
+  font-size: clamp(0.85rem, 2.4vw, 1rem);
 }
 
 .slider-header strong {
   color: #78e0cf;
+
+  font-size: clamp(1rem, 3vw, 1.25rem);
 }
 
 .slider-area input {
   width: 100%;
+
   accent-color: #78e0cf;
 }
 
+/* =========================
+   MÉTRICAS
+========================= */
+
 .simulator-metrics {
-  margin-top: 2rem;
+  width: 100%;
+
+  margin-top: clamp(1.5rem, 5vw, 2rem);
+
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: 1rem;
 }
 
 .simulator-metrics article {
-  padding: 1.25rem;
+  padding: clamp(1rem, 4vw, 1.25rem);
+
   border: 1px solid rgba(120, 224, 207, 0.15);
+
   background: rgba(255, 255, 255, 0.03);
-  border-radius: 20px;
+
+  border-radius: 1.25rem;
 }
 
 .simulator-metrics span {
   display: block;
+
   color: rgba(255, 255, 255, 0.6);
-  font-size: 0.85rem;
+
+  text-align: center;
+
+  font-size: clamp(0.78rem, 2.3vw, 0.85rem);
 }
 
 .simulator-metrics strong {
   display: block;
+
   margin-top: 0.8rem;
+
+  text-align: center;
+
   color: #78e0cf;
-  font-size: 1.8rem;
+
+  font-size: clamp(1.5rem, 6vw, 1.8rem);
 }
+
+/* =========================
+   ÓRBITA
+========================= */
 
 .simulator-orbit {
   position: relative;
-  width: min(520px, 90vw);
+
+  width: var(--sim-orbit-size);
   aspect-ratio: 1;
+
   margin: auto;
 
   border-radius: 50%;
+
   border: 1px solid rgba(120, 224, 207, 0.12);
 
   animation: orbitFloat 10s ease-in-out infinite;
@@ -110,8 +206,11 @@
 .simulator-orbit::before,
 .simulator-orbit::after {
   content: "";
+
   position: absolute;
+
   border-radius: 50%;
+
   border: 1px solid rgba(120, 224, 207, 0.1);
 }
 
@@ -123,14 +222,19 @@
   inset: 28%;
 }
 
+/* =========================
+   TERRA
+========================= */
+
 .simulator-earth {
   position: absolute;
+
   inset: 50%;
 
-  transform: translate(-50%, -50%);
+  width: var(--earth-size);
+  height: var(--earth-size);
 
-  width: 96px;
-  height: 96px;
+  transform: translate(-50%, -50%);
 
   border-radius: 50%;
 
@@ -139,12 +243,12 @@
   display: grid;
   place-items: center;
 
-   background: rgba(120, 224, 207, 0.06);
+  background: rgba(120, 224, 207, 0.06);
 
   box-shadow:
-    0 0 30px rgba(77, 175, 255, 0.25),
-    0 0 70px rgba(77, 175, 255, 0.12),
-    inset 0 0 20px rgba(120, 224, 207, 0.15);
+    0 0 1.875rem rgba(77, 175, 255, 0.25),
+    0 0 4.375rem rgba(77, 175, 255, 0.12),
+    inset 0 0 1.25rem rgba(120, 224, 207, 0.15);
 }
 
 .simulator-earth-img {
@@ -190,9 +294,14 @@
   pointer-events: none;
 }
 
+/* =========================
+   DETRITOS E SATÉLITES
+========================= */
+
 .debris-dot,
 .protected-satellite {
   position: absolute;
+
   top: 50%;
   left: 50%;
 
@@ -203,34 +312,167 @@
 }
 
 .debris-dot {
-  width: 8px;
-  height: 8px;
+  width: var(--debris-size);
+  height: var(--debris-size);
+
   border-radius: 50%;
+
   background: #ff5f5f;
-  box-shadow: 0 0 16px rgba(255, 95, 95, 0.8);
+
+  box-shadow:
+    0 0 1rem rgba(255, 95, 95, 0.8);
+
   animation: debrisPulse 2s ease-in-out infinite;
 }
 
 .protected-satellite {
-  width: 10px;
-  height: 10px;
-  border-radius: 2px;
+  width: var(--satellite-size);
+  height: var(--satellite-size);
+
+  border-radius: 0.15rem;
+
   background: #78e0cf;
-  box-shadow: 0 0 16px rgba(120, 224, 207, 0.8);
+
+  box-shadow:
+    0 0 1rem rgba(120, 224, 207, 0.8);
 }
 
+/* =========================
+   576px+
+========================= */
+
+@media (min-width: 576px) {
+  .finance-simulator {
+    padding:
+      clamp(5rem, 10vw, 6rem)
+      clamp(1.5rem, 5vw, 2rem);
+
+    --sim-orbit-size: clamp(24rem, 72vw, 31rem);
+    --earth-size: clamp(5rem, 14vw, 5.8rem);
+
+    --debris-radius-base: calc((var(--sim-orbit-size) / 2) - 5.6rem);
+    --satellite-radius-base: calc((var(--sim-orbit-size) / 2) - 7rem);
+  }
+
+  .simulator-content {
+    max-width: 46rem;
+  }
+
+  .simulator-content h2 {
+    font-size: clamp(3rem, 9vw, 5.2rem);
+  }
+
+  .simulator-metrics {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* =========================
+   768px+
+========================= */
+
+@media (min-width: 768px) {
+  .finance-simulator {
+    padding:
+      clamp(6rem, 9vw, 7rem)
+      clamp(2rem, 5vw, 3rem);
+
+    gap: clamp(3.5rem, 7vw, 5rem);
+
+    --sim-orbit-size: clamp(30rem, 62vw, 36rem);
+    --earth-size: clamp(5.6rem, 11vw, 6.2rem);
+
+    --debris-size: 0.5rem;
+    --satellite-size: 0.62rem;
+
+    --debris-radius-base: calc((var(--sim-orbit-size) / 2) - 6.2rem);
+    --satellite-radius-base: calc((var(--sim-orbit-size) / 2) - 8rem);
+  }
+
+  .simulator-content h2 {
+    font-size: clamp(3.6rem, 8vw, 5.8rem);
+  }
+
+  .simulator-content p {
+    max-width: 38rem;
+
+    line-height: 1.8;
+  }
+}
+
+/* =========================
+   992px+
+========================= */
+
+@media (min-width: 992px) {
+  .finance-simulator {
+    min-height: 100vh;
+
+    grid-template-columns: minmax(20rem, 1fr) minmax(28rem, 1fr);
+
+    text-align: left;
+
+    gap: clamp(3rem, 5vw, 5rem);
+
+    padding:
+      clamp(5rem, 7vw, 6.5rem)
+      clamp(3rem, 5vw, 5rem);
+
+    --sim-orbit-size: clamp(30rem, 38vw, 32.5rem);
+    --earth-size: 6rem;
+
+    --debris-radius-base: calc((var(--sim-orbit-size) / 2) - 5.5rem);
+    --satellite-radius-base: calc((var(--sim-orbit-size) / 2) - 7.2rem);
+  }
+
+  .simulator-content {
+    max-width: 36rem;
+
+    margin-inline: 0;
+  }
+
+  .simulator-content p,
+  .slider-area {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .simulator-content h2 {
+    font-size: clamp(4rem, 5.6vw, 6rem);
+  }
+}
+
+/* =========================
+   1200px+
+========================= */
+
+@media (min-width: 1200px) {
+  .finance-simulator {
+    grid-template-columns: minmax(24rem, 1fr) minmax(30rem, 1fr);
+
+    --sim-orbit-size: 32.5rem;
+    --earth-size: 6rem;
+  }
+}
+
+/* =========================
+   ANIMAÇÕES
+========================= */
+
 @keyframes orbitFloat {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
 
   50% {
-    transform: translateY(-12px);
+    transform: translateY(-0.75rem);
   }
 }
 
 @keyframes debrisPulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.45;
   }
 
@@ -245,38 +487,10 @@
   }
 
   50% {
-    transform: scale(1.11) translateX(-2px);
+    transform: scale(1.11) translateX(-0.125rem);
   }
 
   100% {
     transform: scale(1.08) translateX(0);
-  }
-}
-
-@media (max-width: 1024px) {
-  .finance-simulator {
-    grid-template-columns: 1fr;
-    text-align: center;
-    padding: 6rem 2rem;
-  }
-
-  .simulator-content p {
-    margin-inline: auto;
-  }
-}
-
-@media (max-width: 640px) {
-  .simulator-metrics {
-    grid-template-columns: 1fr;
-  }
-
-  .simulator-earth {
-    width: 72px;
-    height: 72px;
-  }
-
-  .debris-dot {
-    width: 6px;
-    height: 6px;
   }
 }
