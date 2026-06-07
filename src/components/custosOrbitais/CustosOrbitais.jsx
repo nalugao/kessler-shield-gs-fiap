@@ -1,31 +1,6 @@
 import "./custosOrbitais.css";
+import custos from "../../data/custos";
 
-const custos = [
-  {
-    nome: "Hardware",
-    valor: "US$ 10–30",
-    unidade: "milhões",
-    detalhes: ["Satélite-caçador", "Sistema de captura", "Sensores orbitais"],
-    explicacao:
-      "Faixa estimada para spacecraft buses pequenos e subsistemas embarcados, baseada em referências públicas de SmallSats."
-  },
-  {
-    nome: "Lançamento",
-    valor: "US$ 350 mil–1,4",
-    unidade: "milhão",
-    detalhes: ["Carona espacial", "Inserção orbital", "Até ~200 kg"],
-    explicacao:
-      "Estimativa baseada em programas de carona espacial, nos quais múltiplas cargas compartilham o mesmo lançamento."
-  },
-  {
-    nome: "Software",
-    valor: "US$ 500 mil–3",
-    unidade: "milhões",
-    detalhes: ["Rastreamento", "Telemetria", "Motor de risco"],
-    explicacao:
-      "Estimativa acadêmica para sistemas de rastreamento, telemetria, análise de risco e interface de missão."
-  }
-];
 
 export default function CustosOrbitais() {
   return (
@@ -34,9 +9,7 @@ export default function CustosOrbitais() {
         <span className="section-kicker">ESTRUTURA DE CUSTOS</span>
 
         <h2>
-          Três camadas para
-          <br />
-          colocar a missão em órbita.
+          Três camadas para colocar a missão em órbita.
         </h2>
 
         <p>
@@ -72,9 +45,10 @@ export default function CustosOrbitais() {
 
       <p className="costs-note">
         * Valores estimados para fins de prototipação acadêmica, baseados em
-        referências públicas de mercado, programas rideshare e estudos sobre
-        SmallSats. Os valores não representam orçamento oficial do Kessler
-        Shield.
+          referências públicas de mercado, programas rideshare e estudos sobre
+          SmallSats. Os valores representam ordens de grandeza conceituais e não
+          correspondem a orçamento oficial, cotação industrial ou custo final de missão
+          do Kessler Shield.
       </p>
     </section>
   );
