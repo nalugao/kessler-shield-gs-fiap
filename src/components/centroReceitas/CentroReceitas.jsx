@@ -73,7 +73,7 @@ export default function CentroReceitas() {
             />
           </div>
 
-          <span className="planet-name planet-name--earth">Terra</span>
+          
         </div>
 
         <div className="orbit-lane orbit-lane--b2b">

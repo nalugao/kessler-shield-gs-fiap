@@ -8,11 +8,7 @@ export default function EconomiaOrbital() {
         <span className="finance-hero__tag">ECONOMIA ORBITAL</span>
 
         <h1>
-          FINANCIANDO
-          <br />
-          O FUTURO
-          <br />
-          DO ESPAÇO
+          FINANCIANDO O FUTURO DO ESPAÇO
         </h1>
 
         <p>

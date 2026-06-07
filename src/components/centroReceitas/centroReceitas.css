@@ -39,13 +39,13 @@
 
   --planet-label-size: clamp(0.62rem, 2.3vw, 0.72rem);
 
-  --b2b-top: -2.4rem;
+  --b2b-top: -1.1rem;
   --b2g-top: -1.75rem;
   --esg-top: -1.35rem;
 
-  --b2b-name-offset: -1rem;
-  --b2g-name-offset: -0.65rem;
-  --esg-name-offset: -0.3rem;
+  --b2b-name-offset: -1.33rem;
+  --b2g-name-offset: -0.96rem;
+  --esg-name-offset: -0.15rem;
 
   --b2b-orbit-size: 84%;
   --b2g-orbit-size: 62%;
@@ -564,7 +564,7 @@
     --b2g-top: -2rem;
     --esg-top: -1.5rem;
 
-    --b2b-name-offset: -1.55rem;
+    --b2b-name-offset: -1.9rem;
     --b2g-name-offset: -0.95rem;
     --esg-name-offset: -0.2rem;
   }
