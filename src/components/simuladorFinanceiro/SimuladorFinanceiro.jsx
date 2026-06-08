@@ -1,8 +1,47 @@
 import { useMemo, useState } from "react";
+import { useLanguage } from "../context/LanguageContext";
 import "./simuladorFinanceiro.css";
 import terraImg from "../../assets/terra.gif";
 
+const SIMULADOR_FINANCEIRO_TEXT = {
+  PT: {
+    kicker: "SIMULADOR FINANCEIRO",
+    titleLine1: "Remova detritos.",
+    titleLine2: "Reduza risco.",
+    titleLine3: "Gere valor.",
+    description:
+      "Ajuste a quantidade de detritos removidos e veja como o modelo financeiro do Kessler Shield reage em tempo real.",
+    sliderLabel: "Detritos removidos",
+    riskReduction: "Redução de risco",
+    revenue: "Faturamento",
+    revenueUnit: "Milhões",
+    orbitalCredits: "Créditos orbitais",
+    orbitAriaLabel: "Simulação orbital",
+    earthAlt: "Planeta Terra",
+  },
+
+  EN: {
+    kicker: "FINANCIAL SIMULATOR",
+    titleLine1: "Remove debris.",
+    titleLine2: "Reduce risk.",
+    titleLine3: "Generate value.",
+    description:
+      "Adjust the amount of removed debris and see how Kessler Shield's financial model reacts in real time.",
+    sliderLabel: "Removed debris",
+    riskReduction: "Risk reduction",
+    revenue: "Revenue",
+    revenueUnit: "Million",
+    orbitalCredits: "Orbital credits",
+    orbitAriaLabel: "Orbital simulation",
+    earthAlt: "Planet Earth",
+  },
+};
+
 export default function SimuladorFinanceiro() {
+  const { language } = useLanguage();
+  const text =
+    SIMULADOR_FINANCEIRO_TEXT[language] || SIMULADOR_FINANCEIRO_TEXT.PT;
+
   const [removedDebris, setRemovedDebris] = useState(120);
 
   const dados = useMemo(() => {
@@ -15,31 +54,28 @@ export default function SimuladorFinanceiro() {
       riskReduction,
       revenue: revenue.toFixed(1),
       credits,
-      debrisLeft
+      debrisLeft,
     };
   }, [removedDebris]);
 
   return (
     <section className="finance-simulator">
       <div className="simulator-content">
-        <span className="section-kicker">SIMULADOR FINANCEIRO</span>
+        <span className="section-kicker">{text.kicker}</span>
 
         <h2>
-          Remova detritos.
+          {text.titleLine1}
           <br />
-          Reduza risco.
+          {text.titleLine2}
           <br />
-          Gere valor.
+          {text.titleLine3}
         </h2>
 
-        <p>
-          Ajuste a quantidade de detritos removidos e veja como o modelo
-          financeiro do Kessler Shield reage em tempo real.
-        </p>
+        <p>{text.description}</p>
 
         <div className="slider-area">
           <div className="slider-header">
-            <span>Detritos removidos</span>
+            <span>{text.sliderLabel}</span>
             <strong>{removedDebris}</strong>
           </div>
 
@@ -49,57 +85,64 @@ export default function SimuladorFinanceiro() {
             max="500"
             value={removedDebris}
             onChange={(event) => setRemovedDebris(Number(event.target.value))}
+            aria-label={text.sliderLabel}
           />
         </div>
 
         <div className="simulator-metrics">
           <article>
-            <span>Redução de risco</span>
+            <span>{text.riskReduction}</span>
             <strong>{dados.riskReduction}%</strong>
           </article>
 
           <article>
-            <span>Faturamento</span>
-            <strong>US$ {dados.revenue}Milhões</strong>
+            <span>{text.revenue}</span>
+            <strong>
+              US$ {dados.revenue} {text.revenueUnit}
+            </strong>
           </article>
 
           <article>
-            <span>Créditos orbitais</span>
+            <span>{text.orbitalCredits}</span>
             <strong>{dados.credits}</strong>
           </article>
         </div>
       </div>
 
-      <div className="simulator-orbit" aria-label="Simulação orbital">
+      <div className="simulator-orbit" aria-label={text.orbitAriaLabel}>
         <div className="simulator-earth">
-        <img
-          src={terraImg}
-          alt="Planeta Terra"
-          className="simulator-earth-img"
-        />
-      </div>
+          <img
+            src={terraImg}
+            alt={text.earthAlt}
+            className="simulator-earth-img"
+          />
+        </div>
 
         {Array.from({ length: dados.debrisLeft }).map((_, index) => (
-  <span
-    key={`debris-${index}`}
-    className="debris-dot"
-    style={{
-      "--angle": `${index * (360 / dados.debrisLeft)}deg`,
-      "--radius": `calc(var(--debris-radius-base) + ${(index % 3) * 1.35}rem)`
-    }}
-  />
-))}
+          <span
+            key={`debris-${index}`}
+            className="debris-dot"
+            style={{
+              "--angle": `${index * (360 / dados.debrisLeft)}deg`,
+              "--radius": `calc(var(--debris-radius-base) + ${
+                (index % 3) * 1.35
+              }rem)`,
+            }}
+          />
+        ))}
 
-{Array.from({ length: 7 }).map((_, index) => (
-  <span
-    key={`satellite-${index}`}
-    className="protected-satellite"
-    style={{
-      "--angle": `${index * 52}deg`,
-      "--radius": `calc(var(--satellite-radius-base) + ${(index % 2) * 2.8}rem)`
-    }}
-  />
-))}
+        {Array.from({ length: 7 }).map((_, index) => (
+          <span
+            key={`satellite-${index}`}
+            className="protected-satellite"
+            style={{
+              "--angle": `${index * 52}deg`,
+              "--radius": `calc(var(--satellite-radius-base) + ${
+                (index % 2) * 2.8
+              }rem)`,
+            }}
+          />
+        ))}
       </div>
     </section>
   );

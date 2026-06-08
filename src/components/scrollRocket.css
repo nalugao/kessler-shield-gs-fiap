@@ -1,11 +1,12 @@
 .scroll-rocket {
   position: fixed;
-  right: 28px;
+  right: 18px;
   z-index: 50;
   width: 82px;
   height: 150px;
   pointer-events: none;
-  transform: translateY(-50%);
+  transform: translateY(-50%) scale(0.72);
+  transform-origin: center right;
   opacity: 0;
   visibility: hidden;
   transition:
