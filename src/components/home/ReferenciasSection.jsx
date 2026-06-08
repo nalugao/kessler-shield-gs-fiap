@@ -50,7 +50,7 @@ export default function ReferenciasSection() {
           ))}
         </Reveal>
 
-        <Reveal style={{ marginTop: "2.5rem" }}>
+        <Reveal>
           <Link to="/referencias" className="btn btn--ghost">
             {text.button} <span className="arrow">→</span>
           </Link>

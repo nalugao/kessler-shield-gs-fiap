@@ -23,7 +23,7 @@ const FINANCEIRO_TEXT = {
         title: "ADR-as-a-Service",
         description:
           "Contratos de remoção sob demanda para agências espaciais e governos. Remoção priorizada de objetos de alto risco em órbitas críticas.",
-        metric: "US$ por missão",
+        metric: "Por contrato",
         metricLabel: "contratos plurianuais",
       },
       {
@@ -57,7 +57,7 @@ const FINANCEIRO_TEXT = {
         title: "ADR-as-a-Service",
         description:
           "On-demand removal contracts for space agencies and governments. Prioritized removal of high-risk objects in critical orbits.",
-        metric: "US$ per mission",
+        metric: "On contract",
         metricLabel: "multi-year contracts",
       },
       {

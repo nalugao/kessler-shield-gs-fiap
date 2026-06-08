@@ -11,7 +11,7 @@ const membros = [
   {
     id: 2,
     foto: "/images/nat.png",
-    nome: "Natália Lugão",
+    nome: "Natalia Lugão",
     cargo: "Cargo / Função",
     descricao: "Responsável pelo desenvolvimento do front-end e identidade visual do projeto, garantindo a experiência do usuário."
   },
@@ -55,15 +55,15 @@ const MembroCard = ({ membro }) => (
 )
 
 const Equipe = () => {
-  const top = membros.slice(0, 3)
-  const bottom = membros.slice(3)
+  // const top = membros.slice(0, 3)
+  // const bottom = membros.slice(3)
 
   return (
     <section className="section section--alt" id="quem-somos">
       <div className="wrap">
 
         <div className="section-head">
-          <span className="label">06 — Quem Somos</span>
+          <p>06 — Quem Somos</p>
           <div className="divider"></div>
           <h2 className="section-title">A EQUIPE</h2>
           <p className="section-intro">

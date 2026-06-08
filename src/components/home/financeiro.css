@@ -23,7 +23,7 @@
   font-weight: 700;
   margin: 0.75rem 0 1rem;
 }
-.rev-card p { font-size: 0.9rem; color: var(--text); flex: 1; }
+.rev-card p { font-size: 0.9rem; color: var(--white); flex: 1; }
 .rev-card .metric {
   margin-top: 1.5rem;
   padding-top: 1.25rem;
