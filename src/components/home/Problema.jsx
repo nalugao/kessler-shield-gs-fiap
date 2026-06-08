@@ -136,6 +136,7 @@ export default function Problema() {
                 loop
                 playsInline
               />
+              <p className="video-fonte">Fonte: https://orbitaldebris.jsc.nasa.gov/modeling/</p>
             </div>
             <div className="stat-cards">
               {t.stats.map((s) => (

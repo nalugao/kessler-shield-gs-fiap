@@ -153,6 +153,12 @@
   object-fit: cover;
 }
 
+.video-fonte {
+  font-size: 0.7rem;
+  color: var(--white);
+  letter-spacing: 0.04em;
+  margin: 0 0 20px;
+}
 
 /* stat cards (coluna direita) */
 .stat-cards {
