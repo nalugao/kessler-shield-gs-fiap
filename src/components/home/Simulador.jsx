@@ -4,7 +4,7 @@ import './simulador.css';
 
 export default function Simulador() {
   return (
-    <section className="section sim-cta-section">
+    <section className="section sim-cta-section" id="simulador">
       <div className="wrap">
         <Reveal className="sim-cta">
           <div className="sim-cta-orbit" aria-hidden="true">

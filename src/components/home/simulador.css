@@ -1,6 +1,3 @@
-/* ============================================================
-   SimuladorCTA (entre o hero e a seção "O Problema")
-   ============================================================ */
 .sim-cta-section { border-bottom: 1px solid var(--line-soft); }
 .sim-cta {
   display: grid;
