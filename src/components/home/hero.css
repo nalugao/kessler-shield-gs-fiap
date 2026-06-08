@@ -62,8 +62,6 @@
 }
 
 .hero-stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 3rem;
   margin-top: 3rem;
   padding-top: 2rem;
@@ -76,7 +74,7 @@
   font-size: clamp(1.2rem, 2.5vw, 1.8rem);
   font-weight: 700;
   color: var(--white);
-  margin: 0;
+  margin: 0 0 10px;
 }
 
 .hero-video {
@@ -84,6 +82,8 @@
   aspect-ratio: 16 / 9;
   border-radius: 6px;
   overflow: hidden;
+  width: 50%;
+  margin: 0 auto; /* <- isso centraliza o bloco */
 }
 
 .hero-video iframe {
