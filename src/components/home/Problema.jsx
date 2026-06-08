@@ -1,57 +1,118 @@
 import { Link } from "react-router-dom";
-import './problema.css'
-import '../../index.css'
+import { useLanguage } from "../context/LanguageContext";
+import "./problema.css";
+import "../../index.css";
+
+const PROBLEMA_TEXT = {
+  PT: {
+    label: "01 — O Problema",
+    title: (
+      <>
+        A Síndrome
+        <br />
+        de Kessler
+      </>
+    ),
+    intro:
+      "Uma reação em cadeia teórica em que a densidade de objetos na órbita baixa é alta o suficiente para que colisões gerem mais detritos — tornando faixas inteiras da órbita inutilizáveis por gerações.",
+    button: "Ver análise completa",
+    stats: [
+      {
+        value: "~40.000",
+        desc: "objetos rastreados em órbita pelas redes de vigilância espacial",
+        source: "Fonte: ESA Space Debris Office",
+      },
+      {
+        value: ">1,2M",
+        desc: "fragmentos maiores que 1 cm — pequenos demais para rastrear, letais o suficiente para destruir",
+        source: "Fonte: ESA / Modelo MASTER",
+      },
+      {
+        value: "~10 km/s",
+        desc: "velocidade média relativa de colisão — energia comparável a uma granada",
+        source: "Fonte: NASA ODPO",
+      },
+      {
+        value: "~US$580M",
+        desc: "mercado anual de seguro espacial sob risco crescente de sinistros",
+        source: "Fonte: Análise de mercado",
+      },
+    ],
+  },
+
+  EN: {
+    label: "01 — The Problem",
+    title: (
+      <>
+        The Kessler
+        <br />
+        Syndrome
+      </>
+    ),
+    intro:
+      "A theoretical chain reaction in which the density of objects in low Earth orbit becomes high enough for collisions to generate even more debris — making entire orbital regions unusable for generations.",
+    button: "See full analysis",
+    stats: [
+      {
+        value: "~40,000",
+        desc: "objects tracked in orbit by space surveillance networks",
+        source: "Source: ESA Space Debris Office",
+      },
+      {
+        value: ">1.2M",
+        desc: "fragments larger than 1 cm — too small to track, but lethal enough to destroy",
+        source: "Source: ESA / MASTER Model",
+      },
+      {
+        value: "~10 km/s",
+        desc: "average relative collision speed — energy comparable to a grenade",
+        source: "Source: NASA ODPO",
+      },
+      {
+        value: "~US$580M",
+        desc: "annual space insurance market under growing claims risk",
+        source: "Source: Market analysis",
+      },
+    ],
+  },
+};
 
 const Problema = () => {
-    return (
-        <section className="section" id="problema">
-            <div className="wrap">
-                <div className="split">
+  const { language } = useLanguage();
 
-                    <div>
-                        <span className="section-label">01 — O Problema</span>
-                        <h2 className="section-title">
-                            A Síndrome<br />de Kessler
-                        </h2>
-                        <p className="section-intro">
-                            Uma reação em cadeia teórica em que a densidade de objetos na órbita
-                            baixa é alta o suficiente para que colisões gerem mais detritos —
-                            tornando faixas inteiras da órbita inutilizáveis por gerações.
-                        </p>
-                        <div className="section-link">
-                            <Link to="/problema" className="btn btn--ghost">
-                                Ver análise completa <span className="arrow">→</span>
-                            </Link>
-                        </div>
-                    </div>
+  const text = PROBLEMA_TEXT[language] || PROBLEMA_TEXT.PT;
 
-                    <div className="stat-grid">
-                        <div className="stat-cell">
-                            <div className="num">~40.000</div>
-                            <div className="desc">objetos rastreados em órbita pelas redes de vigilância espacial</div>
-                            <div className="src">Fonte: ESA Space Debris Office</div>
-                        </div>
-                        <div className="stat-cell">
-                            <div className="num">&gt;1,2M</div>
-                            <div className="desc">fragmentos maiores que 1 cm — pequenos demais para rastrear, letais o suficiente para destruir</div>
-                            <div className="src">Fonte: ESA / Modelo MASTER</div>
-                        </div>
-                        <div className="stat-cell">
-                            <div className="num">~10 km/s</div>
-                            <div className="desc">velocidade média relativa de colisão — energia comparável a uma granada</div>
-                            <div className="src">Fonte: NASA ODPO</div>
-                        </div>
-                        <div className="stat-cell">
-                            <div className="num">~US$580M</div>
-                            <div className="desc">mercado anual de seguro espacial sob risco crescente de sinistros</div>
-                            <div className="src">Fonte: Análise de mercado</div>
-                        </div>
-                    </div>
+  return (
+    <section className="section" id="problema">
+      <div className="wrap">
+        <div className="split">
+          <div>
+            <span className="section-label">{text.label}</span>
 
-                </div>
+            <h2 className="section-title">{text.title}</h2>
+
+            <p className="section-intro">{text.intro}</p>
+
+            <div className="section-link">
+              <Link to="/problema" className="btn btn--ghost">
+                {text.button} <span className="arrow">→</span>
+              </Link>
             </div>
-        </section>
-    )
-}
+          </div>
 
-export default Problema
+          <div className="stat-grid">
+            {text.stats.map((stat) => (
+              <div className="stat-cell" key={stat.value}>
+                <div className="num">{stat.value}</div>
+                <div className="desc">{stat.desc}</div>
+                <div className="src">{stat.source}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Problema;
