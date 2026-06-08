@@ -25,11 +25,6 @@
   transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
 }
 
-.membro-card:hover {
-  border-color: var(--line);
-  transform: translateY(-4px);
-}
-
 .membro-foto {
   width: 100%;
   aspect-ratio: 1 / 1;
