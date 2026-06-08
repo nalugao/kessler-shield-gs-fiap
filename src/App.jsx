@@ -1,22 +1,17 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./index.css";
+
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Referencias from "./pages/Referencias";
 import SolucaoPage from "./pages/Solucao";
+import Financeiro from "./pages/Financeiro";
+import ContatoPage from "./pages/Contato";
+
 import Starfield from "./components/Starfield";
 import ScrollManager from "./components/ScrollManager";
 import ScrollRocket from "./components/ScrollRocket";
 import { LanguageProvider } from "./components/context/LanguageContext";
-
-function Financeiro() {
-  return (
-    <main className="page-placeholder">
-      <h1>Financeiro</h1>
-      <p>Página financeira do projeto em construção.</p>
-    </main>
-  );
-}
 
 function App() {
   return (

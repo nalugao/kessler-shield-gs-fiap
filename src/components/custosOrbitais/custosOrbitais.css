@@ -1,0 +1,375 @@
+/* =========================
+   BASE MOBILE
+   320px até 575px
+========================= */
+
+.orbital-costs {
+  width: 100%;
+  max-width: 90rem;
+
+  margin: 0 auto;
+
+  padding:
+    clamp(4rem, 12vw, 5.5rem)
+    clamp(1.25rem, 5vw, 1.75rem);
+
+  font-family: var(--font-body);
+}
+
+.orbital-costs .section-kicker,
+.costs-header h2,
+.cost-name,
+.cost-main-value strong,
+.cost-unit {
+  font-family: var(--font-display);
+}
+
+.costs-header p,
+.cost-details ul,
+.cost-details p,
+.costs-note {
+  font-family: var(--font-body);
+}
+
+/* =========================
+   CABEÇALHO
+========================= */
+
+.costs-header {
+  width: min(100%, 61.25rem);
+
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+.orbital-costs .section-kicker {
+  display: inline-block;
+
+  color: #78e0cf;
+
+  font-size: clamp(0.68rem, 2.4vw, 0.8rem);
+  font-weight: 700;
+
+  letter-spacing: clamp(0.12rem, 0.8vw, 0.25rem);
+
+  text-transform: uppercase;
+}
+
+.costs-header h2 {
+  margin-top: clamp(0.9rem, 3vw, 1.2rem);
+  margin-bottom: 0;
+
+  color: #fff;
+
+  font-size: clamp(2.25rem, 10.5vw, 4.2rem);
+  line-height: 1;
+
+  font-weight: 500;
+
+  letter-spacing: -0.06rem;
+
+  text-wrap: balance;
+}
+
+.costs-header p {
+  width: min(100%, 45rem);
+
+  margin: clamp(1.25rem, 4vw, 1.5rem) auto 0;
+
+  color: rgba(255, 255, 255, 0.62);
+
+  font-size: clamp(0.95rem, 2.6vw, 1.05rem);
+  line-height: 1.75;
+}
+
+/* =========================
+   GRID DE CUSTOS
+========================= */
+
+.costs-grid {
+  margin-top: clamp(3rem, 10vw, 5rem);
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.25rem, 4vw, 2rem);
+}
+
+.cost-item {
+  position: relative;
+
+  min-height: auto;
+
+  padding: clamp(1.35rem, 5vw, 2rem);
+
+  border-radius: clamp(1.35rem, 5vw, 1.875rem);
+
+  border: 1px solid rgba(120, 224, 207, 0.14);
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(120, 224, 207, 0.1),
+      transparent 36%
+    ),
+    rgba(255, 255, 255, 0.03);
+
+  overflow: hidden;
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.cost-item::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: clamp(1rem, 5vw, 1.5rem);
+  right: clamp(1rem, 5vw, 1.5rem);
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(120, 224, 207, 0.8),
+      transparent
+    );
+
+  opacity: 0.6;
+}
+
+.cost-item:hover {
+  transform: translateY(-0.4rem);
+
+  border-color: rgba(120, 224, 207, 0.42);
+
+  box-shadow:
+    0 1.5rem 4.375rem rgba(0, 0, 0, 0.35),
+    0 0 2.25rem rgba(120, 224, 207, 0.12);
+}
+
+/* =========================
+   TOPO DO CARD
+========================= */
+
+.cost-top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.cost-name {
+  color: #fff;
+
+  font-size: clamp(1.1rem, 4vw, 1.35rem);
+  font-weight: 800;
+
+  letter-spacing: 0.02rem;
+}
+
+/* =========================
+   VALOR PRINCIPAL
+========================= */
+
+.cost-main-value {
+  margin-top: clamp(1.25rem, 5vw, 2rem);
+}
+
+.cost-main-value strong {
+  display: block;
+
+  color: #78e0cf;
+
+  font-size: clamp(1.85rem, 8vw, 2.35rem);
+  line-height: 0.95;
+
+  font-weight: 900;
+
+  letter-spacing: -0.04rem;
+
+  overflow-wrap: break-word;
+}
+
+.cost-unit {
+  display: block;
+
+  margin-top: 0.45rem;
+
+  color: rgba(120, 224, 207, 0.86);
+
+  font-size: clamp(0.72rem, 2.6vw, 0.95rem);
+  font-weight: 800;
+
+  letter-spacing: clamp(0.08rem, 0.5vw, 0.125rem);
+
+  text-transform: uppercase;
+}
+
+/* =========================
+   DETALHES
+========================= */
+
+.cost-details {
+  margin-top: clamp(1.5rem, 5vw, 2rem);
+
+  padding: clamp(1rem, 4vw, 1.2rem);
+
+  border-radius: clamp(1rem, 4vw, 1.375rem);
+
+  border: 1px solid rgba(120, 224, 207, 0.16);
+
+  background: rgba(2, 8, 20, 0.86);
+
+  backdrop-filter: blur(14px);
+}
+
+.cost-details ul {
+  margin: 0;
+
+  padding-left: 1rem;
+
+  color: rgba(255, 255, 255, 0.82);
+
+  font-size: clamp(0.88rem, 2.5vw, 0.98rem);
+  line-height: 1.7;
+}
+
+.cost-details p {
+  margin-top: 1rem;
+  margin-bottom: 0;
+
+  color: rgba(255, 255, 255, 0.55);
+
+  font-size: clamp(0.78rem, 2.2vw, 0.86rem);
+  line-height: 1.6;
+}
+
+/* =========================
+   NOTA FINAL
+========================= */
+
+.costs-note {
+  width: min(100%, 53rem);
+
+  margin: clamp(2rem, 7vw, 3rem) auto 0;
+
+  text-align: center;
+
+  color: rgba(255, 255, 255, 0.45);
+
+  font-size: clamp(0.76rem, 2.2vw, 0.82rem);
+  line-height: 1.7;
+}
+
+/* =========================
+   576px+
+========================= */
+
+@media (min-width: 576px) {
+  .orbital-costs {
+    padding:
+      clamp(5rem, 10vw, 6rem)
+      clamp(1.5rem, 5vw, 2rem);
+  }
+
+  .costs-header h2 {
+    font-size: clamp(3rem, 8vw, 5rem);
+  }
+
+  .costs-header p {
+    font-size: clamp(1rem, 2.2vw, 1.08rem);
+  }
+
+  .costs-grid {
+    gap: 1.5rem;
+  }
+
+  .cost-main-value strong {
+    font-size: clamp(2.1rem, 6vw, 2.6rem);
+  }
+}
+
+/* =========================
+   768px+
+========================= */
+
+@media (min-width: 768px) {
+  .orbital-costs {
+    padding:
+      clamp(6rem, 9vw, 7rem)
+      clamp(2rem, 5vw, 3rem);
+  }
+
+  .costs-header h2 {
+    font-size: clamp(3.6rem, 7vw, 5.5rem);
+  }
+
+  .costs-header p {
+    line-height: 1.8;
+  }
+
+  .costs-grid {
+    grid-template-columns: 1fr;
+
+    margin-top: clamp(4rem, 8vw, 5rem);
+  }
+
+  .cost-item {
+    min-height: auto;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cost-details {
+    flex: initial;
+  }
+}
+
+/* =========================
+   992px+
+========================= */
+
+@media (min-width: 992px) {
+  .orbital-costs {
+    padding:
+      clamp(6.5rem, 8vw, 7rem)
+      clamp(3rem, 5vw, 5rem);
+  }
+
+  .costs-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: clamp(1.5rem, 2vw, 2rem);
+  }
+
+  .cost-item {
+    min-height: 24rem;
+  }
+
+  .cost-main-value strong {
+    font-size: clamp(1.85rem, 2.4vw, 2.2rem);
+  }
+}
+
+/* =========================
+   1200px+
+========================= */
+
+@media (min-width: 1200px) {
+  .orbital-costs {
+    padding:
+      7rem
+      clamp(4rem, 5vw, 5rem);
+  }
+
+  .cost-item {
+    min-height: 23.75rem;
+  }
+}

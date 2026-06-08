@@ -1,0 +1,688 @@
+/* =========================
+   FONTES
+========================= */
+
+.centro-receitas {
+  width: 100%;
+
+  font-family: var(--font-body);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.planet-name,
+.receita-tipo,
+.market-popup__title,
+.market-popup__value,
+.market-popup__highlight {
+  font-family: var(--font-display);
+}
+
+.market-popup__subtitle,
+.market-popup__description {
+  font-family: var(--font-body);
+}
+
+/* =========================
+   BASE MOBILE
+   320px até 575px
+========================= */
+
+.centro-receitas {
+  --orbit-size: clamp(17.5rem, 88vw, 22rem);
+  --earth-size: clamp(4rem, 18vw, 5.25rem);
+
+  --satellite-width: clamp(5.6rem, 29vw, 7rem);
+  --satellite-height: clamp(3rem, 15vw, 3.9rem);
+
+  --planet-label-size: clamp(0.62rem, 2.3vw, 0.72rem);
+
+  --b2b-top: -1.1rem;
+  --b2g-top: -1.75rem;
+  --esg-top: -1.35rem;
+
+  --b2b-name-offset: -1.33rem;
+  --b2g-name-offset: -0.96rem;
+  --esg-name-offset: -0.15rem;
+
+  --b2b-orbit-size: 84%;
+  --b2g-orbit-size: 62%;
+  --esg-orbit-size: 42%;
+}
+
+.orbit-explorer {
+  width: var(--orbit-size);
+  aspect-ratio: 1;
+
+  position: relative;
+
+  margin-inline: auto;
+
+  animation: explorerFloat 12s ease-in-out infinite;
+}
+
+/* =========================
+   TERRA NO CENTRO
+========================= */
+
+.planet-core {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+
+  z-index: 10;
+
+  pointer-events: none;
+}
+
+.planet-sphere {
+  border-radius: 50%;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+.planet-sphere--earth {
+  width: var(--earth-size);
+  height: var(--earth-size);
+
+  background: #07131f;
+
+  box-shadow:
+    0 0 2.25rem rgba(77, 175, 255, 0.28),
+    0 0 5.5rem rgba(77, 175, 255, 0.12),
+    inset -1.1rem -1.1rem 1.5rem rgba(0, 0, 0, 0.22),
+    inset 0.9rem 0.9rem 1.4rem rgba(255, 255, 255, 0.08);
+}
+
+.planet-earth-image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+  object-position: center;
+
+  border-radius: 50%;
+
+  transform: scale(1.06);
+
+  animation: earthDrift 18s ease-in-out infinite;
+}
+
+.planet-name {
+  color: rgba(255, 255, 255, 0.82);
+
+  font-size: var(--planet-label-size);
+  font-weight: 700;
+
+  letter-spacing: clamp(0.05rem, 0.4vw, 0.095rem);
+  text-transform: uppercase;
+
+  transition: color 0.3s ease;
+}
+
+.planet-name--earth {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+/* =========================
+   ÓRBITAS
+========================= */
+
+.orbit-lane {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(120, 224, 207, 0.2);
+
+  transform: translate(-50%, -50%);
+
+  pointer-events: none;
+
+  box-shadow:
+    0 0 1.5rem rgba(120, 224, 207, 0.06),
+    inset 0 0 1.5rem rgba(120, 224, 207, 0.03);
+}
+
+.orbit-lane--b2b {
+  width: var(--b2b-orbit-size);
+  height: var(--b2b-orbit-size);
+
+  animation: orbitSpin 34s linear infinite;
+}
+
+.orbit-lane--b2g {
+  width: var(--b2g-orbit-size);
+  height: var(--b2g-orbit-size);
+
+  animation: orbitSpinReverse 26s linear infinite;
+}
+
+.orbit-lane--esg {
+  width: var(--esg-orbit-size);
+  height: var(--esg-orbit-size);
+
+  animation: orbitSpin 20s linear infinite;
+}
+
+.centro-receitas.is-exploring .orbit-lane--b2b {
+  animation-duration: 58s;
+}
+
+.centro-receitas.is-exploring .orbit-lane--b2g {
+  animation-duration: 48s;
+}
+
+.centro-receitas.is-exploring .orbit-lane--esg {
+  animation-duration: 38s;
+}
+
+/* =========================
+   SATÉLITES
+========================= */
+
+.planet-node {
+  position: absolute;
+
+  top: var(--b2g-top);
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  background: transparent;
+
+  border: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+
+  cursor: pointer;
+
+  pointer-events: auto;
+
+  color: white;
+
+  z-index: 12;
+}
+
+.planet-node--b2b {
+  top: var(--b2b-top);
+}
+
+.planet-node--b2g {
+  top: var(--b2g-top);
+}
+
+.planet-node--esg {
+  top: var(--esg-top);
+}
+
+.planet-node--b2b .planet-name {
+  margin-top: var(--b2b-name-offset);
+}
+
+.planet-node--b2g .planet-name {
+  margin-top: var(--b2g-name-offset);
+}
+
+.planet-node--esg .planet-name {
+  margin-top: var(--esg-name-offset);
+}
+
+.satellite-visual {
+  width: var(--satellite-width);
+  height: var(--satellite-height);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  transition:
+    transform 0.35s ease,
+    filter 0.35s ease,
+    opacity 0.35s ease;
+}
+
+.satellite-image {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  display: block;
+
+  filter:
+    drop-shadow(0 0 0.75rem rgba(120, 224, 207, 0.18))
+    drop-shadow(0 0 1.6rem rgba(120, 224, 207, 0.08));
+}
+
+.satellite-visual--b2b .satellite-image {
+  transform: scale(1.55);
+}
+
+.satellite-visual--esg .satellite-image {
+  transform: translateY(0.7rem);
+}
+
+.planet-node:hover .satellite-visual {
+  transform: scale(1.08);
+}
+
+.planet-node.active .satellite-visual {
+  transform: scale(1.12);
+}
+
+.planet-node.active .planet-name {
+  color: #78e0cf;
+}
+
+/* =========================
+   MODAL BOOTSTRAP CUSTOMIZADO
+========================= */
+
+.market-modal {
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(120, 224, 207, 0.08),
+      rgba(2, 8, 20, 0.86) 55%,
+      rgba(2, 8, 20, 0.98)
+    );
+
+  backdrop-filter: blur(12px);
+}
+
+.market-modal-dialog {
+  width: min(94vw, 42.5rem);
+  max-width: 42.5rem;
+
+  margin-inline: auto;
+}
+
+.market-popup {
+  position: relative;
+
+  width: 100%;
+
+  text-align: center;
+
+  border-radius: clamp(1.25rem, 4vw, 1.625rem);
+
+  border: 1px solid rgba(120, 224, 207, 0.24);
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(120, 224, 207, 0.08),
+      transparent 36%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(7, 17, 31, 0.98),
+      rgba(2, 8, 20, 0.94)
+    );
+
+  color: white;
+
+  box-shadow:
+    0 1.875rem 5.625rem rgba(0, 0, 0, 0.62),
+    0 0 3.75rem rgba(120, 224, 207, 0.16),
+    inset 0 0 2.125rem rgba(120, 224, 207, 0.05);
+
+  overflow: hidden;
+}
+
+.market-popup__body {
+  padding:
+    clamp(1.45rem, 4vw, 2rem)
+    clamp(1rem, 4vw, 2rem)
+    clamp(1.45rem, 4vw, 2.2rem) !important;
+
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* =========================
+   BOTÃO X
+========================= */
+
+.market-popup__close {
+  position: absolute;
+
+  top: clamp(0.45rem, 1.5vw, 0.65rem);
+  right: clamp(0.45rem, 1.5vw, 0.65rem);
+
+  width: clamp(1.875rem, 7vw, 2.125rem);
+  height: clamp(1.875rem, 7vw, 2.125rem);
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(120, 224, 207, 0.28);
+
+  background: rgba(255, 255, 255, 0.04);
+
+  color: rgba(255, 255, 255, 0.8);
+
+  font-size: clamp(1rem, 4vw, 1.3rem);
+  line-height: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  z-index: 10;
+
+  transition: 0.25s ease;
+}
+
+.market-popup__close:hover {
+  color: #78e0cf;
+
+  background: rgba(120, 224, 207, 0.08);
+
+  border-color: rgba(120, 224, 207, 0.65);
+
+  box-shadow:
+    0 0 1.4rem rgba(120, 224, 207, 0.25);
+
+  transform: rotate(90deg);
+}
+
+/* =========================
+   CONTEÚDO DO MODAL
+========================= */
+
+.receita-tipo {
+  display: inline-block;
+
+  padding: 0.28rem 0.72rem;
+
+  margin-bottom: clamp(0.6rem, 2vw, 0.85rem);
+
+  border-radius: 999px;
+
+  border: 1px solid rgba(120, 224, 207, 0.3);
+
+  background: rgba(120, 224, 207, 0.08);
+
+  color: #78e0cf;
+
+  font-size: clamp(0.62rem, 2.4vw, 0.7rem);
+  font-weight: 700;
+
+  letter-spacing: 0.06rem;
+
+  text-transform: uppercase;
+}
+
+.market-popup__title {
+  max-width: 100%;
+
+  margin-top: 0;
+  margin-bottom: 0;
+
+  padding-inline: 0;
+
+  color: #fff;
+
+  font-size: clamp(1.55rem, 7vw, 3.1rem);
+  line-height: 0.95;
+
+  letter-spacing: -1px;
+
+  text-align: center;
+
+  
+  
+}
+
+.market-popup__subtitle {
+  max-width: 35rem;
+
+  margin-top: clamp(0.75rem, 2vw, 1rem);
+  margin-bottom: 0;
+
+  color: rgba(255, 255, 255, 0.58);
+
+  text-align: center;
+
+  line-height: 1.5;
+  font-size: clamp(0.82rem, 2.4vw, 0.95rem);
+}
+
+.market-popup__value {
+  display: block;
+
+  margin-top: clamp(1rem, 3vw, 1.35rem);
+
+  color: #78e0cf;
+
+  font-size: clamp(1.9rem, 11vw, 4rem);
+  line-height: 0.9;
+
+  text-align: center;
+
+  font-weight: 900;
+
+  letter-spacing: -0.05rem;
+}
+
+.market-popup__highlight {
+  display: block;
+
+  margin-top: clamp(0.5rem, 2vw, 0.7rem);
+
+  color: rgba(120, 224, 207, 0.9);
+
+  font-size: clamp(0.6rem, 2vw, 0.68rem);
+  font-weight: 800;
+
+  text-align: center;
+
+  letter-spacing: clamp(0.07rem, 0.4vw, 0.095rem);
+
+  text-transform: uppercase;
+}
+
+.market-popup__description {
+  max-width: 36.25rem;
+
+  margin-top: clamp(0.9rem, 3vw, 1.35rem);
+  margin-bottom: 0;
+
+  color: rgba(255, 255, 255, 0.76);
+
+  line-height: 1.5;
+  font-size: clamp(0.82rem, 2.4vw, 0.95rem);
+
+  text-align: center;
+}
+
+/* =========================
+   CORES POR TIPO
+========================= */
+
+.market-popup--b2g {
+  border-color: rgba(110, 214, 255, 0.32);
+
+  box-shadow:
+    0 1.875rem 5.625rem rgba(0, 0, 0, 0.62),
+    0 0 3.75rem rgba(110, 214, 255, 0.18),
+    inset 0 0 2.125rem rgba(110, 214, 255, 0.05);
+}
+
+.market-popup--esg {
+  border-color: rgba(109, 255, 155, 0.32);
+
+  box-shadow:
+    0 1.875rem 5.625rem rgba(0, 0, 0, 0.62),
+    0 0 3.75rem rgba(109, 255, 155, 0.18),
+    inset 0 0 2.125rem rgba(109, 255, 155, 0.05);
+}
+
+/* =========================
+   576px+
+========================= */
+
+@media (min-width: 576px) {
+  .centro-receitas {
+    --orbit-size: clamp(22rem, 72vw, 28rem);
+    --earth-size: clamp(5rem, 14vw, 5.8rem);
+
+    --satellite-width: clamp(7rem, 22vw, 8.5rem);
+    --satellite-height: clamp(3.9rem, 12vw, 4.7rem);
+
+    --planet-label-size: 0.75rem;
+
+    --b2b-top: -1.7rem;
+    --b2g-top: -2rem;
+    --esg-top: -1.5rem;
+
+    --b2b-name-offset: -1.9rem;
+    --b2g-name-offset: -0.95rem;
+    --esg-name-offset: -0.2rem;
+  }
+
+  .satellite-visual--b2b .satellite-image {
+    transform: scale(1.65);
+  }
+
+  .satellite-visual--esg .satellite-image {
+    transform: translateY(1rem);
+  }
+}
+
+/* =========================
+   768px+
+========================= */
+
+@media (min-width: 768px) {
+  .centro-receitas {
+    --orbit-size: clamp(28rem, 58vw, 34rem);
+    --earth-size: clamp(5.6rem, 11vw, 6.5rem);
+
+    --satellite-width: clamp(8.5rem, 17vw, 9.4rem);
+    --satellite-height: clamp(4.7rem, 9vw, 5.125rem);
+
+    --planet-label-size: 0.82rem;
+
+    --b2b-top: -1.1rem;
+    --b2g-top: -2.5rem;
+    --esg-top: -1.8rem;
+
+    --b2b-name-offset: -2.05rem;
+    --b2g-name-offset: -1.25rem;
+    --esg-name-offset: 0rem;
+  }
+
+  .market-modal-dialog {
+    width: min(88vw, 42.5rem);
+  }
+}
+
+/* =========================
+   992px+
+========================= */
+
+@media (min-width: 992px) {
+  .centro-receitas {
+    --orbit-size: clamp(34rem, 44vw, 38.75rem);
+    --earth-size: 6.5rem;
+
+    --satellite-width: 9.375rem;
+    --satellite-height: 5.125rem;
+
+    --b2b-top: -1.125rem;
+    --b2g-top: -2.625rem;
+    --esg-top: -1.9rem;
+
+    --b2b-name-offset: -2.2rem;
+    --b2g-name-offset: -1.3rem;
+    --esg-name-offset: 0rem;
+  }
+}
+
+/* =========================
+   1200px+
+========================= */
+
+@media (min-width: 1200px) {
+  .centro-receitas {
+    --orbit-size: 38.75rem;
+  }
+}
+
+/* =========================
+   ANIMAÇÕES
+========================= */
+
+@keyframes orbitSpin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes orbitSpinReverse {
+  from {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+@keyframes explorerFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-0.625rem);
+  }
+}
+
+@keyframes earthDrift {
+  0% {
+    transform: scale(1.06) translateX(0);
+  }
+
+  50% {
+    transform: scale(1.09) translateX(-0.125rem);
+  }
+
+  100% {
+    transform: scale(1.06) translateX(0);
+  }
+}
