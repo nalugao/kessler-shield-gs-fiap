@@ -13,8 +13,8 @@ const Hero = () => {
               O espaço está ficando inacessível. <strong>Cada colisão gera mil novos fragmentos.</strong> Nós encerramos esse ciclo antes que ele encerre o nosso acesso ao espaço.
             </p>
             <div className="hero-cta">
-              <Link to="/#solucao" className="btn btn--primary">Conheça o sistema <span className="arrow">→</span></Link>
-              <Link to="/#problema" className="btn btn--outline">Entenda o problema</Link>
+              <Link to="/#problema" className="btn btn--primary">Entenda o problema</Link>
+              <Link to="/#solucao" className="btn btn--outline">Conheça o sistema <span className="arrow">→</span></Link>
             </div>
             <div className="hero-stats">
               <h2 className="stats-title">Entenda o projeto</h2>
