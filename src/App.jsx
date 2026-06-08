@@ -6,7 +6,6 @@ import Home from "./pages/Home";
 import Referencias from "./pages/Referencias";
 import SolucaoPage from "./pages/Solucao";
 import Financeiro from "./pages/Financeiro";
-import ContatoPage from "./pages/Contato";
 
 import Starfield from "./components/Starfield";
 import ScrollManager from "./components/ScrollManager";
