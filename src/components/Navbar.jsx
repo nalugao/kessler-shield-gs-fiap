@@ -140,6 +140,13 @@ export default function Navbar() {
               >
                 {t("navContato")}
               </button>
+                            <button
+                type="button"
+                className="dropdown-item-button"
+                onClick={() => goToHomeSection("Quem Somos")}
+              >
+                {t("navQuemSomos")}
+              </button>
             </div>
           </div>
 
