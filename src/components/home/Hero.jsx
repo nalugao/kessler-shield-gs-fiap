@@ -9,11 +9,15 @@ const HERO_TEXT = {
     subtitle: "Captura de detritos por Polímero Expansível",
     taglineStart: "O espaço está ficando inacessível.",
     taglineStrong: "Cada colisão gera mil novos fragmentos.",
-    taglineEnd: "Nós encerramos esse ciclo antes que ele encerre o nosso acesso ao espaço.",
+    taglineEnd:
+      "Nós encerramos esse ciclo antes que ele encerre o nosso acesso ao espaço.",
     primaryButton: "Entenda o problema",
     secondaryButton: "Conheça o sistema",
     videoTitle: "Kessler Shield",
+    seeMore: "Veja mais↗",
+    imageAlt: "Capa do projeto Kessler Shield",
   },
+
   EN: {
     titlePartOne: "KESSLER",
     titlePartTwo: "SHIELD",
@@ -24,6 +28,8 @@ const HERO_TEXT = {
     primaryButton: "Understand the problem",
     secondaryButton: "Explore the system",
     videoTitle: "Kessler Shield",
+    seeMore: "See more↗",
+    imageAlt: "Kessler Shield project cover",
   },
 };
 
@@ -43,8 +49,7 @@ const Hero = () => {
           <p className="hero-sub">{text.subtitle}</p>
 
           <p className="hero-tagline">
-            {text.taglineStart}{" "}
-            <strong>{text.taglineStrong}</strong>{" "}
+            {text.taglineStart} <strong>{text.taglineStrong}</strong>{" "}
             {text.taglineEnd}
           </p>
 
@@ -52,6 +57,7 @@ const Hero = () => {
             <Link to="/#problema" className="btn btn--primary">
               {text.primaryButton}
             </Link>
+
             <Link to="/#solucao" className="btn btn--outline">
               {text.secondaryButton} <span className="arrow">→</span>
             </Link>
@@ -60,10 +66,10 @@ const Hero = () => {
 
         <div className="hero-bottom">
           <div className="hero-video">
-            <img
-                src="/capa.png"
-                
-              />
+            <h2 className="hero-video-title">{text.seeMore}</h2>
+
+            <img src="/capa.png" alt={text.imageAlt} />
+
             {/* <iframe
               src="https://www.youtube.com/embed/SEU_ID_AQUI"
               title={text.videoTitle}
@@ -72,8 +78,7 @@ const Hero = () => {
             /> */}
           </div>
 
-          <div className="hero-visual">
-          </div>
+          <div className="hero-visual"></div>
         </div>
       </div>
     </section>
