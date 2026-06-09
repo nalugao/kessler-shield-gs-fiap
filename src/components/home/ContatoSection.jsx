@@ -330,6 +330,7 @@ const ContatoSection = () => {
       <div className="wrap">
         <div className="section-head">
           <p>{t("contactSectionNumber")}</p>
+          <div className="divider"></div>
 
           <h2 className="section-title">{t("contactTitle")}</h2>
 
