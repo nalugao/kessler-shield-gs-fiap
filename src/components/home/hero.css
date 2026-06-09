@@ -1,6 +1,7 @@
 .hero {
   position: relative;
   overflow: hidden;
+  margin-top: 100px;
 }
 
 .hero-copy {
@@ -72,7 +73,7 @@
 }
 
 .hero-video-title {
-  margin-top: -70px !important;
+  margin-top: -6px !important;
   color: var(--mint);
   font-family: var(--font-display);
   font-size: clamp(1rem, 1.2vw, 2rem);
