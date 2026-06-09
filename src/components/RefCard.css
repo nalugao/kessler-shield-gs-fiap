@@ -33,7 +33,7 @@
   line-height: 1.35;
   margin-bottom: 0.7rem;
 }
-.ref-card p { font-size: 0.88rem; color: var(--text); flex: 1; }
+.ref-card p { font-size: 0.88rem; color: var(--white); flex: 1; }
 .ref-corrected {
   display: inline-flex; align-items: center; gap: 0.4rem;
   margin-top: 1rem;

@@ -1,46 +1,34 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./index.css";
-import Layout from "./components/Layout"
+
+import Layout from "./components/Layout";
 import Home from "./pages/Home";
-import Referencias from "./pages/Referencias";
+import Referencias from "./pages/Referencias"
+import SolucaoPage from "./pages/Solucao";
+import SimuladorPage from "./pages/Simulador/src/app/SimuladorPage";
+import Financeiro from "./pages/Financeiro";
 import Starfield from "./components/Starfield";
 import ScrollManager from "./components/ScrollManager";
+import ScrollRocket from "./components/ScrollRocket";
 import { LanguageProvider } from "./components/context/LanguageContext";
-import Contato from "./components/home/Contato";
-
-function Solucao() {
-  return (
-    <main className="page-placeholder">
-      <h1>Solução</h1>
-      <p>Página da solução do problema em construção.</p>
-    </main>
-  );
-}
-
-function Financeiro() {
-  return (
-    <main className="page-placeholder">
-      <h1>Financeiro</h1>
-      <p>Página financeira do projeto em construção.</p>
-    </main>
-  );
-}
 
 function App() {
   return (
-
     <BrowserRouter>
-    <div className="space-bg" />
-      <Starfield />
-      <ScrollManager />
       <LanguageProvider>
+        <div className="space-bg" />
+        <Starfield />
+        <ScrollManager />
+        <ScrollRocket />
+
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
-            <Route path="/solucao" element={<Solucao />} />
+            <Route path="/simulador" element={<SimuladorPage />} />
+            <Route path="/solucao" element={<SolucaoPage />} />
             <Route path="/financeiro" element={<Financeiro />} />
             <Route path="/referencias" element={<Referencias />} />
-            <Route path="/contato" element={<Contato />} />
+            <Route path="/contato" element={<Navigate to="/#contato" replace />} />
           </Route>
         </Routes>
       </LanguageProvider>

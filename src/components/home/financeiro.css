@@ -23,7 +23,7 @@
   font-weight: 700;
   margin: 0.75rem 0 1rem;
 }
-.rev-card p { font-size: 0.9rem; color: var(--text); flex: 1; }
+.rev-card p { font-size: 0.9rem; color: var(--white); flex: 1; }
 .rev-card .metric {
   margin-top: 1.5rem;
   padding-top: 1.25rem;
@@ -34,3 +34,20 @@
   font-size: 1.2rem;
 }
 .rev-card .metric span { display: block; font-family: var(--font-body); font-weight: 300; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.3rem; }
+
+@media (max-width: 900px) {
+  .rev-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .rev-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .rev-card {
+    padding: 1.5rem 1.25rem;
+  }
+}

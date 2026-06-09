@@ -1,14 +1,39 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
-import { useLanguage } from "../components/context/LanguageContext";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { useLanguage } from "./context/LanguageContext";
 import "./navbar.css";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { language, changeLanguage, t } = useLanguage();
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
   function closeMenu() {
     setMenuOpen(false);
+  }
+
+  function goToHomeSection(sectionId) {
+    closeMenu();
+
+    if (location.pathname !== "/") {
+      navigate("/");
+
+      setTimeout(() => {
+        document.getElementById(sectionId)?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 150);
+
+      return;
+    }
+
+    document.getElementById(sectionId)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   }
 
   return (
@@ -47,16 +72,24 @@ export default function Navbar() {
             {t("navReferencias")}
           </NavLink>
 
-          <NavLink to="/contato" onClick={closeMenu}>
+          <button
+            type="button"
+            className="navbar-link-button"
+            onClick={() => goToHomeSection("contato")}
+          >
             {t("navContato")}
-          </NavLink>
+          </button>
 
           <div className="language-switch" aria-label="Selecionar idioma">
             <span className="language-icon">🌐</span>
 
             <button
               type="button"
-              className={language === "PT" ? "language-option active" : "language-option"}
+              className={
+                language === "PT"
+                  ? "language-option active"
+                  : "language-option"
+              }
               onClick={() => changeLanguage("PT")}
             >
               PT
@@ -66,7 +99,11 @@ export default function Navbar() {
 
             <button
               type="button"
-              className={language === "EN" ? "language-option active" : "language-option"}
+              className={
+                language === "EN"
+                  ? "language-option active"
+                  : "language-option"
+              }
               onClick={() => changeLanguage("EN")}
             >
               EN
@@ -74,11 +111,11 @@ export default function Navbar() {
           </div>
 
           <NavLink
-            to="/contato#doacao"
+            to="/simulador"
             className="navbar-cta"
             onClick={closeMenu}
           >
-            {t("navInvestir")} →
+            {t("navSimulador")} →
           </NavLink>
         </div>
       </nav>

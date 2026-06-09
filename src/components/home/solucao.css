@@ -34,7 +34,7 @@
   font-weight: 600;
   margin-bottom: 0.6rem;
 }
-.step p { font-size: 0.86rem; color: var(--text); }
+.step p { font-size: 0.86rem; color: var(--white); }
 .step-line {
   position: absolute;
   top: 36px; right: -0.75rem;
@@ -42,3 +42,19 @@
   background: var(--line);
 }
 .step:last-child .step-line { display: none; }
+
+@media (max-width: 1024px) {
+  .steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .step-line {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .steps {
+    grid-template-columns: 1fr;
+  }
+}
