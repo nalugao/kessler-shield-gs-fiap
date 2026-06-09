@@ -10,6 +10,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  overflow: hidden; /* corta satélites que vazam lateralmente */
 }
 
 .planet-name,
@@ -31,21 +33,21 @@
 ========================= */
 
 .centro-receitas {
-  --orbit-size: clamp(17.5rem, 88vw, 22rem);
-  --earth-size: clamp(4rem, 18vw, 5.25rem);
+  --orbit-size: clamp(15rem, 80vw, 20rem);
+  --earth-size: clamp(3.5rem, 16vw, 5rem);
 
-  --satellite-width: clamp(5.6rem, 29vw, 7rem);
-  --satellite-height: clamp(3rem, 15vw, 3.9rem);
+  --satellite-width: clamp(4.8rem, 25vw, 6.5rem);
+  --satellite-height: clamp(2.6rem, 13vw, 3.6rem);
 
-  --planet-label-size: clamp(0.62rem, 2.3vw, 0.72rem);
+  --planet-label-size: clamp(0.58rem, 2vw, 0.7rem);
 
-  --b2b-top: -1.1rem;
-  --b2g-top: -1.75rem;
-  --esg-top: -1.35rem;
+  --b2b-top: -0.9rem;
+  --b2g-top: -1.5rem;
+  --esg-top: -1.15rem;
 
-  --b2b-name-offset: -1.33rem;
-  --b2g-name-offset: -0.96rem;
-  --esg-name-offset: -0.15rem;
+  --b2b-name-offset: -1.2rem;
+  --b2g-name-offset: -0.85rem;
+  --esg-name-offset: -0.1rem;
 
   --b2b-orbit-size: 84%;
   --b2g-orbit-size: 62%;
@@ -59,6 +61,9 @@
   position: relative;
 
   margin-inline: auto;
+
+  flex-shrink: 0;   /* não encolhe dentro de flex pai */
+  max-width: 100%;  /* nunca ultrapassa a largura da tela */
 
   animation: explorerFloat 12s ease-in-out infinite;
 }
@@ -302,6 +307,14 @@
 ========================= */
 
 .market-modal {
+  /* garante que o modal escape de qualquer overflow:hidden pai */
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1050;
+
   background:
     radial-gradient(
       circle at center,
@@ -314,7 +327,7 @@
 }
 
 .market-modal-dialog {
-  width: min(94vw, 42.5rem);
+  width: min(92vw, 42.5rem);
   max-width: 42.5rem;
 
   margin-inline: auto;
@@ -457,9 +470,6 @@
   letter-spacing: -1px;
 
   text-align: center;
-
-  
-  
 }
 
 .market-popup__subtitle {
@@ -547,6 +557,25 @@
 }
 
 /* =========================
+   480px e abaixo — modal compacto
+========================= */
+
+@media (max-width: 480px) {
+  .market-modal-dialog {
+    width: 92vw;
+    margin: 1rem auto;
+  }
+
+  .market-popup__title {
+    font-size: clamp(1.3rem, 6vw, 1.8rem);
+  }
+
+  .market-popup__value {
+    font-size: clamp(1.6rem, 9vw, 2.4rem);
+  }
+}
+
+/* =========================
    576px+
 ========================= */
 
@@ -625,6 +654,8 @@
     --b2b-name-offset: -2.2rem;
     --b2g-name-offset: -1.3rem;
     --esg-name-offset: 0rem;
+
+    overflow: visible; /* no desktop libera overflow para as órbitas respirarem */
   }
 }
 

@@ -14,9 +14,9 @@ const mercados = {
     tipo: "B2G",
     titulo: "ADR-AS-A-SERVICE",
     subtitulo: "Remoção orbital como serviço",
-    valorTexto: "US$",
+    valorTexto: "Por contrato",
     moeda: "US$",
-    destaque: "Por missão",
+    destaque: "",
     descricao:
       "Contratos de remoção sob demanda para agências espaciais e governos. Objetos de alto risco são priorizados em órbitas críticas."
   },
