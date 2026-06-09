@@ -406,8 +406,6 @@
 
 @media (min-width: 992px) {
   .finance-simulator {
-    min-height: 100vh;
-
     grid-template-columns: minmax(20rem, 1fr) minmax(28rem, 1fr);
 
     text-align: left;
