@@ -1,7 +1,6 @@
 .hero {
   position: relative;
   overflow: hidden;
-  margin-top: 100px;
 }
 
 .hero-copy {
@@ -16,7 +15,6 @@
   letter-spacing: 0.01em;
   color: var(--white);
   font-size: clamp(2.2rem, 10vw, 6.6rem);
-  margin: 1.5rem 0 0;
   overflow-wrap: break-word;
   hyphens: auto;
 }
@@ -31,7 +29,6 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--text-dim);
-  margin-top: 1.5rem;
   font-weight: 500;
 }
 
@@ -53,7 +50,7 @@
 .hero-cta {
   display: flex;
   gap: 1rem;
-  margin-top: 2.25rem;
+  margin-top: 2rem;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -75,13 +72,13 @@
 }
 
 .hero-video-title {
-  margin: 0 0 0.85rem;
+  margin-top: -70px !important;
   color: var(--mint);
-  font-family: var(--font-body);
-  font-size: 0.8rem;
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.2vw, 2rem);
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.12em;
   text-align: center;
 }
 
@@ -130,9 +127,9 @@
   }
 
   .hero-video-title {
-    font-size: 0.74rem;
-    letter-spacing: 0.18em;
-  }
+    font-size: 1.35rem;
+    letter-spacing: 0.1em;
+}
 
   .hero-stats {
     grid-template-columns: 1fr;
