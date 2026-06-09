@@ -63,15 +63,6 @@ const Hero = () => {
               </Link>
             </div>
 
-            <div className="hero-stats">
-              {text.stats.map((stat) => (
-                <div key={stat.label}>
-                  <div className="s-num">{stat.value}</div>
-                  <div className="s-lab">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-
             <div className="hero-video-area">
               <h2 className="stats-title">{text.statsTitle}</h2>
 
