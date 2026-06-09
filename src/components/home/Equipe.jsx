@@ -204,7 +204,7 @@ const Equipe = () => {
     <section className="section section--alt" id="quem-somos">
       <div className="wrap">
         <div className="section-head">
-          <span className="label">{text.label}</span>
+          <p >{text.label}</p>
 
           <div className="divider"></div>
 

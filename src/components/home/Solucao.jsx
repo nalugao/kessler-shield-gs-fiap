@@ -79,6 +79,7 @@ const Solucao = () => {
       <div className="wrap">
         <div className="section-head">
           <p>{text.eyebrow}</p>
+          <div className="divider"></div>
 
           <h2 className="section-title">{text.title}</h2>
 

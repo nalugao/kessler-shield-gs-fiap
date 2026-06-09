@@ -112,7 +112,10 @@ export default function Problema() {
       <div className="wrap">
         <div className="prob">
           <Reveal className="prob-left">
+
             <p>{t.label}</p>
+            <div className="divider"></div>
+
             <h2 className="prob-title">{t.title}</h2>
             <p className="prob-lead">{t.lead}</p>
 

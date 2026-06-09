@@ -84,6 +84,8 @@ const Financeiro = () => {
           <p>{text.label}</p>
 
           <div className="badge-wrapper"></div>
+                    <div className="divider"></div>
+
 
           <h2 className="section-title">{text.title}</h2>
 

@@ -59,14 +59,17 @@ const Hero = () => {
         </div>
 
         <div className="hero-bottom">
-          <h2 className="stats-title">{text.statsTitle}</h2>
           <div className="hero-video">
-            <iframe
+            <img
+                src="/capa.png"
+                
+              />
+            {/* <iframe
               src="https://www.youtube.com/embed/SEU_ID_AQUI"
               title={text.videoTitle}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-            />
+            /> */}
           </div>
 
           <div className="hero-visual">
