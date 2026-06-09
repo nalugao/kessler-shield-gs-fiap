@@ -577,9 +577,12 @@ button:focus-visible {
 }
 
 /* ---------------- cinematic intro ---------------- */
+
 .cinematic-active .app {
   overflow: hidden;
 }
+
+/* ── Scene shell ── */
 .cinematic-intro {
   position: fixed;
   inset: 0;
@@ -587,164 +590,303 @@ button:focus-visible {
   display: grid;
   place-items: center;
   overflow: hidden;
-  background-color: #010207;
-  background:
-    radial-gradient(circle at 50% 52%, rgba(90, 169, 255, 0.12), transparent 32%),
-    radial-gradient(circle at 50% 72%, rgba(255, 107, 122, 0.08), transparent 38%),
-    linear-gradient(180deg, rgba(1, 2, 7, 0.94), rgba(1, 2, 7, 0.99));
-  color: var(--ink);
-  animation: cinematic-scene 13.8s linear forwards;
+  background: #000005;
+  color: #e8f4ff;
+  animation: cinematic-scene 15s linear forwards;
 }
-.cinematic-horizon {
+
+/* ── Starfield: three parallax layers ── */
+.cin-stars {
   position: absolute;
-  left: 50%;
-  bottom: 17vh;
-  width: min(78vw, 980px);
-  height: 1px;
-  transform: translateX(-50%);
-  background: linear-gradient(90deg, transparent, rgba(255, 107, 122, 0.42), rgba(90, 169, 255, 0.52), transparent);
-  box-shadow:
-    0 0 34px rgba(90, 169, 255, 0.22),
-    0 0 92px rgba(255, 107, 122, 0.1);
+  inset: -20%;          /* oversized so we can drift them */
+  border-radius: 50%;   /* ignored — just for clarity */
+  pointer-events: none;
 }
+
+.cin-stars--far {
+  background-image:
+    radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,0.55) 0%, transparent 100%),
+    radial-gradient(1px 1px at 34% 72%, rgba(255,255,255,0.45) 0%, transparent 100%),
+    radial-gradient(1px 1px at 56% 9%,  rgba(255,255,255,0.6)  0%, transparent 100%),
+    radial-gradient(1px 1px at 78% 53%, rgba(255,255,255,0.5)  0%, transparent 100%),
+    radial-gradient(1px 1px at 91% 27%, rgba(255,255,255,0.4)  0%, transparent 100%),
+    radial-gradient(1px 1px at 7%  88%, rgba(255,255,255,0.55) 0%, transparent 100%),
+    radial-gradient(1px 1px at 45% 40%, rgba(255,255,255,0.35) 0%, transparent 100%),
+    radial-gradient(1px 1px at 63% 66%, rgba(255,255,255,0.5)  0%, transparent 100%),
+    radial-gradient(1px 1px at 22% 55%, rgba(255,255,255,0.4)  0%, transparent 100%),
+    radial-gradient(1px 1px at 87% 80%, rgba(255,255,255,0.45) 0%, transparent 100%);
+  background-size: 340px 340px;
+  animation: stars-drift-far 60s linear infinite;
+  opacity: 0.7;
+}
+
+.cin-stars--mid {
+  background-image:
+    radial-gradient(1.4px 1.4px at 19% 31%, rgba(200,225,255,0.7) 0%, transparent 100%),
+    radial-gradient(1.4px 1.4px at 67% 14%, rgba(200,225,255,0.6) 0%, transparent 100%),
+    radial-gradient(1.4px 1.4px at 42% 78%, rgba(200,225,255,0.65) 0%, transparent 100%),
+    radial-gradient(1.4px 1.4px at 81% 62%, rgba(200,225,255,0.55) 0%, transparent 100%),
+    radial-gradient(1.4px 1.4px at 5%  47%, rgba(200,225,255,0.7)  0%, transparent 100%),
+    radial-gradient(1.4px 1.4px at 93% 90%, rgba(200,225,255,0.5)  0%, transparent 100%),
+    radial-gradient(1.4px 1.4px at 30% 5%,  rgba(200,225,255,0.65) 0%, transparent 100%),
+    radial-gradient(1.4px 1.4px at 74% 38%, rgba(200,225,255,0.6)  0%, transparent 100%);
+  background-size: 520px 520px;
+  animation: stars-drift-mid 90s linear infinite;
+  opacity: 0.6;
+}
+
+.cin-stars--near {
+  background-image:
+    radial-gradient(2px 2px at 8%  24%, rgba(255,255,255,0.9) 0%, transparent 100%),
+    radial-gradient(2px 2px at 55% 61%, rgba(255,255,255,0.8) 0%, transparent 100%),
+    radial-gradient(2px 2px at 83% 11%, rgba(255,255,255,0.85) 0%, transparent 100%),
+    radial-gradient(2px 2px at 28% 92%, rgba(255,255,255,0.75) 0%, transparent 100%),
+    radial-gradient(2.5px 2.5px at 70% 44%, rgba(180,210,255,0.9) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 47% 7%,  rgba(255,255,255,0.8) 0%, transparent 100%);
+  background-size: 800px 800px;
+  animation: stars-drift-near 130s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes stars-drift-far  { from { transform: translateY(0);    } to { transform: translateY(10%);  } }
+@keyframes stars-drift-mid  { from { transform: translateY(0);    } to { transform: translateY(6%);   } }
+@keyframes stars-drift-near { from { transform: translateY(0);    } to { transform: translateY(3%);   } }
+
+/* ── Planet curve ── */
+.cin-planet {
+  position: absolute;
+  bottom: -38vw;
+  left: 50%;
+  width: 90vw;
+  height: 90vw;
+  max-width: 1100px;
+  max-height: 1100px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at 40% 38%,
+    rgba(30, 60, 120, 0.55) 0%,
+    rgba(10, 20, 60, 0.35) 50%,
+    transparent 72%
+  );
+  box-shadow:
+    0 0 0 1px rgba(90, 169, 255, 0.12),
+    0 0 60px rgba(90, 169, 255, 0.08),
+    inset 0 0 80px rgba(0, 20, 80, 0.4);
+  pointer-events: none;
+}
+
+@keyframes logo-flash {
+  0%   { opacity: 0; transform: translate(-50%, -50%) scale(1.12); }
+  18%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  68%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(0.88); }
+}
+
+/* ── Vignette ── */
 .cinematic-vignette {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.76) 0 12%, transparent 36%, rgba(0, 0, 0, 0.64) 100%),
-    radial-gradient(ellipse at center, transparent 0 34%, rgba(0, 0, 0, 0.58) 72%, rgba(0, 0, 0, 0.9) 100%);
+    linear-gradient(180deg, rgba(0,0,5,0.85) 0 8%, transparent 30%, rgba(0,0,5,0.6) 100%),
+    radial-gradient(ellipse at center, transparent 0 28%, rgba(0,0,8,0.5) 68%, rgba(0,0,8,0.92) 100%);
   pointer-events: none;
+  z-index: 1;
 }
+
+/* ── Title block ── */
 .cinematic-prologue {
   position: absolute;
-  top: clamp(34px, 6vh, 58px);
+  top: clamp(28px, 5vh, 52px);
   left: 50%;
-  z-index: 2;
+  z-index: 4;
   width: min(960px, calc(100vw - 40px));
   text-align: center;
   transform: translateX(-50%);
-  animation: cinematic-title 13.8s linear forwards;
+  animation: cinematic-title 18s linear forwards;
 }
+
 .cinematic-kicker {
-  margin: 0 0 14px;
-  color: rgba(145, 203, 255, 0.82);
-  font-size: clamp(17px, 1.7vw, 24px);
-  font-weight: 760;
-  letter-spacing: 0.28em;
+  margin: 0 0 16px;
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-size: clamp(11px, 1.2vw, 15px);
+  font-weight: 400;
+  letter-spacing: 0.42em;
   text-transform: uppercase;
+  color: rgba(90, 169, 255, 0.65);
 }
+
 .cinematic-prologue h2 {
   margin: 0;
-  color: rgba(233, 245, 255, 0.96);
-  font-size: clamp(42px, 6.6vw, 84px);
-  letter-spacing: 0.1em;
+  font-family: "Orbitron", "Courier New", monospace;
+  font-size: clamp(36px, 6vw, 78px);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  line-height: 1.08;
   text-transform: uppercase;
+  color: #ffffff;
   text-shadow:
-    0 0 20px rgba(90, 169, 255, 0.28),
-    0 8px 36px rgba(0, 0, 0, 0.8);
+    0 0 40px rgba(90, 169, 255, 0.35),
+    0 0 100px rgba(90, 169, 255, 0.12),
+    0 6px 32px rgba(0, 0, 0, 0.9);
 }
+
+/* ── Crawl ── */
 .cinematic-crawl-wrap {
   position: absolute;
-  top: clamp(230px, 30vh, 310px);
+  top: clamp(200px, 28vh, 300px);
   right: 0;
-  bottom: 7vh;
+  bottom: 8vh;
   left: 0;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   justify-content: center;
-  perspective: 1400px;
-  perspective-origin: 50% 0%;
+  perspective: 500px;
+  perspective-origin: 50% -4%;
   pointer-events: none;
-  mask-image: linear-gradient(180deg, transparent 0, black 10%, black 78%, transparent 100%);
-  -webkit-mask-image: linear-gradient(180deg, transparent 0, black 10%, black 78%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0, black 14%, black 72%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, black 14%, black 72%, transparent 100%);
 }
+
 .cinematic-crawl {
-  width: min(1040px, 88vw);
-  color: #ffd98c;
-  font-family: var(--sans);
-  font-size: clamp(21px, 2.45vw, 34px);
-  font-weight: 760;
-  line-height: 1.3;
-  text-align: center;
-  letter-spacing: 0.005em;
-  text-shadow:
-    0 0 18px rgba(255, 179, 92, 0.24),
-    0 5px 18px rgba(0, 0, 0, 0.78);
-  transform: rotateX(12deg) translateY(34vh);
+  width: min(760px, 82vw);
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-size: clamp(17px, 2.1vw, 27px);
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: justify;
+  letter-spacing: 0.03em;
+  color: #f0e6c0;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.9);
+  transform: rotateX(22deg) translateY(42vh);
   transform-origin: 50% 100%;
-  animation: cinematic-crawl 13.2s linear forwards;
+  animation: cinematic-crawl 25s linear forwards;
 }
+
 .cinematic-crawl p {
-  margin: 0 auto 1em;
-  max-width: 38ch;
+  margin: 0 auto 1.1em;
 }
+
+.cinematic-episode {
+  font-family: "Orbitron", "Courier New", monospace !important;
+  font-size: 0.7em !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5em !important;
+  text-align: center !important;
+  color: rgba(90, 169, 255, 0.8) !important;
+  margin-bottom: 1.6em !important;
+  text-transform: uppercase;
+}
+
 .cinematic-lead {
-  max-width: 28ch;
-  color: #fff0bd;
-  font-size: 1.08em;
-  font-weight: 830;
+  color: #fffbe8;
+  font-weight: 600;
+  font-size: 1.05em;
+  text-align: center;
 }
+
 .cinematic-final {
-  max-width: 29ch;
-  color: #fff0bd;
-  font-size: 1.08em;
-  font-weight: 860;
-  letter-spacing: 0.045em;
+  margin-top: 1.4em !important;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.1em;
+  letter-spacing: 0.06em;
+  text-align: center !important;
+  line-height: 1.6;
   text-transform: uppercase;
   text-shadow:
-    0 0 20px rgba(255, 179, 92, 0.28),
-    0 6px 20px rgba(0, 0, 0, 0.82);
+    0 0 30px rgba(90, 169, 255, 0.4),
+    0 4px 20px rgba(0, 0, 0, 0.9);
 }
+
+/* ── Horizon ── */
+.cinematic-horizon {
+  position: absolute;
+  left: 50%;
+  bottom: 20vh;
+  width: min(70vw, 860px);
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(90, 169, 255, 0.5),
+    rgba(130, 200, 255, 0.7),
+    rgba(90, 169, 255, 0.5),
+    transparent
+  );
+  box-shadow:
+    0 0 24px rgba(90, 169, 255, 0.3),
+    0 0 64px rgba(90, 169, 255, 0.1);
+  z-index: 2;
+}
+
+/* ── Actions ── */
 .cinematic-actions {
   position: absolute;
-  right: 26px;
-  bottom: 24px;
-  z-index: 3;
+  right: 28px;
+  bottom: 26px;
+  z-index: 10;
   display: flex;
   gap: 10px;
+  align-items: center;
 }
+
 .cinematic-skip,
 .cinematic-start {
-  border-radius: 999px;
-  padding: 10px 15px;
+  border-radius: 3px;
+  padding: 9px 18px;
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
   font-size: 13px;
-  font-weight: 690;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   cursor: pointer;
   transition: transform 0.12s ease, filter 0.16s ease, background 0.16s ease;
 }
+
 .cinematic-skip:hover,
 .cinematic-start:hover {
-  filter: brightness(1.08);
+  filter: brightness(1.15);
 }
+
 .cinematic-skip:active,
 .cinematic-start:active {
   transform: translateY(1px);
 }
+
 .cinematic-skip {
-  color: rgba(220, 229, 241, 0.78);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(180, 210, 255, 0.65);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(90, 169, 255, 0.18);
 }
+
 .cinematic-start {
-  color: #1c1305;
-  background: var(--amber);
-  border: 1px solid rgba(255, 228, 180, 0.5);
-  box-shadow: 0 0 22px rgba(255, 179, 92, 0.22);
+  color: #000a1a;
+  background: rgba(90, 169, 255, 0.92);
+  border: 1px solid rgba(160, 210, 255, 0.6);
+  box-shadow:
+    0 0 20px rgba(90, 169, 255, 0.35),
+    0 2px 8px rgba(0, 0, 0, 0.5);
 }
+
+/* ── Keyframes ── */
 @keyframes cinematic-scene {
-  0% { opacity: 0; }
-  6%, 91% { opacity: 1; }
-  100% { opacity: 0; }
+  0%          { opacity: 0; }
+  5%, 90%     { opacity: 1; }
+  100%        { opacity: 0; }
 }
+
 @keyframes cinematic-title {
-  0% { opacity: 0; transform: translateX(-50%) scale(1.06); }
-  8%, 94% { opacity: 1; transform: translateX(-50%) scale(1); }
-  100% { opacity: 0; transform: translateX(-50%) scale(0.96); }
+  0%    { opacity: 0; transform: translateX(-50%) scale(1.08); }
+  10%, 88% { opacity: 1; transform: translateX(-50%) scale(1); }
+  100%  { opacity: 0; transform: translateX(-50%) scale(0.94); }
 }
+
 @keyframes cinematic-crawl {
-  0% { opacity: 0; transform: rotateX(12deg) translateY(34vh) scale(1.02); }
-  10% { opacity: 1; }
-  100% { opacity: 1; transform: rotateX(12deg) translateY(-26vh) scale(0.94); }
+  0%   { opacity: 0; transform: rotateX(22deg) translateY(42vh); }
+  8%   { opacity: 1; }
+  100% { opacity: 0.9; transform: rotateX(22deg) translateY(-60vh); }
 }
 
 /* ---------------- intro tour ---------------- */
