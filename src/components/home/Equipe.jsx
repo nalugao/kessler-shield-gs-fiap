@@ -32,7 +32,7 @@ const MEMBROS = {
     {
       id: 2,
       foto: "/images/nat.png",
-      nome: "Natália Lugão",
+      nome: "Natalia Lugão",
       cargo: "Front-end & Identidade Visual",
       descricao:
         "Responsável pelo desenvolvimento do front-end e identidade visual do projeto, garantindo uma experiência de usuário moderna, responsiva e visualmente consistente.",
@@ -57,9 +57,9 @@ const MEMBROS = {
       id: 5,
       foto: "/images/andre.png",
       nome: "André Melo",
-      cargo: "Pitch & Desenvolvimento Criativo",
+      cargo: "Desenvolvimento Criativo",
       descricao:
-        "Responsável pelo desenvolvimento criativo do projeto e pela construção do pitch, contribuindo para a apresentação da proposta, narrativa do problema e comunicação da solução.",
+        "Responsável pelo desenvolvimento criativo do projeto, contribuindo para a apresentação da proposta, narrativa do problema e comunicação da solução.",
     },
   ],
 
