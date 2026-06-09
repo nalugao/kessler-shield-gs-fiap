@@ -2,6 +2,29 @@ import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { useLanguage } from "../context/LanguageContext";
 import "./equipe.css";
 
+const SOCIAL_LINKS = {
+  andre: {
+    linkedin: "https://www.linkedin.com/in/andr%C3%A9-melo-44b333a5",
+    github: "https://github.com/andrefxm",
+  },
+  gabriel: {
+    linkedin: "https://www.linkedin.com/in/gabriel-soares-1a63712bb/",
+    github: "https://github.com/GabrielSiSo",
+  },
+  jefferson: {
+    linkedin: "https://www.linkedin.com/in/jefferson-g-silva",
+    github: "https://github.com/Jeffergs",
+  },
+  natalia: {
+    linkedin: "https://linkedin.com/in/natalia-lugao",
+    github: "https://github.com/nalugao",
+  },
+  sophia: {
+    linkedin: "https://www.linkedin.com/in/sophia-heringer/",
+    github: "https://github.com/Sophia-Coelho",
+  },
+};
+
 const EQUIPE_TEXT = {
   PT: {
     label: "06 — Quem Somos",
@@ -33,8 +56,7 @@ const MEMBROS = {
       cargo: "Desenvolvimento Criativo",
       descricao:
         "Responsável pelo desenvolvimento criativo do projeto, contribuindo para a apresentação da proposta, narrativa do problema e comunicação da solução.",
-      linkedin: "#",
-      github: "#",
+      ...SOCIAL_LINKS.andre,
     },
     {
       id: 2,
@@ -43,8 +65,7 @@ const MEMBROS = {
       cargo: "Front-end & Design System",
       descricao:
         "Desenvolveu a página de Solução e a seção Quem Somos, construindo layouts em React com CSS Grid e responsividade mobile-first. Colaborou também na correção de bugs críticos da aplicação.",
-      linkedin: "#",
-      github: "#",
+      ...SOCIAL_LINKS.gabriel,
     },
     {
       id: 3,
@@ -53,8 +74,7 @@ const MEMBROS = {
       cargo: "Front-end & UI/UX",
       descricao:
         "Responsável pela criação da página financeira, aplicando responsividade mobile-first, organização de componentes em React, animações com Framer Motion, integração de assets visuais e padronização tipográfica.",
-      linkedin: "#",
-      github: "#",
+      ...SOCIAL_LINKS.jefferson,
     },
     {
       id: 4,
@@ -63,8 +83,7 @@ const MEMBROS = {
       cargo: "Front-end & Identidade Visual",
       descricao:
         "Responsável pelo desenvolvimento do front-end e identidade visual do projeto, garantindo uma experiência de usuário moderna, responsiva e visualmente consistente.",
-      linkedin: "#",
-      github: "#",
+      ...SOCIAL_LINKS.natalia,
     },
     {
       id: 5,
@@ -73,8 +92,7 @@ const MEMBROS = {
       cargo: "Front-end & Acessibilidade",
       descricao:
         "Responsável pela criação da área de contato. Também contribuiu com a acessibilidade, responsividade e tradução das telas. Colaborou também na correção de bugs críticos da aplicação.",
-      linkedin: "#",
-      github: "#",
+      ...SOCIAL_LINKS.sophia,
     },
   ],
 
@@ -86,8 +104,7 @@ const MEMBROS = {
       cargo: "Pitch & Creative Development",
       descricao:
         "Responsible for the project’s creative development and pitch structure, contributing to the presentation of the proposal, problem narrative and solution communication.",
-      linkedin: "https://www.linkedin.com/in/andr%C3%A9-melo-44b333a5",
-      github: "https://github.com/andrefxm",
+      ...SOCIAL_LINKS.andre,
     },
     {
       id: 2,
@@ -96,8 +113,7 @@ const MEMBROS = {
       cargo: "Front-end & Design System",
       descricao:
         "Developed the Solution page and the About Us section, building React layouts with CSS Grid and mobile-first responsiveness. Also collaborated on fixing critical application bugs.",
-      linkedin: "https://www.linkedin.com/in/gabriel-soares-1a63712bb/",
-      github: "https://github.com/GabrielSiSo",
+      ...SOCIAL_LINKS.gabriel,
     },
     {
       id: 3,
@@ -106,8 +122,7 @@ const MEMBROS = {
       cargo: "Front-end & UI/UX",
       descricao:
         "Responsible for creating the financial page, applying mobile-first responsiveness, React component organization, Framer Motion animations, visual asset integration and typographic standardization.",
-      linkedin: "http://www.linkedin.com/in/jefferson-g-silva",
-      github: "https://github.com/Jeffergs",
+      ...SOCIAL_LINKS.jefferson,
     },
     {
       id: 4,
@@ -116,8 +131,7 @@ const MEMBROS = {
       cargo: "Front-end & Visual Identity",
       descricao:
         "Responsible for front-end development and the project’s visual identity, ensuring a modern, responsive and visually consistent user experience.",
-      linkedin: "https://linkedin.com/in/natalia-lugao",
-      github: "https://github.com/nalugao",
+      ...SOCIAL_LINKS.natalia,
     },
     {
       id: 5,
@@ -126,8 +140,7 @@ const MEMBROS = {
       cargo: "Front-end & Accessibility",
       descricao:
         "Responsible for creating the contact area. Also contributed to accessibility, responsiveness and screen translation. Collaborated on fixing critical application bugs as well.",
-      linkedin: "https://www.linkedin.com/in/sophia-heringer/",
-      github: "https://github.com/Sophia-Coelho",
+      ...SOCIAL_LINKS.sophia,
     },
   ],
 };
