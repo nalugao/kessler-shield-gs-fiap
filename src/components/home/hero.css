@@ -4,13 +4,6 @@
   overflow: hidden;
 }
 
-.hero-grid {
-  display: flex;
-  gap: 3.5rem;
-  align-items: center;
-  align-content: center;
-}
-
 .hero-title {
   font-family: var(--font-display);
   font-weight: 900;
@@ -18,9 +11,10 @@
   line-height: 0.92;
   letter-spacing: 0.01em;
   color: var(--white);
-  font-size: clamp(3.4rem, 10vw, 6.6rem);
+  font-size: clamp(2.2rem, 10vw, 6.6rem); /* mínimo reduzido: 3.4 → 2.2rem */
   margin: 1.5rem 0 0;
-  
+    overflow-wrap: break-word;            /* fallback cross-browser */
+  hyphens: auto;                        /* hifenização automática (PT) */
 }
 
 .hero-title .mint {
@@ -37,20 +31,10 @@
   font-weight: 500;
 }
 
+/* hero-grid não é mais necessário, remova ou ignore */
+
 .hero-copy {
   text-align: center;
-}
-
-.hero-tagline {
-  margin-top: 1.5rem;
-  font-size: 1.08rem;
-  color: var(--text);
-  line-height: 1.65;
-}
-
-.hero-tagline strong {
-  color: var(--white);
-  font-weight: 500;
 }
 
 .hero-cta {
@@ -61,20 +45,14 @@
   justify-content: center;
 }
 
-.hero-stats {
-  gap: 3rem;
+.hero-bottom {
   margin-top: 3rem;
   padding-top: 2rem;
   border-top: 1px solid var(--line-soft);
+  display: flex;
+  flex-direction: column;
   align-items: center;
-}
-
-.stats-title {
-  font-family: var(--font-display);
-  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-  font-weight: 700;
-  color: var(--white);
-  margin: 0 0 10px;
+  gap: 1.25rem;
 }
 
 .hero-video {
@@ -82,8 +60,8 @@
   aspect-ratio: 16 / 9;
   border-radius: 6px;
   overflow: hidden;
-  width: 50%;
-  margin: 0 auto; /* <- isso centraliza o bloco */
+  width: 480px;
+  max-width: 100%;
 }
 
 .hero-video iframe {
@@ -97,5 +75,8 @@
 @media (max-width: 768px) {
   .hero-stats {
     grid-template-columns: 1fr;
+  }
+  .hero-title .mint {
+    display: block;
   }
 }

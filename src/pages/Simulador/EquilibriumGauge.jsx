@@ -1,6 +1,6 @@
 import { useMemo } from "react";
-import { projectTrajectory, pointOfNoReturnDebris } from "../sim/project.js";
-import { HIGH_SHELL_INDEX, REMOVAL_CEILING } from "../sim/scenarios.js";
+import { projectTrajectory, pointOfNoReturnDebris } from "./sim/project.js";
+import { HIGH_SHELL_INDEX, REMOVAL_CEILING } from "./sim/scenarios.js";
 import { fmtCount } from "./chartUtils.jsx";
 import InfoTip from "./InfoTip.jsx";
 

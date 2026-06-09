@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Globe from "../globe/Globe.jsx";
+import Globe from "./globe/Globe.jsx";
 import MiniChart from "./MiniChart.jsx";
 import EquilibriumGauge from "./EquilibriumGauge.jsx";
 import Stats from "./Stats.jsx";
@@ -7,7 +7,7 @@ import Deck from "./Deck.jsx";
 import IntroTour from "./IntroTour.jsx";
 import CinematicIntro from "./CinematicIntro.jsx";
 import { fmtCount, fmtUSD, fmtMoneyTick } from "./chartUtils.jsx";
-import { useSimulation } from "../sim/useSimulation.js";
+import { useSimulation } from "./sim/useSimulation.js";
 import "./app.css";
 
 const SAT = "#5aa9ff";

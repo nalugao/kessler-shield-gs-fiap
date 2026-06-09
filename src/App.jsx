@@ -5,7 +5,7 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Referencias from "./pages/Referencias"
 import SolucaoPage from "./pages/Solucao";
-import SimuladorPage from "./pages/Simulador/src/app/SimuladorPage";
+import SimuladorPage from "./pages/Simulador/SimuladorPage";
 import Financeiro from "./pages/Financeiro";
 import Starfield from "./components/Starfield";
 import ScrollManager from "./components/ScrollManager";
