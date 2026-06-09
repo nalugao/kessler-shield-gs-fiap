@@ -15,20 +15,6 @@ const HERO_TEXT = {
     secondaryButton: "Entenda o problema",
     statsTitle: "Entenda o projeto",
     videoTitle: "Kessler Shield",
-    stats: [
-      {
-        value: "40K",
-        label: "objetos rastreados",
-      },
-      {
-        value: "1,2M+",
-        label: "fragmentos >1cm",
-      },
-      {
-        value: "10 km/s",
-        label: "velocidade de impacto",
-      },
-    ],
   },
 
   EN: {
@@ -42,20 +28,6 @@ const HERO_TEXT = {
     secondaryButton: "Understand the problem",
     statsTitle: "Understand the project",
     videoTitle: "Kessler Shield",
-    stats: [
-      {
-        value: "40K",
-        label: "tracked objects",
-      },
-      {
-        value: "1.2M+",
-        label: "fragments >1cm",
-      },
-      {
-        value: "10 km/s",
-        label: "impact speed",
-      },
-    ],
   },
 };
 
