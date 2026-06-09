@@ -32,6 +32,16 @@ const ContatoSection = () => {
   const [newsletterSuccess, setNewsletterSuccess] = useState(false);
   const [investimentoSuccess, setInvestimentoSuccess] = useState(false);
 
+  function tf(key, fallback) {
+    const translated = t(key);
+
+    if (!translated || translated === key) {
+      return fallback;
+    }
+
+    return translated;
+  }
+
   useEffect(() => {
     function openFormByHash() {
       const hash = window.location.hash.replace("#", "");
@@ -80,6 +90,61 @@ const ContatoSection = () => {
     return /\S+@\S+\.\S+/.test(email);
   }
 
+  function getOnlyNumbers(value) {
+    return value.replace(/\D/g, "").slice(0, 11);
+  }
+
+  function formatPhoneBR(value) {
+    const numbers = getOnlyNumbers(value);
+
+    if (numbers.length <= 2) {
+      return numbers;
+    }
+
+    if (numbers.length <= 6) {
+      return `(${numbers.slice(0, 2)}) ${numbers.slice(2)}`;
+    }
+
+    if (numbers.length <= 10) {
+      return `(${numbers.slice(0, 2)}) ${numbers.slice(2, 6)}-${numbers.slice(
+        6
+      )}`;
+    }
+
+    return `(${numbers.slice(0, 2)}) ${numbers.slice(2, 7)}-${numbers.slice(
+      7,
+      11
+    )}`;
+  }
+
+  function isValidPhoneBR(phone) {
+    const numbers = getOnlyNumbers(phone);
+
+    if (!numbers) {
+      return true;
+    }
+
+    if (numbers.length !== 10 && numbers.length !== 11) {
+      return false;
+    }
+
+    if (/^(\d)\1+$/.test(numbers)) {
+      return false;
+    }
+
+    const ddd = Number(numbers.slice(0, 2));
+
+    if (ddd < 11 || ddd > 99) {
+      return false;
+    }
+
+    if (numbers.length === 11 && numbers[2] !== "9") {
+      return false;
+    }
+
+    return true;
+  }
+
   function openForm(formName) {
     setActiveForm(formName);
 
@@ -109,15 +174,39 @@ const ContatoSection = () => {
       ...prev,
       [name]: type === "checkbox" ? checked : value,
     }));
+
+    if (newsletterErrors[name]) {
+      setNewsletterErrors((prev) => ({
+        ...prev,
+        [name]: "",
+      }));
+    }
+
+    setNewsletterSuccess(false);
   }
 
   function handleInvestimentoChange(event) {
     const { name, value, type, checked } = event.target;
 
+    let fieldValue = type === "checkbox" ? checked : value;
+
+    if (name === "telefone") {
+      fieldValue = formatPhoneBR(value);
+    }
+
     setInvestimento((prev) => ({
       ...prev,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: fieldValue,
     }));
+
+    if (investimentoErrors[name]) {
+      setInvestimentoErrors((prev) => ({
+        ...prev,
+        [name]: "",
+      }));
+    }
+
+    setInvestimentoSuccess(false);
   }
 
   function validateNewsletter() {
@@ -153,6 +242,16 @@ const ContatoSection = () => {
       errors.email = t("errorEmailInvalid");
     }
 
+    if (!investimento.telefone.trim()) {
+      errors.telefone = tf(
+      "errorPhoneRequired",
+      "Informe seu telefone para contato.");
+    }  
+    else if (!isValidPhoneBR(investimento.telefone)) {
+      errors.telefone = tf("errorPhoneInvalid",
+      "Informe um telefone válido com DDD. Exemplo: (11) 99999-9999.");
+}
+
     if (!investimento.tipoInteresse) {
       errors.tipoInteresse = t("errorInterest");
     }
@@ -169,7 +268,14 @@ const ContatoSection = () => {
   }
 
   function saveToLocalStorage(key, data) {
-    const currentData = JSON.parse(localStorage.getItem(key)) || [];
+    let currentData = [];
+
+    try {
+      const savedData = localStorage.getItem(key);
+      currentData = savedData ? JSON.parse(savedData) : [];
+    } catch {
+      currentData = [];
+    }
 
     const newData = {
       id: createId(),
@@ -209,7 +315,10 @@ const ContatoSection = () => {
       return;
     }
 
-    saveToLocalStorage("kessler_investidores", investimento);
+    saveToLocalStorage("kessler_investidores", {
+      ...investimento,
+      telefoneNumeros: getOnlyNumbers(investimento.telefone),
+    });
 
     setInvestimento(initialInvestimento);
     setInvestimentoErrors({});
@@ -446,7 +555,15 @@ const ContatoSection = () => {
                     placeholder={t("investPhonePlaceholder")}
                     value={investimento.telefone}
                     onChange={handleInvestimentoChange}
+                    className={investimentoErrors.telefone ? "input-error" : ""}
+                    inputMode="numeric"
+                    autoComplete="tel"
+                    maxLength="15"
                   />
+
+                  {investimentoErrors.telefone && (
+                    <small>{investimentoErrors.telefone}</small>
+                  )}
                 </div>
               </div>
 

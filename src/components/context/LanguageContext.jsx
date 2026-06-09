@@ -2,6 +2,10 @@ import { createContext, useContext, useState } from "react";
 
 const translations = {
   PT: {
+    navProblema: "O Problema",
+navSolucaoResumo: "A Solução",
+navFinanceiroResumo: "Financeiro",
+navReferenciasResumo: "Referências",
     navInicio: "Início",
     navSolucao: "Solução",
     navFinanceiro: "Financeiro",
@@ -138,6 +142,10 @@ errorContactPermission: "Você precisa autorizar o contato.",
   },
 
   EN: {
+    navProblema: "The Problem",
+navSolucaoResumo: "The Solution",
+navFinanceiroResumo: "Financial",
+navReferenciasResumo: "References",
     navInicio: "Home",
     navSolucao: "Solution",
     navFinanceiro: "Financial",

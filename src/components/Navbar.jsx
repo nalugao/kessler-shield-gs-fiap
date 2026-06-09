@@ -5,13 +5,35 @@ import "./navbar.css";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [inicioDropdownOpen, setInicioDropdownOpen] = useState(false);
+
   const { language, changeLanguage, t } = useLanguage();
 
   const navigate = useNavigate();
   const location = useLocation();
 
+  function tf(key, fallback) {
+    const translated = t(key);
+
+    if (!translated || translated === key) {
+      return fallback;
+    }
+
+    return translated;
+  }
+
   function closeMenu() {
     setMenuOpen(false);
+    setInicioDropdownOpen(false);
+  }
+
+  function toggleMenu() {
+    setMenuOpen((prev) => !prev);
+    setInicioDropdownOpen(false);
+  }
+
+  function toggleInicioDropdown() {
+    setInicioDropdownOpen((prev) => !prev);
   }
 
   function goToHomeSection(sectionId) {
@@ -25,7 +47,7 @@ export default function Navbar() {
           behavior: "smooth",
           block: "start",
         });
-      }, 150);
+      }, 200);
 
       return;
     }
@@ -46,8 +68,9 @@ export default function Navbar() {
 
         <button
           className={menuOpen ? "menu-button active" : "menu-button"}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Abrir menu"
+          onClick={toggleMenu}
+          aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={menuOpen}
           type="button"
         >
           <span></span>
@@ -56,9 +79,69 @@ export default function Navbar() {
         </button>
 
         <div className={menuOpen ? "navbar-menu open" : "navbar-menu"}>
-          <NavLink to="/" onClick={closeMenu}>
-            {t("navInicio")}
-          </NavLink>
+          <div
+            className={
+              inicioDropdownOpen
+                ? "navbar-dropdown open"
+                : "navbar-dropdown"
+            }
+          >
+            <button
+              type="button"
+              className={
+                location.pathname === "/"
+                  ? "dropdown-toggle active"
+                  : "dropdown-toggle"
+              }
+              onClick={toggleInicioDropdown}
+              aria-expanded={inicioDropdownOpen}
+            >
+              {t("navInicio")}
+              <span className="dropdown-arrow">▾</span>
+            </button>
+
+            <div className="dropdown-menu">
+              <button
+                type="button"
+                className="dropdown-item-button"
+                onClick={() => goToHomeSection("problema")}
+              >
+                {tf("navProblema", "O Problema")}
+              </button>
+
+              <button
+                type="button"
+                className="dropdown-item-button"
+                onClick={() => goToHomeSection("solucao")}
+              >
+                {tf("navSolucaoResumo", "A Solução")}
+              </button>
+
+              <button
+                type="button"
+                className="dropdown-item-button"
+                onClick={() => goToHomeSection("financeiro")}
+              >
+                {tf("navFinanceiroResumo", "Financeiro")}
+              </button>
+
+              <button
+                type="button"
+                className="dropdown-item-button"
+                onClick={() => goToHomeSection("referencias")}
+              >
+                {tf("navReferenciasResumo", "Referências")}
+              </button>
+
+              <button
+                type="button"
+                className="dropdown-item-button"
+                onClick={() => goToHomeSection("contato")}
+              >
+                {t("navContato")}
+              </button>
+            </div>
+          </div>
 
           <NavLink to="/solucao" onClick={closeMenu}>
             {t("navSolucao")}
@@ -71,14 +154,6 @@ export default function Navbar() {
           <NavLink to="/referencias" onClick={closeMenu}>
             {t("navReferencias")}
           </NavLink>
-
-          <button
-            type="button"
-            className="navbar-link-button"
-            onClick={() => goToHomeSection("contato")}
-          >
-            {t("navContato")}
-          </button>
 
           <div className="language-switch" aria-label="Selecionar idioma">
             <span className="language-icon">🌐</span>
