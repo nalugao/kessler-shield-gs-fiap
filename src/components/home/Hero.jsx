@@ -68,6 +68,9 @@ const Hero = () => {
               allowFullScreen
             />
           </div>
+
+          <div className="hero-visual">
+          </div>
         </div>
       </div>
     </section>
