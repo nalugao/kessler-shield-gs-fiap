@@ -1,10 +1,6 @@
 import { Link } from "react-router-dom";
 import { useLanguage } from "../context/LanguageContext";
 import "./hero.css";
-<<<<<<< Updated upstream
-=======
-import OrbitalVis from "./OrbitalVis";
->>>>>>> Stashed changes
 
 const HERO_TEXT = {
   PT: {
@@ -15,14 +11,10 @@ const HERO_TEXT = {
     taglineStrong: "Cada colisão gera mil novos fragmentos.",
     taglineEnd:
       "Nós encerramos esse ciclo antes que ele encerre o nosso acesso ao espaço.",
-<<<<<<< Updated upstream
-    primaryButton: "Entenda o problema",
-    secondaryButton: "Conheça o sistema",
-    statsTitle: "Entenda o projeto",
-    videoTitle: "Kessler Shield",
-=======
     primaryButton: "Conheça o sistema",
     secondaryButton: "Entenda o problema",
+    statsTitle: "Entenda o projeto",
+    videoTitle: "Kessler Shield",
     stats: [
       {
         value: "40K",
@@ -37,7 +29,6 @@ const HERO_TEXT = {
         label: "velocidade de impacto",
       },
     ],
->>>>>>> Stashed changes
   },
 
   EN: {
@@ -46,17 +37,11 @@ const HERO_TEXT = {
     subtitle: "Debris capture through Expandable Polymer",
     taglineStart: "Space is becoming inaccessible.",
     taglineStrong: "Each collision creates thousands of new fragments.",
-<<<<<<< Updated upstream
     taglineEnd: "We stop this cycle before it ends our access to space.",
-    primaryButton: "Understand the problem",
-    secondaryButton: "Explore the system",
-    statsTitle: "Understand the project",
-    videoTitle: "Kessler Shield",
-=======
-    taglineEnd:
-      "We stop this cycle before it ends our access to space.",
     primaryButton: "Explore the system",
     secondaryButton: "Understand the problem",
+    statsTitle: "Understand the project",
+    videoTitle: "Kessler Shield",
     stats: [
       {
         value: "40K",
@@ -71,7 +56,6 @@ const HERO_TEXT = {
         label: "impact speed",
       },
     ],
->>>>>>> Stashed changes
   },
 };
 
@@ -93,40 +77,16 @@ const Hero = () => {
             <p className="hero-sub">{text.subtitle}</p>
 
             <p className="hero-tagline">
-              {text.taglineStart}{" "}
-              <strong>{text.taglineStrong}</strong>{" "}
+              {text.taglineStart} <strong>{text.taglineStrong}</strong>{" "}
               {text.taglineEnd}
             </p>
 
             <div className="hero-cta">
-<<<<<<< Updated upstream
-              <Link to="/#problema" className="btn btn--primary">
-                {text.primaryButton}
-              </Link>
-
-              <Link to="/#solucao" className="btn btn--outline">
-                {text.secondaryButton} <span className="arrow">→</span>
-              </Link>
-            </div>
-
-            <div className="hero-stats">
-              <h2 className="stats-title">{text.statsTitle}</h2>
-
-              <div className="hero-video">
-                <iframe
-                  src="https://www.youtube.com/embed/SEU_ID_AQUI"
-                  title={text.videoTitle}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
-            </div>
-=======
               <Link to="/#solucao" className="btn btn--primary">
                 {text.primaryButton} <span className="arrow">→</span>
               </Link>
 
-              <Link to="/problema" className="btn btn--outline">
+              <Link to="/#problema" className="btn btn--outline">
                 {text.secondaryButton}
               </Link>
             </div>
@@ -139,11 +99,22 @@ const Hero = () => {
                 </div>
               ))}
             </div>
+
+            <div className="hero-video-area">
+              <h2 className="stats-title">{text.statsTitle}</h2>
+
+              <div className="hero-video">
+                <iframe
+                  src="https://www.youtube.com/embed/SEU_ID_AQUI"
+                  title={text.videoTitle}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            </div>
           </div>
 
           <div className="hero-visual">
-            <OrbitalVis />
->>>>>>> Stashed changes
           </div>
         </div>
       </div>

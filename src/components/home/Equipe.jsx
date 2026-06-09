@@ -9,38 +9,6 @@ const EQUIPE_TEXT = {
       "Estudantes de engenharia da FIAP construindo o futuro da limpeza orbital.",
     photoFallback: "Foto",
   },
-<<<<<<< Updated upstream
-  {
-    id: 2,
-    foto: "/images/nat.png",
-    nome: "Natalia Lugão",
-    cargo: "Cargo / Função",
-    descricao: "Responsável pelo desenvolvimento do front-end e identidade visual do projeto, garantindo a experiência do usuário."
-  },
-  {
-    id: 3,
-    foto: "/images/gab.png",
-    nome: "Gabriel Soares",
-    cargo: "Front-end & Design System",
-    descricao: "Desenvolveu a página de Solução e a seção Quem Somos, construindo layouts em React com CSS Grid, responsividade mobile-first. Colaborou também na correção de bugs críticos da aplicação. "
-  },
-  {
-    id: 4,
-    foto: "/images/jeff.png",
-    nome: "Jefferson Gomes",
-    cargo: "Front-end & UI/UX",
-    descricao: "Responsável pela criação da página financeira, aplicando responsividade mobile-first, organização de componentes em React, animações com Framer Motion, integração de assets visuais e padronização tipográfica."
-  },
-  {
-    id: 5,
-    foto: "/images/andre.png",
-    nome: "André Melo",
-    cargo: "Cargo / Função",
-    descricao: "Responsável pelo desenvolvimento do front-end e identidade visual do projeto, garantindo a experiência do usuário."
-  }
-]
-=======
->>>>>>> Stashed changes
 
   EN: {
     label: "06 — About Us",
@@ -139,45 +107,38 @@ const MEMBROS = {
   ],
 };
 
-const MembroCard = ({ membro, photoFallback }) => (
-  <div className="membro-card">
-    <div className="membro-foto">
-      {membro.foto ? (
-        <img src={membro.foto} alt={membro.nome} />
-      ) : (
-        <span>{photoFallback}</span>
-      )}
-    </div>
+const MembroCard = ({ membro, photoFallback }) => {
+  return (
+    <div className="membro-card">
+      <div className="membro-foto">
+        {membro.foto ? (
+          <img src={membro.foto} alt={membro.nome} />
+        ) : (
+          <span>{photoFallback}</span>
+        )}
+      </div>
 
-    <div className="membro-info">
-      <h3 className="membro-nome">{membro.nome}</h3>
-      <span className="membro-cargo">{membro.cargo}</span>
-      <p className="membro-desc">{membro.descricao}</p>
+      <div className="membro-info">
+        <h3 className="membro-nome">{membro.nome}</h3>
+        <span className="membro-cargo">{membro.cargo}</span>
+        <p className="membro-desc">{membro.descricao}</p>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const Equipe = () => {
-<<<<<<< Updated upstream
-  // const top = membros.slice(0, 3)
-  // const bottom = membros.slice(3)
-=======
   const { language } = useLanguage();
 
   const text = EQUIPE_TEXT[language] || EQUIPE_TEXT.PT;
   const membros = MEMBROS[language] || MEMBROS.PT;
->>>>>>> Stashed changes
 
   return (
     <section className="section section--alt" id="quem-somos">
       <div className="wrap">
         <div className="section-head">
-<<<<<<< Updated upstream
-          <p>06 — Quem Somos</p>
-=======
           <span className="label">{text.label}</span>
 
->>>>>>> Stashed changes
           <div className="divider"></div>
 
           <h2 className="section-title">{text.title}</h2>
