@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { criticalThreshold } from "../sim/project.js";
+import { criticalThreshold } from "./sim/project.js";
 import {
   PRIMARY,
   xOfYear,

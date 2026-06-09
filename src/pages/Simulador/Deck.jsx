@@ -2,8 +2,8 @@
  * Bottom bar — fleet deployment, status, and playback controls.
  * Three clear zones: fleet actions | live status | simulation transport.
  */
-import { HIGH_SHELL_INDEX, SHELLS } from "../sim/scenarios.js";
-import { pointOfNoReturnDebris } from "../sim/project.js";
+import { HIGH_SHELL_INDEX, SHELLS } from "./sim/scenarios.js";
+import { pointOfNoReturnDebris } from "./sim/project.js";
 
 export default function Deck({ sim }) {
   const { playing, speedLabel, fleets, removal, controls, display } = sim;
@@ -63,6 +63,9 @@ export default function Deck({ sim }) {
         <button className="btn-text btn-reset" onClick={controls.reset}>
           Reiniciar
         </button>
+        <a className="btn-exit" href="/" aria-label="Sair para o início">
+          Sair
+        </a>
       </div>
     </footer>
   );

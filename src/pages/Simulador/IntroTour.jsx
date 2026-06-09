@@ -112,11 +112,21 @@ function measureStep(targetId) {
   };
 }
 
+function visibleSteps() {
+  return TOUR_STEPS.filter((s) => {
+    const el = document.querySelector(`[data-tour-id="${s.id}"]`);
+    return el && el.getClientRects().length > 0;
+  });
+}
+
 export default function IntroTour({ startActive = true, onDone }) {
   const [active, setActive] = useState(startActive);
   const [index, setIndex] = useState(0);
   const [layout, setLayout] = useState(null);
-  const step = TOUR_STEPS[index];
+  // On tablet/mobile the chart rails and legend are hidden — drop their steps so
+  // the tour never lands on a zero-size target it can't point at.
+  const [steps, setSteps] = useState(TOUR_STEPS);
+  const step = steps[index];
 
   const close = useCallback(() => {
     setActive(false);
@@ -133,13 +143,20 @@ export default function IntroTour({ startActive = true, onDone }) {
     setLayout(nextLayout);
 
     document.querySelectorAll("[data-tour-id]").forEach((node) => {
-      const stepIndex = TOUR_STEPS.findIndex((item) => item.id === node.getAttribute("data-tour-id"));
+      const stepIndex = steps.findIndex((item) => item.id === node.getAttribute("data-tour-id"));
       const isCurrent = stepIndex === index;
       const isVisited = stepIndex >= 0 && stepIndex < index;
       node.classList.toggle("tour-focus", isCurrent);
       node.classList.toggle("tour-visited", isVisited);
     });
-  }, [active, index, step]);
+  }, [active, index, step, steps]);
+
+  useLayoutEffect(() => {
+    if (!active) return;
+    const next = visibleSteps();
+    setSteps(next.length ? next : TOUR_STEPS);
+    setIndex((current) => Math.min(current, Math.max(0, next.length - 1)));
+  }, [active]);
 
   useLayoutEffect(() => {
     updateLayout();
@@ -153,7 +170,7 @@ export default function IntroTour({ startActive = true, onDone }) {
         close();
       } else if (event.key === "ArrowRight") {
         setIndex((current) => {
-          if (current === TOUR_STEPS.length - 1) {
+          if (current === steps.length - 1) {
             close();
             return current;
           }
@@ -173,7 +190,7 @@ export default function IntroTour({ startActive = true, onDone }) {
       window.removeEventListener("resize", updateLayout);
       window.removeEventListener("scroll", updateLayout, true);
     };
-  }, [active, close, updateLayout]);
+  }, [active, close, updateLayout, steps]);
 
   useEffect(() => {
     if (active) return undefined;
@@ -208,7 +225,7 @@ export default function IntroTour({ startActive = true, onDone }) {
   if (!active || !step || !layout) return null;
 
   const isFirst = index === 0;
-  const isLast = index === TOUR_STEPS.length - 1;
+  const isLast = index === steps.length - 1;
 
   return createPortal(
     <div className="intro-tour" aria-live="polite">
@@ -224,13 +241,13 @@ export default function IntroTour({ startActive = true, onDone }) {
         <button className="tour-close" type="button" onClick={close} aria-label="Sair da introdução">
           ×
         </button>
-        <div className="tour-eyebrow">{step.eyebrow}</div>
+        <div className="tour-eyebrow">{index + 1} / {steps.length}</div>
         <h2 id="tour-title" className="tour-title">
           {step.title}
         </h2>
         <p className="tour-body">{step.body}</p>
         <div className="tour-progress" aria-hidden="true">
-          {TOUR_STEPS.map((item, itemIndex) => (
+          {steps.map((item, itemIndex) => (
             <span key={item.id} className={itemIndex === index ? "is-active" : ""} />
           ))}
         </div>

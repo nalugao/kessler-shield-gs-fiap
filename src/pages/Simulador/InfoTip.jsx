@@ -95,7 +95,7 @@ export default function InfoTip({ title, intro, tex, where = [], note }) {
       <button ref={btnRef} className="infotip-btn" onClick={toggle} aria-label="Explicação">
         i
       </button>
-      {open && pos && (
+      {open && (
         <div
           ref={popRef}
           className={"infotip-pop" + (pos ? "" : " infotip-pop-measuring")}
