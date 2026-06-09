@@ -29,7 +29,7 @@ export default function ChamadaFinal() {
           navegação e a próxima geração de missões espaciais.
         </p>
 
-        <a href="/contato" className="btn btn--primary">
+        <a href="-/#contato" className="btn btn--primary">
           Investir no Futuro <span>→</span>
         </a>
       </div>
