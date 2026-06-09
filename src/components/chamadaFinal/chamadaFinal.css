@@ -49,7 +49,7 @@
 
   color: #fff;
 
-  font-size: clamp(2.15rem, 11vw, 7rem);
+  font-size: clamp(2rem, 5vw, 3.5rem) !important;
   line-height: 0.98;
 
   letter-spacing: -0.06rem;
@@ -68,55 +68,8 @@
   line-height: 1.75;
 }
 
-.cta-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.65rem;
-
-  margin-top: clamp(1.8rem, 5vw, 2.5rem);
-  padding: clamp(0.85rem, 2vw, 1rem) clamp(1.2rem, 3vw, 1.6rem);
-
-  font-family: var(--font-display);
-
-  color: #fff;
-
-  font-size: clamp(0.78rem, 2vw, 0.9rem);
-  font-weight: 700;
-
-  letter-spacing: 0.03rem;
-  text-decoration: none;
-
-  border-radius: 999px;
-
-  border: 1px solid rgba(120, 224, 207, 0.28);
-
-  background: rgba(255, 255, 255, 0.03);
-
-  transition:
-    transform 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease,
-    background 0.3s ease;
-}
-
-.cta-button:hover {
-  border-color: #78e0cf;
-
-  background: rgba(120, 224, 207, 0.08);
-
-  box-shadow:
-    0 0 1.875rem rgba(120, 224, 207, 0.22);
-
-  transform: translateY(-0.1875rem);
-}
-
-.cta-button span {
-  transition: transform 0.3s ease;
-}
-
-.cta-button:hover span {
-  transform: translateX(0.25rem);
+.btn--primary {
+  margin: 10px;
 }
 
 /* =========================
@@ -227,8 +180,7 @@
 
 @media (min-width: 1200px) {
   .final-cta {
-    min-height: 90vh;
-
+    margin-bottom: 50px;
     --orbit-size: 48.75rem;
   }
 }

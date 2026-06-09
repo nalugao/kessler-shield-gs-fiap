@@ -60,6 +60,41 @@ export default function SimuladorFinanceiro() {
 
   return (
     <section className="finance-simulator">
+    <div className="simulator-orbit" aria-label={text.orbitAriaLabel}>
+      <div className="simulator-earth">
+        <img
+          src={terraImg}
+          alt={text.earthAlt}
+          className="simulator-earth-img"
+        />
+      </div>
+
+      {Array.from({ length: dados.debrisLeft }).map((_, index) => (
+        <span
+          key={`debris-${index}`}
+          className="debris-dot"
+          style={{
+            "--angle": `${index * (360 / dados.debrisLeft)}deg`,
+            "--radius": `calc(var(--debris-radius-base) + ${
+              (index % 3) * 1.35
+            }rem)`,
+          }}
+        />
+      ))}
+
+      {Array.from({ length: 7 }).map((_, index) => (
+        <span
+          key={`satellite-${index}`}
+          className="protected-satellite"
+          style={{
+            "--angle": `${index * 52}deg`,
+            "--radius": `calc(var(--satellite-radius-base) + ${
+              (index % 2) * 2.8
+            }rem)`,
+          }}
+        />
+      ))}
+    </div>
       <div className="simulator-content">
         <span className="section-kicker">{text.kicker}</span>
 
@@ -109,41 +144,6 @@ export default function SimuladorFinanceiro() {
         </div>
       </div>
 
-      <div className="simulator-orbit" aria-label={text.orbitAriaLabel}>
-        <div className="simulator-earth">
-          <img
-            src={terraImg}
-            alt={text.earthAlt}
-            className="simulator-earth-img"
-          />
-        </div>
-
-        {Array.from({ length: dados.debrisLeft }).map((_, index) => (
-          <span
-            key={`debris-${index}`}
-            className="debris-dot"
-            style={{
-              "--angle": `${index * (360 / dados.debrisLeft)}deg`,
-              "--radius": `calc(var(--debris-radius-base) + ${
-                (index % 3) * 1.35
-              }rem)`,
-            }}
-          />
-        ))}
-
-        {Array.from({ length: 7 }).map((_, index) => (
-          <span
-            key={`satellite-${index}`}
-            className="protected-satellite"
-            style={{
-              "--angle": `${index * 52}deg`,
-              "--radius": `calc(var(--satellite-radius-base) + ${
-                (index % 2) * 2.8
-              }rem)`,
-            }}
-          />
-        ))}
-      </div>
     </section>
   );
 }

@@ -86,8 +86,6 @@
   gap: 0.6rem;
 
   z-index: 10;
-
-  pointer-events: none;
 }
 
 .planet-sphere {
@@ -149,18 +147,11 @@
 
 .orbit-lane {
   position: absolute;
-
   top: 50%;
   left: 50%;
-
   border-radius: 50%;
-
   border: 1px solid rgba(120, 224, 207, 0.2);
-
   transform: translate(-50%, -50%);
-
-  pointer-events: none;
-
   box-shadow:
     0 0 1.5rem rgba(120, 224, 207, 0.06),
     inset 0 0 1.5rem rgba(120, 224, 207, 0.03);
@@ -219,11 +210,6 @@
   flex-direction: column;
   align-items: center;
   gap: 0.15rem;
-
-  cursor: pointer;
-
-  pointer-events: auto;
-
   color: white;
 
   z-index: 12;
