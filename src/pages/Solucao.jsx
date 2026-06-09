@@ -32,7 +32,7 @@ const MISSION_STEPS = {
       tagSecundaria: "Polímero",
       title: "O Efeito Teia de Aranha",
       description:
-        "A maioria dos detritos está girando descontroladamente. Tentar pegar isso com um braço robótico de metal é como tentar segurar uma faca que está caindo e girando no ar – é perigoso e pode quebrar o lixo em pedaços menores, piorando a Síndrome de Kessler. A espuma expansiva age como uma teia de aranha macia, que engole o objeto e trava o seu giro suavemente, absorvendo o impacto.",
+        "A maioria dos detritos espaciais viaja a velocidades extremas e gira de forma imprevisível. Capturá-los com braços robóticos ou estruturas rígidas pode gerar colisões capazes de fragmentar ainda mais o objeto, agravando a Síndrome de Kessler. O aerogel oferece uma abordagem diferente. Ao ser liberado no espaço, ele se expande rapidamente e envolve o detrito como uma teia macia. Sua estrutura ultraleve absorve a energia do impacto, reduz o movimento de rotação e estabiliza o objeto sem quebrá-lo, permitindo sua remoção de forma mais segura.",
       imgAlt: "Espuma expansiva capturando o lixo espacial",
     },
     {
