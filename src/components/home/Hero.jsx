@@ -59,7 +59,6 @@ const Hero = () => {
         </div>
 
         <div className="hero-bottom">
-          <h2 className="stats-title">{text.statsTitle}</h2>
           <div className="hero-video">
             <iframe
               src="https://www.youtube.com/embed/SEU_ID_AQUI"

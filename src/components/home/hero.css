@@ -1,7 +1,7 @@
 .hero {
   position: relative;
-  padding: 5rem 0 6rem;
   overflow: hidden;
+  margin-top: 100px;
 }
 
 .hero-title {
@@ -31,8 +31,6 @@
   font-weight: 500;
 }
 
-/* hero-grid não é mais necessário, remova ou ignore */
-
 .hero-copy {
   text-align: center;
 }
@@ -48,7 +46,8 @@
 .hero-bottom {
   margin-top: 3rem;
   padding-top: 2rem;
-  border-top: 1px solid var(--line-soft);
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--line-soft) ;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,7 +75,12 @@
   .hero-stats {
     grid-template-columns: 1fr;
   }
+
   .hero-title .mint {
     display: block;
   }
+  .hero{
+    margin-top: 30px;
+  }
+
 }
