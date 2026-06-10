@@ -66,16 +66,21 @@ const Hero = () => {
 
         <div className="hero-bottom">
           <div className="hero-video">
-            <h2 className="hero-video-title">{text.seeMore}</h2>
+            <a
+              href="https://www.youtube.com/watch?v=q7S56RCBdp8"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hero-video-title"
+            >
+              {text.seeMore}
+            </a>
 
-            <img src="/capa.png" alt={text.imageAlt} />
-
-            {/* <iframe
-              src="https://www.youtube.com/embed/SEU_ID_AQUI"
+            <iframe
+              src="https://www.youtube.com/embed/q7S56RCBdp8"
               title={text.videoTitle}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-            /> */}
+            />
           </div>
 
           <div className="hero-visual"></div>
