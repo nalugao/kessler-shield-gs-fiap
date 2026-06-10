@@ -10,8 +10,8 @@
             S H I E L D
 ```
 
-**Active Debris Removal System — Poly-Catch System**  
-FIAP Global Solution 2025
+**Captura de detritos por Polímero Expansível**  
+FIAP Global Solution 2026
 
 ---
 
@@ -119,4 +119,4 @@ Natália Lugão — Front-end & identidade visual
 Sophia Coelho — Front-end & acessibilidade  
 Gabriel Soares — Front-end & design system  
 Jefferson Gomes — Front-end & UI/UX  
-André Melo — Pitch & desenvolvimento criativo
+André Melo — Desenvolvimento criativo
